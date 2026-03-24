@@ -1,0 +1,8 @@
+{
+  "name": "Sanctuary",
+  "description": "A holistic recovery and wellness companion providing daily intentions, community support, expert wisdom, and progress tracking.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
