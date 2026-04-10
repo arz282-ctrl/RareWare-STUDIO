@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WORK — RAREWARE STUDIO</title>
+  <meta name="description" content="Core Modules — Active operations matrix by RAREWARE STUDIO. Exploring deployed projects through an interactive portfolio."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    body {
+      overflow: hidden;
+      background-image: linear-gradient(to right, rgba(42,42,53,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(42,42,53,0.12) 1px, transparent 1px);
+      background-size: 5vw 5vw;
+    }
+    .work-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid var(--color-muted);
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(12px);
+    }
+    .work-back {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--color-text);
+      transition: color 0.3s ease;
+    }
+    .work-back:hover { color: var(--color-accent); }
+    .work-back:hover .material-symbols-outlined { color: var(--color-primary); }
+    .work-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .work-status .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      box-shadow: var(--glow);
+    }
+    .work-main {
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 6rem 5rem 3rem;
+    }
+    .work-main::-webkit-scrollbar { display: none; }
+    .work-scroll {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      min-width: max-content;
+      height: 100%;
+    }
+    .work-intro {
+      width: 400px;
+      flex-shrink: 0;
+      border-right: 1px solid var(--color-muted);
+      padding-right: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .work-intro h1 {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+      line-height: 0.9;
+    }
+    .work-intro p {
+      color: var(--color-muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .module-card {
+      position: relative;
+      flex-shrink: 0;
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      cursor: pointer;
+      overflow: hidden;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.6s ease;
+    }
+    .module-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 25px rgba(208,0,255,0.3);
+    }
+    .module-card.large { width: 600px; height: 800px; }
+    .module-card.small { width: 400px; height: 600px; }
+    .module-card .meta-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 10;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent);
+      background: rgba(0,0,0,0.5);
+      padding: 0.25rem 0.5rem;
+      mix-blend-mode: difference;
+    }
+    .module-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .module-card .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #000 0%, transparent 50%);
+      opacity: 0.8;
+    }
+    .module-card .card-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 2rem;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+    }
+    .module-card .card-title h2 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+    }
+    .module-card .card-title .material-symbols-outlined {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .module-card:hover .card-title .material-symbols-outlined { opacity: 1; }
+
+    .offset-top { align-self: flex-start; margin-top: 5rem; }
+    .offset-bottom { align-self: flex-end; margin-bottom: 5rem; }
+
+    @media (max-width: 1024px) {
+      body { overflow: auto; }
+      .work-main { flex-direction: column; height: auto; overflow: visible; padding: 6rem 1.5rem 3rem; }
+      .work-scroll { flex-direction: column; min-width: auto; gap: 1.5rem; }
+      .work-intro { width: 100%; border-right: none; border-bottom: 1px solid var(--color-muted); padding-right: 0; padding-bottom: 2rem; }
+      .module-card.large, .module-card.small { width: 100%; height: 50vh; min-height: 350px; }
+      .module-card .card-title { padding: 1.5rem; }
+      .module-card .card-title h2 { font-size: 1.5rem; }
+      .offset-top, .offset-bottom { align-self: auto; margin: 0; }
+    }
+    @media (max-width: 768px) {
+      .work-main { padding-top: 8rem; }
+      .module-card.large, .module-card.small { height: 400px; }
+      .module-card .meta-tag { font-size: 0.55rem; white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
+
+  <nav class="site-nav">
+    <a href="index.html" class="logo">RAREWARE_STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="about.html">INTEL</a></li>
+      <li><a href="services.html">SYSTEMS</a></li>
+      <li><a href="work.html" class="active">WORK</a></li>
+      <li><a href="process.html">PROTOCOLS</a></li>
+      <li><a href="team.html">NODES</a></li>
+      <li><a href="contact.html">DECRYPT</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a>
+    <a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a href="contact.html">DECRYPT</a>
+  </div>
+
+  <main class="work-main" id="work-matrix">
+    <div class="work-scroll">
+      <div class="work-intro">
+        <h1>Core<br/>Modules</h1>
+        <p>Active operations matrix. Exploring the duality of structure and energy through deployed nodes.</p>
+        <div style="height: 1px; background: var(--color-muted);"></div>
+        <span class="text-label" style="color: var(--color-primary);">Scroll to navigate</span>
+      </div>
+
+      <a href="portfolio-architecture.html" class="module-card large img-reveal-parent" style="text-decoration: none; color: inherit;">
+        <span class="meta-tag">OP: ALPHA // STATUS: DEPLOYED</span>
+        <img class="img-reveal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0SBYBzBFvyYojiR_NPceq2ZwOMIQ7J2KOSzhE0eHktMmrvPn58Cmn10jE4X7lE0vb9mTsKxxqeyv0zzmYKmW9raNsb95xN2hqwEqdByiU3iEvKiOCnyO9KVSbL_uDSgdGkijN8oMYn_vcryIkzGUYQp5mFSbEG8xQV9ojEhUVPPm8x_sbmXycIaa0wWSl-HYp6W9oRn7IaWtJpsGnU0tXBxuNr_mKwrV8Kh0ffys5h6NVeCPLQWUbYVAKD68GNUnUo2qC-PVB" alt="System Architecture"/>
+        <div class="card-overlay"></div>
+        <div class="card-title">
+          <h2>System Architecture</h2>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </div>
+      </a>
+
+      <a href="portfolio-neural.html" class="module-card small offset-top img-reveal-parent" style="text-decoration: none; color: inherit;">
+        <span class="meta-tag">OP: BETA // STATUS: DEPLOYED</span>
+        <img class="img-reveal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYb-k-s8oVbrvqeXiaYB_4qQ5Rq9aTkBxgweA_3HLtRwh1oan99dJic4YSZHlegMcVsIGSLuzzv2pDJF0PSA6hn_Y9oV1gaxSWC1B8OHG42cQ1ZGRGz2aVYVzimAsCLpoNdiqjoHR-eWlgXJZWmwh1lSVommyBR_6zyL12XXbgzVQtxTObArybX02n7Z-NJ3ro1lzA-I-uPY5ToxbrHlUDxGt5EDmh7d9OEeotjlQfxxG1d_w88VYWzEuAX4b9o_YzxaKG0Gd4" alt="Neural Interface"/>
+        <div class="card-overlay"></div>
+        <div class="card-title"><h2>Neural Interface</h2></div>
+      </a>
+
+      <a href="case-study.html" class="module-card small offset-bottom img-reveal-parent" style="text-decoration: none; color: inherit;">
+        <span class="meta-tag">OP: GAMMA // STATUS: ARCHIVED</span>
+        <img class="img-reveal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdNhcHoHoFvZiSt5rjHiiH_y1-vgpF_YECD3KpNdVEZlQUVn4x21-UEHxFPMtopy2LpDqRpWDeuvPT3pW1Ay3kkqSANoppL2I4YOqTNbsTXO5214Yc3XpJlVt4Dpx0xLAu7kCJvc69_XOEkykf89aebRMUD_Gikv54xTmpwlmkrJ3D__sehMZ6c019DjXGrfV8G4kiVm1GyX4II7oSJ6BB08RQPh-jjX4l73l6gqGXyZgxq3zfYUvdjss5-GcgIJFkUAEctAFl" alt="Quantum Node"/>
+        <div class="card-overlay"></div>
+        <div class="card-title"><h2>Quantum Node</h2></div>
+      </a>
+
+      <a href="case-study.html" class="module-card large img-reveal-parent" style="text-decoration: none; color: inherit;">
+        <span class="meta-tag">OP: DELTA // STATUS: ACTIVE</span>
+        <img class="img-reveal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB986cMxRJ3yW0_oRK7LbU8mu3_KsfckT3L3QIHtBWxjqiTSInry2HbzgHRp1I6ujalOskBWoRkAnl2AVfvBPZ7QPgsYWRCBm32mJ7QUnMkc-0vZMe8-93ar4byhejODJMd9y_eWl27S4WU3MmldmtZ5Yx9brlKBbpTCheT3mz8plnJ_OHCH41HpYxV3HZJTf_A3SIRp9OKQPQHQreQAA2T9Aa83IZ8DT7CJlbxfHtIhxbET0kK6v9vPHaUDc5vo-fzvVjq1ae0" alt="Security Grid"/>
+        <div class="card-overlay"></div>
+        <div class="card-title">
+          <h2>Security Grid</h2>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </div>
+      </a>
+
+      <div style="width: 5rem; flex-shrink: 0;"></div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

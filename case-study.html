@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CASE STUDY — PHANTOM PROTOCOL — RAREWARE STUDIO</title>
+  <meta name="description" content="Immersive case study: Phantom Protocol by RAREWARE STUDIO. Re-engineering visual language for high-security cryptographic exchanges."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .cs-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 3rem 3rem 3rem;
+      border-bottom: 1px solid var(--color-muted);
+    }
+    .cs-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .cs-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      filter: grayscale(100%);
+    }
+    .cs-hero-bg .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.3) 40%, transparent 100%);
+    }
+    .cs-hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1000px;
+    }
+    .cs-hero-content .case-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--color-primary);
+      letter-spacing: 0.5em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .cs-hero-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 10vw, 10rem);
+      font-weight: 800;
+      line-height: 0.8;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .cs-hero-content h1 .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px white;
+    }
+    .cs-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      border-top: 1px solid var(--color-muted);
+      padding-top: 2rem;
+    }
+    .cs-meta-item .key {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.25rem;
+    }
+    .cs-meta-item .val {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .cs-meta-item .val.status {
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cs-meta-item .val.status .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-primary);
+      animation: pulse 2s ease infinite;
+    }
+
+    /* Editorial Content */
+    .cs-editorial {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3rem;
+      padding: 6rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .cs-editorial .sidebar {
+      grid-column: span 4;
+      position: sticky;
+      top: 6rem;
+      align-self: start;
+    }
+    .cs-editorial .sidebar .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-muted);
+      letter-spacing: 0.3em;
+      margin-bottom: 1rem;
+    }
+    .cs-editorial .sidebar h2 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .cs-editorial .sidebar p {
+      color: rgba(244,244,246,0.5);
+      line-height: 1.6;
+      max-width: 350px;
+      margin-bottom: 2rem;
+    }
+    .cs-editorial .content {
+      grid-column: span 8;
+    }
+    .cs-editorial .content img {
+      width: 100%;
+      filter: grayscale(100%);
+      border: 1px solid var(--color-muted);
+      margin-bottom: 2rem;
+    }
+    .cs-editorial .content .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Immersive break */
+    .cs-immersive {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      overflow: hidden;
+      border-top: 1px solid var(--color-muted);
+      border-bottom: 1px solid var(--color-muted);
+    }
+    .cs-immersive img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cs-immersive .stat-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cs-immersive .stat-card {
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      padding: 4rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      max-width: 500px;
+    }
+    .cs-immersive .stat-card .label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--color-primary);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .cs-immersive .stat-card .num {
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .cs-immersive .stat-card .sub {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      color: rgba(244,244,246,0.4);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* Next project grid */
+    .cs-next {
+      padding: 4rem 3rem;
+      border-top: 1px solid var(--color-muted);
+    }
+    .cs-next-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+    .cs-next-header h3 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+    }
+    .cs-next-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+    }
+    .cs-next-item {
+      aspect-ratio: 1;
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      overflow: hidden;
+      position: relative;
+    }
+    .cs-next-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      opacity: 0.3;
+      transition: all 0.7s ease;
+      transform: scale(1.05);
+    }
+    .cs-next-item:hover img {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .cs-next-item .item-info {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .cs-next-item:hover .item-info { opacity: 1; }
+    .cs-next-item .item-info .item-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-primary);
+    }
+    .cs-next-item .item-info .item-name {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1024px) {
+      .cs-editorial { grid-template-columns: 1fr; }
+      .cs-editorial .sidebar { grid-column: 1; position: relative; top: 0; }
+      .cs-editorial .content { grid-column: 1; }
+    }
+    @media (max-width: 768px) {
+      .cs-hero { padding: 2rem; }
+      .cs-editorial { padding: 3rem 1.5rem; }
+      .cs-editorial .content .img-grid { grid-template-columns: 1fr; }
+      .cs-next-grid { grid-template-columns: 1fr; }
+      .cs-next { padding: 3rem 1.5rem; }
+      .cs-immersive .stat-card { padding: 2rem; }
+      .cs-immersive .stat-card .num { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body class="mode-lumina">
+  <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
+
+  <!-- Nav -->
+  <nav class="site-nav">
+    <a href="index.html" class="logo">RAREWARE_STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="about.html">INTEL</a></li>
+      <li><a href="services.html">SYSTEMS</a></li>
+      <li><a href="work.html" class="active">WORK</a></li>
+      <li><a href="process.html">PROTOCOLS</a></li>
+      <li><a href="team.html">NODES</a></li>
+      <li><a href="contact.html">DECRYPT</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu"><a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a><a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a href="contact.html">DECRYPT</a></div>
+
+  <!-- Hero -->
+  <section class="cs-hero" style="border-bottom-color: var(--color-lumina-muted);">
+    <div class="cs-hero-bg">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVEmrZ5BcWpVQ8TZFSW183umdCDcnJZA2Ofv5J_S6Nu1xNr0y2uIaxnxbhSfMWulfrxquq7ZE6hykHbkaRZuV3gkINLtB4z3aaHkNgJDOKMsMTUuMhcX3D0eTTvrus5519x0xRJAsnhCrZqX6TMKstObB-wqDS7rH990rv7yKX0EeNzYMKXgs9LQ5-WVtPGx1bJF4UsPYJkJIzHfn3IGWEW5w-fVwHFZ__trHmR1kZ0_FFnVEKR40-5Vg0V5-wrtTyP9j6PIJz" alt="Dark glass texture"/>
+      <div class="overlay" style="background: linear-gradient(to top, var(--color-lumina-bg) 0%, rgba(255,255,255,0.3) 40%, transparent 100%);"></div>
+    </div>
+    <div class="cs-hero-content">
+      <div class="case-label">CASE_STUDY_001</div>
+      <h1 style="color: var(--color-lumina-text);">PHANTOM<br/><span class="outline" style="-webkit-text-stroke: 1px var(--color-lumina-text);">PROTOCOL</span></h1>
+      <div class="cs-meta" style="border-top-color: var(--color-lumina-muted);">
+        <div class="cs-meta-item"><div class="key" style="color: var(--color-lumina-muted);">Client</div><div class="val" style="color: var(--color-lumina-text);">AETHER_DYNAMICS</div></div>
+        <div class="cs-meta-item"><div class="key" style="color: var(--color-lumina-muted);">Year</div><div class="val" style="color: var(--color-lumina-text);">2024.V2</div></div>
+        <div class="cs-meta-item"><div class="key" style="color: var(--color-lumina-muted);">Role</div><div class="val" style="color: var(--color-lumina-text);">SYSTEM ARCHITECT</div></div>
+        <div class="cs-meta-item"><div class="key" style="color: var(--color-lumina-muted);">Status</div><div class="val status"><span class="dot"></span>ACTIVE_LINK</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Block 01 -->
+  <section class="cs-editorial reveal">
+    <div class="sidebar">
+      <div class="section-label" style="color: var(--color-lumina-muted);">CONTEXT // 01</div>
+      <h2 style="color: var(--color-lumina-text);">The Quantum<br/>Framework</h2>
+      <p style="color: rgba(26,26,26,0.6);">Re-engineering the visual language for a high-security cryptographic exchange. The goal was to eliminate all cognitive friction while maintaining an atmosphere of absolute digital security.</p>
+      <a href="contact.html" class="btn-primary" style="padding: 1rem 2rem; font-size: 0.65rem;">INIT_DECRYPT</a>
+    </div>
+    <div class="content">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHLYOa4rztyt1pZ44SiOG4L90xrw6Vc7lHfc2N9UO1EB2eBwtsH2BQNnn-DSghNnlwFQp8535Zb3-FvSocxsR6DjWLkgU-CZqbsg8rJydJn-m6Y0iC_zhmFLlx_emg__O3slINJWuHDdvSqPIKVBj64Z7OsvaG3k9GZt8nXqGrMMjj2uqYUwiBJxIo_zQbQUZ45EI7ppmIWW8r6T6eWBMq9hqNyiiYg3RdAOEwvZ5kj8utyQrfMqspWpfamGZtwFc-JtuYaJJy" alt="Tech interface" style="border-color: var(--color-lumina-muted);"/>
+      <div class="img-grid">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_r-ZNgLgT0tDqA39FoyZxaJY28CPE-kgRskFQjmguuosLI74Tnbachx2_t0ND1w5slAVQZ8k6PXpSpM1C0f_NE3UxZVBpaVw-PSN-HwWcKPEr_5qs8ijzMgyknKhDmSXg6dkmh5FBXhdm4vxO6jukIdagsVoWwNnEHnJxYtrviXwezIb6d9nXX5fONRDJurg7_2C_kuLSxUJ8AyBEITwCICv-AsAHDxOc9gq4eLddrOE5Pxeb0kKLMWvlAzrux8U6UPJ9X4h_" alt="Data visualization" style="border-color: var(--color-lumina-muted);"/>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr7i2F0HH9QsNhVmnoe34rY5uuzjFEaMKA7GaGubAmPKjs2rWJUnGCn2zCMinzjWJG9gjV9qVyOSVw93cbLnPA8Gs3L7x8wamihJBnZ837zvivfDXkO6jOs1AUli1ll4NNQS2CYj2juEeiffeQmAioNIIsBgw0tVWzew4oAOQeFKNkSSne9vrlvg6AjvwPraXJs-iGadXAWD1HNOrXfcr60AZJbnLpam3KcxJdO5i9k_JE1QBuQjpjg-bkowOpt-X498Qm89mO" alt="Processor chip" style="border-color: var(--color-lumina-muted);"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Immersive Break -->
+  <section class="cs-immersive">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhASz1P3VhD4MPbamw3p0BQsN8YpEn91meXkpf_bp7kS6BBgaxDy-l7rgCXncJs0hoQ7NpWGwkVYAvx0JShirsysocXqh_fOKPAR1ZwfTznbD0j-Mk_GPlSCFQIwG17Aq24Km-K9plp6NHmjXJIMbK0iHHqf8Vesg524WEc5yFW0fRqUhmuicOGeg1ULqz3LOwlTqPg8Ro7ma0vc9AmmPsVNzSKuYRMD89x-etHRdHYWrXa7qisJAQIgvAQxpPND1GZtKG-9BE" alt="Gradient background"/>
+    <div class="stat-overlay">
+      <div class="stat-card">
+        <div class="label">Performance Metric</div>
+        <div class="num">99.9%</div>
+        <div class="sub">Uptime // Security Persistence</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Block 02 -->
+  <section class="cs-editorial reveal" style="padding-top: 4rem;">
+    <div class="content" style="grid-column: span 8;">
+      <div style="background: var(--color-surface); padding: 2px; border: 1px solid var(--color-muted);">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnYDYB5VQfHwgfVeN9kD1Dbc6X_qyhsUYrbLtNht0jmd9CNBnNvPDo6sCx6Wh6at5RpD_qO5M3QkAG1gNz4kiLeWgxzc7qxcdNa8e21PrHJ-Ce88_JnkpIJxlPzN-Hft19JdNMjVBWN_eRSZtcBOv8TNQSMl0wnxg0X6Y7wMIYZcYw3QuXm9tVHFOZwAceM4GwCrhLCK44PMFe-TOqsS6_2JoDwaq9jvqf56E8SxQqxBxYq62-npxmf5ogAmHpqUDkJVJKPDiC" alt="Brutalist architecture" style="filter: grayscale(100%) brightness(0.5); margin-bottom: 0;"/>
+      </div>
+    </div>
+    <div class="sidebar" style="grid-column: span 4; text-align: right;">
+      <div class="section-label">EXECUTION // 02</div>
+      <h2>Monolithic<br/>Structure</h2>
+      <p style="margin-left: auto;">By leveraging a zero-radius philosophy, we achieved a visual weight that feels permanent. Every interaction is mapped to a 1px grid, ensuring total alignment across all device states.</p>
+    </div>
+  </section>
+
+  <!-- Next Projects -->
+  <section class="cs-next reveal">
+    <div class="cs-next-header">
+      <h3>NEXT_REF</h3>
+      <a href="work.html" style="display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.1em;">
+        VIEW_ALL_WORK <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
+      </a>
+    </div>
+    <div class="cs-next-grid">
+      <a href="case-study.html" class="cs-next-item" style="text-decoration: none; color: inherit;">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB90EBH8mtEi1JWD9LQkfUeXI7KK92huEjXdzNRLuU7IW8wDV2_NvhdsZ2PhjNqo0z5RxIOyxi6Oxi-hcqQqfJdrK7_cky8jYRvhOw7kegxO6kxNeT7IJXlGg3J9dq1cFomea9WxXGXMsscKJT2M1M7LN-3zwzvnMOyphr8_PdY2D1Fi6fod04gXNCtQAQYDq8uG7qkmPhyw1BHpFSxv0iRqmU-xsBePP6-2deg0DF9Nm-Y-OfCbfiWJTmo0wDdjq-Lc-b0nYWj" alt="Cyber Dyne"/>
+        <div class="item-info"><div class="item-label">PROJECT_002</div><div class="item-name">CYBER_DYNE</div></div>
+      </a>
+      <a href="case-study.html" class="cs-next-item" style="text-decoration: none; color: inherit;">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTpgyHkL8utsW_ABQ2gqJoTZtBv_RIHRKtA7B-JrCl7PEq6FsH_3ACnUMxMGzy7xJZyfGuqd1MFRT_thXeW-t0pHTnaeQu6TLha3C96I-j-Jp0MtiELzqUJg4rBuJ7nTolyOkH1Ecb63DfYUlgYSXGqQGBbW9SnaTGFmHmWH49Q1R5EVBrdC9EF3btsiYpfRL0VBfnqdCnbwWdbALxEB2TW-uOfVBbaR2xL9C1pVcje8jWxLvhagIvS6d9hqKoeqy8QEmb7Q67" alt="Void Systems"/>
+        <div class="item-info"><div class="item-label">PROJECT_003</div><div class="item-name">VOID_SYSTEMS</div></div>
+      </a>
+      <a href="case-study.html" class="cs-next-item" style="text-decoration: none; color: inherit;">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFj3AE-FNKHW8DF3bJ7S7A_cW9sxyx7DA7IgGdH-yRYBI8R1l61tbbpyZKO8Nj5qSpWxZn8NAovUyBEOfbl13W8fTBXXxwc3rB0xXRv0MJCYbmESLOreyMISFRnuFs6diuv1VycEQHhfz9UmfFZBbhQChuWOzuvdjd7l08E8SOc-DmW1-Q8BKmIsyhxcDLDFsK5HE4JpJs2LrZt8xR77egeDnZL31bakVg1YBCtUJg4exs8QAtfZiDt_czaiyy60mvY3SBEpPZ" alt="Nova Core"/>
+        <div class="item-info"><div class="item-label">PROJECT_004</div><div class="item-name">NOVA_CORE</div></div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-left">©2024 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
+    <div class="footer-links"><a href="#">PRIVACY_POLICY</a><a href="#">SYSTEM_STATUS</a><a href="#">ENCRYPTION_STANDARDS</a></div>
+    <div class="footer-status"><span class="dot"></span>SYSTEM_ENCRYPTED</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina Manifest // Obsidian &amp; Neon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#cc06f9",
+          "background-light": "#f8f5f8",
+          "background-dark": "#1f0f23",
+          "void-black": "#000000",
+          "obsidian": "#050507",
+          "optic-white": "#F4F4F6",
+          "charcoal": "#2A2A35",
+        },
+        fontFamily: {
+          "display": ["Space Grotesk", "sans-serif"],
+          "mono": ["Space Grotesk", "monospace"], // Using Space Grotesk for mono feel as requested in theme application
+        },
+        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem", "none": "0px"},
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: theme('colors.void-black');
+    color: theme('colors.optic-white');
+    font-family: theme('fontFamily.display');
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent body scroll, handle in columns */
+  }
+
+  /* Custom Scrollbar for the right column to maintain minimal aesthetic */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 2px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: theme('colors.void-black');
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: theme('colors.charcoal');
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.primary');
+  }
+
+  /* Scroll illumination effect simulation (CSS only for this demo) */
+  .illuminate-keyword {
+    color: theme('colors.charcoal');
+    transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+  }
+  
+  /* Hover effect to simulate scroll activation for demo purposes */
+  .manifest-text-container:hover .illuminate-keyword:nth-child(odd) {
+    color: theme('colors.primary');
+    text-shadow: 0 0 10px rgba(204, 6, 249, 0.5);
+  }
+  .manifest-text-container:active .illuminate-keyword:nth-child(even) {
+    color: theme('colors.primary');
+    text-shadow: 0 0 10px rgba(204, 6, 249, 0.5);
+  }
+
+  /* Stat Block Hover Inner Shadow */
+  .stat-block {
+    transition: box-shadow 0.3s ease;
+  }
+  .stat-block:hover {
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1);
+    border-color: theme('colors.primary');
+  }
+  
+  /* Shared PageHeading Component Styles modified for split screen */
+  .split-heading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding: 4rem;
+  }
+</style>
+</head>
+<body class="bg-void-black text-optic-white font-display antialiased min-h-screen selection:bg-primary selection:text-white">
+<!-- Back to Nexus Navigation (Focused View Exception) -->
+<nav class="fixed top-0 left-0 w-full z-50 p-6 pointer-events-none flex justify-between items-start">
+<a class="pointer-events-auto inline-flex items-center gap-2 text-charcoal hover:text-optic-white transition-colors duration-300 group" href="index.html">
+<span class="material-symbols-outlined text-xl group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="font-mono text-xs uppercase tracking-widest font-bold">RETURN TO NEXUS</span>
+</a>
+</nav>
+<!-- Main Split Layout -->
+<main class="flex w-full h-screen relative">
+<!-- Left Column: Fixed Header (Derived from Shared PageHeading) -->
+<section class="w-1/2 h-full border-r border-charcoal relative hidden md:block">
+<div class="split-heading-container">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 justify-center">
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<!-- 96px requested, mapping to text-[6rem] or tailwind equivalent, using custom class for exact sizing if needed, but 7xl+ is close. Let's use custom class for 96px -->
+<h1 class="text-optic-white font-black leading-[0.9] tracking-[-0.05em] uppercase" style="font-size: 96px;">
+            THE LIGHT IN THE VOID.
+          </h1>
+</div>
+<p class="text-charcoal text-xl font-normal leading-normal pb-3 pt-4 px-4 uppercase tracking-widest font-mono">
+          [01] // MANIFEST
+        </p>
+</div>
+</div>
+<!-- Decorative Grid Lines -->
+<div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(to right, #2A2A35 1px, transparent 1px), linear-gradient(to bottom, #2A2A35 1px, transparent 1px); background-size: 4rem 4rem; opacity: 0.1;"></div>
+</section>
+<!-- Right Column: Scrollable Content -->
+<section class="w-full md:w-1/2 h-full overflow-y-auto custom-scrollbar relative px-8 py-32 md:px-16 manifest-text-container bg-void-black">
+<div class="max-w-3xl mx-auto flex flex-col gap-16 pb-32">
+<!-- Philosophy Block 1 -->
+<article class="text-optic-white text-2xl font-light leading-[2.0] tracking-wide">
+        We exist at the intersection of <span class="illuminate-keyword font-bold uppercase text-[26px]">absolute structure</span> and raw, unbridled <span class="illuminate-keyword font-bold uppercase text-[26px]">energy</span>. The void is not empty; it is a canvas awaiting definition. 
+        <br/><br/>
+        In an era of digital noise, we forge clarity through subtraction. Every pixel, every line of logic must justify its existence. We strip away the superfluous until only the <span class="illuminate-keyword font-bold uppercase text-[26px]">core truth</span> remains. This is the essence of Lumina.
+      </article>
+<!-- Stat Block 1 -->
+<div class="stat-block w-full border-y border-charcoal bg-obsidian py-8 px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between group rounded-sm">
+<div class="flex flex-col gap-1">
+<span class="text-charcoal font-mono text-xs uppercase tracking-[0.1em] group-hover:text-optic-white transition-colors">METRIC // ALPHA</span>
+<span class="text-optic-white font-mono text-xl uppercase tracking-widest">DEPLOYED NODES</span>
+</div>
+<div class="text-primary font-mono text-3xl font-bold mt-4 sm:mt-0 drop-shadow-[0_0_10px_rgba(204,6,249,0.3)]">
+          1,024
+        </div>
+</div>
+<!-- Philosophy Block 2 -->
+<article class="text-optic-white text-2xl font-light leading-[2.0] tracking-wide">
+        The architecture we build—the Nexus—is unforgiving. It demands precision. Yet, within its rigid confines, we inject moments of <span class="illuminate-keyword font-bold uppercase text-[26px]">luminous intensity</span>. 
+        <br/><br/>
+        These flashes of electric violet are not mere decoration; they are pulses of data, signaling life within the machine. They guide the eye, reward intent, and elevate the interaction from functional to <span class="illuminate-keyword font-bold uppercase text-[26px]">cinematic</span>.
+      </article>
+<!-- Stat Block 2 -->
+<div class="stat-block w-full border-y border-charcoal bg-obsidian py-8 px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between group rounded-sm">
+<div class="flex flex-col gap-1">
+<span class="text-charcoal font-mono text-xs uppercase tracking-[0.1em] group-hover:text-optic-white transition-colors">METRIC // BETA</span>
+<span class="text-optic-white font-mono text-xl uppercase tracking-widest">SYSTEM UPTIME</span>
+</div>
+<div class="text-primary font-mono text-3xl font-bold mt-4 sm:mt-0 drop-shadow-[0_0_10px_rgba(204,6,249,0.3)]">
+          99.999%
+        </div>
+</div>
+<!-- Philosophy Block 3 -->
+<article class="text-optic-white text-2xl font-light leading-[2.0] tracking-wide">
+        We do not design websites. We architect <span class="illuminate-keyword font-bold uppercase text-[26px]">digital monoliths</span>. Environments that command respect. Interfaces that operate with military precision while delivering high-end luxury aesthetics.
+        <br/><br/>
+        Embrace the darkness. <span class="illuminate-keyword font-bold uppercase text-[26px]">Find the light.</span>
+</article>
+<!-- EOF Indicator -->
+<div class="w-full flex justify-center py-12 opacity-50">
+<span class="font-mono text-xs text-charcoal tracking-[0.2em] uppercase">/// END OF MANIFEST ///</span>
+</div>
+</div>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dual Polarity - Lumina Core</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#f93706",
+          "background-light": "#f8f6f5",
+          "background-dark": "#23130f",
+        },
+        fontFamily: {
+          "display": ["Space Grotesk", "sans-serif"],
+          "mono": ["Space Mono", "monospace"]
+        },
+        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .flare {
+    background: radial-gradient(circle, rgba(249, 55, 6, 0.15) 0%, rgba(249, 55, 6, 0) 70%);
+  }
+  /* Parallax utility classes */
+  .parallax-slow { transform: translateY(0px); transition: transform 0.1s ease-out; }
+  .parallax-fast { transform: translateY(0px); transition: transform 0.1s ease-out; }
+</style>
+</head>
+<body class="bg-[#000000] text-[#F4F4F4] min-h-[2048px] overflow-x-hidden relative">
+<!-- Background Ambient Flares -->
+<div class="fixed top-[-20%] left-[-10%] w-[80vw] h-[80vw] flare rounded-full mix-blend-screen pointer-events-none z-0"></div>
+<div class="fixed bottom-[-30%] right-[-20%] w-[60vw] h-[60vw] flare rounded-full mix-blend-screen pointer-events-none z-0 opacity-70"></div>
+<!-- Included Shared Component: TopNavBar (Since this is a destination/browsing screen) -->
+<div class="fixed top-0 left-0 w-full z-50">
+<div class="relative flex h-auto w-full flex-col bg-transparent group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-white/10 px-10 py-3 glass-panel rounded-sm">
+<div class="flex items-center gap-4 text-white">
+<div class="size-4 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_330"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Dual Polarity</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-white/70 hover:text-white transition-colors text-sm font-medium leading-normal tracking-[0.1em]" href="index.html">RETURN</a>
+<a class="text-white/70 hover:text-white transition-colors text-sm font-medium leading-normal tracking-[0.1em]" href="#">NEXUS</a>
+<a class="text-white/70 hover:text-white transition-colors text-sm font-medium leading-normal tracking-[0.1em]" href="#">SYNTHESIS</a>
+</div>
+</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="relative z-10 pt-48 px-12 md:px-24 max-w-[1440px] mx-auto">
+<!-- Hero Section -->
+<div class="mb-32 relative z-20">
+<h1 class="text-[84px] font-bold leading-[0.9] tracking-[-0.02em] text-white max-w-4xl mix-blend-difference z-30 relative">
+      ENERGY <br/> IS FLUID
+    </h1>
+<div class="w-24 h-1 bg-primary mt-12 mb-8"></div>
+<p class="text-xl text-white/70 max-w-xl font-light tracking-wide leading-relaxed">
+      A continuous state of becoming. Free from the rigid architecture of the grid, Lumina represents the chaotic beauty of pure light and unchecked motion.
+    </p>
+</div>
+<!-- Floating Glass Panels Layout -->
+<div class="relative w-full h-[1200px]">
+<!-- Panel 1 -->
+<div class="absolute top-0 right-0 w-full max-w-[600px] glass-panel rounded-sm p-12 shadow-[0_8px_32px_rgba(0,0,0,0.4)] parallax-slow z-20 hover:border-primary/30 transition-colors duration-500">
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<div>
+<h3 class="text-2xl font-semibold mb-4 text-white tracking-wide">STATELESS FORM</h3>
+<p class="text-white/60 leading-relaxed font-light mb-6">
+            Energy adapts to its container. It seeks the path of least resistance, flowing through the digital space unburdened by rigid structure or absolute coordinates.
+          </p>
+<img alt="abstract flowing liquid light ribbons in orange and dark tones" class="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700 opacity-80" data-alt="abstract flowing liquid light ribbons in orange and dark tones with deep shadows and ethereal glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjlxAE2Eudfiss4fWHw_pf43nmA_qWNclkcC6IZGgPARMNhDLG8QYW2C_JfqZRiFst1oxR1gHHe_ZPHBUnMQXpdwAnEVeRT7dKjlqDLObNsr2ZMSaZrZeFvNO2ZVA_J0qQYq-s8aGDYFeudJSA2d7B8fSmYqu0DyAX92b0h5uMjaWSyPdfpc6sXLaEjhtohQxDt09TSyqjjoMuyKBwEXiksfmb_--EZwLvREhJlgzL82G5T_oUENqy2B5BJUGrr9E3bEjYdvqz"/>
+</div>
+</div>
+</div>
+<!-- Panel 2 -->
+<div class="absolute top-[400px] left-0 w-full max-w-[500px] glass-panel rounded-sm p-10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] parallax-fast z-30 hover:border-primary/30 transition-colors duration-500">
+<span class="text-primary font-mono text-xs tracking-[0.2em] uppercase mb-4 block">Observation 02</span>
+<h3 class="text-3xl font-bold mb-6 text-white tracking-tight">KINETIC POTENTIAL</h3>
+<div class="h-[1px] w-full bg-white/10 mb-6"></div>
+<p class="text-white/70 leading-relaxed font-light">
+        The absence of grid lines does not imply the absence of order. It is an order defined by relationships, gravity, and momentum rather than strict geometry.
+      </p>
+<button class="mt-8 px-6 py-3 border border-white/20 hover:border-primary text-white/80 hover:text-primary transition-all duration-300 font-mono text-xs uppercase tracking-[0.15em] flex items-center gap-3 group rounded-sm">
+        Explore Dynamics
+        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Panel 3 -->
+<div class="absolute top-[800px] right-[10%] w-full max-w-[700px] glass-panel rounded-sm p-16 shadow-[0_8px_32px_rgba(0,0,0,0.4)] parallax-slow z-10 hover:border-primary/30 transition-colors duration-500">
+<div class="grid grid-cols-2 gap-12 items-center">
+<div>
+<h3 class="text-xl font-medium mb-4 text-white uppercase tracking-widest">Illumination</h3>
+<p class="text-white/50 text-sm leading-loose">
+            Light defines space entirely differently than lines do. It reveals texture, creates depth through shadow, and guides focus organically.
+          </p>
+</div>
+<div class="relative w-full aspect-square rounded-full overflow-hidden border border-white/5">
+<img alt="abstract macro photography of dark textured surface with sharp orange light streak" class="w-full h-full object-cover mix-blend-luminosity opacity-60" data-alt="abstract macro photography of dark textured surface with sharp neon orange light streak creating deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF6xXG8OdeE4c37qH_qTjWq-qqFrPumqEadVmBizCEYWiujuoAupGDaqr7IFTRDWGJGjfBTXt83Tx323N2NVaiUO8MkUWGkoGAfyunJ7icSDBxmE7ZJKWxeKGfbVfP253ohyLS-66y2ewO3A5o5zNmr_pku5rx2NYNXsfqMMxciTT4hXoBRlrDBlnfV6wj7O0hYis9JZ8Pw5Pbztr7Vzcxn9poGChLLGoaqhDefKLmlbwG1Fh2sEQiOUvlFBzkOIYwS21PYD44"/>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Right Navigation (Specific to design requirements) -->
+<div class="fixed bottom-12 right-12 z-50 flex flex-col items-end gap-2 mix-blend-difference font-mono text-[10px] tracking-[0.2em] uppercase text-white/40">
+<div class="flex items-center gap-4 hover:text-primary cursor-pointer transition-colors">
+<span>Scroll to Discover</span>
+<div class="w-8 h-[1px] bg-current"></div>
+</div>
+<div class="mt-4 opacity-50">Lumina Core v1.0</div>
+</div>
+</body></html>

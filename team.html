@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NODES — RAREWARE STUDIO</title>
+  <meta name="description" content="The Architects of RAREWARE STUDIO. Meet the core personnel nodes powering the digital monolith."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .team-header {
+      padding: 10rem 3rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      border-bottom: 1px solid var(--color-muted);
+      padding-bottom: 3rem;
+    }
+    .team-header .left { }
+    .team-header .left .tag {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-primary);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .team-header h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 9vw, 7rem);
+      font-weight: 800;
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+    .team-header .right {
+      text-align: right;
+      border-right: 1px solid var(--color-muted);
+      padding-right: 1.5rem;
+    }
+    .team-header .right .meta-item {
+      margin-bottom: 0.75rem;
+    }
+    .team-header .right .meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+    }
+    .team-header .right .meta-val {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--color-text);
+      text-transform: uppercase;
+    }
+    .team-header .right .meta-val.primary { color: var(--color-primary); }
+
+    .team-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--color-muted);
+    }
+    .member-card {
+      position: relative;
+      border: 1px solid var(--color-muted);
+      background: var(--color-bg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: background 0.5s ease;
+    }
+    .member-card:hover { background: var(--color-surface); }
+    .member-card:hover .glow-effect {
+      box-shadow: 0 0 40px 10px rgba(208,0,255,0.1);
+    }
+    .member-card:hover .tracer-line { width: 100%; }
+    .member-card:hover .status-indicator { opacity: 1; }
+
+    .member-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+    .member-top .node-ref { font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-muted); }
+    .status-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-primary);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .member-photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(0.7);
+      transition: filter 0.7s ease;
+    }
+    .member-card:hover .member-photo img {
+      filter: grayscale(0%) brightness(1);
+    }
+    .member-photo .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--color-bg), transparent);
+      z-index: 2;
+    }
+    .glow-effect {
+      position: absolute;
+      inset: 0;
+      transition: box-shadow 0.5s ease;
+      z-index: 1;
+    }
+    .tracer-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+      transition: width 0.4s ease;
+      pointer-events: none;
+    }
+    .member-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      margin-bottom: 0.25rem;
+    }
+    .member-info .role {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .member-meta {
+      border-top: 1px solid var(--color-muted);
+      padding-top: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .member-meta .meta-key { font-family: var(--font-mono); font-size: 0.5rem; color: var(--color-muted); text-transform: uppercase; }
+    .member-meta .meta-value { font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-text); }
+
+    /* Recruiting Card */
+    .recruit-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem;
+      gap: 1.5rem;
+    }
+    .recruit-card .material-symbols-outlined {
+      font-size: 3.5rem;
+      color: var(--color-muted);
+      transition: color 0.3s ease;
+    }
+    .recruit-card:hover .material-symbols-outlined { color: var(--color-primary); }
+
+    /* Stats bar */
+    .team-stats {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--color-muted);
+    }
+    .team-stat {
+      padding: 2.5rem;
+      border-right: 1px solid var(--color-muted);
+    }
+    .team-stat:last-child { border-right: none; }
+    .team-stat .stat-key { font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-muted); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .team-stat .stat-val { font-family: var(--font-heading); font-size: 2rem; }
+    .team-stat .bar-wrap { background: var(--color-muted); height: 4px; margin-top: 1rem; }
+    .team-stat .bar-fill { background: var(--color-primary); height: 100%; width: 65%; }
+
+    @media (max-width: 1024px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .team-stats { grid-template-columns: 1fr; }
+      .team-header { padding: 7rem 1.5rem 2rem; }
+      .team-header .right { display: none; }
+    }
+  </style>
+</head>
+<body class="grid-bg-sm">
+  <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
+
+  <nav class="site-nav">
+    <a href="index.html" class="logo">RAREWARE_STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="about.html">INTEL</a></li>
+      <li><a href="services.html">SYSTEMS</a></li>
+      <li><a href="work.html">WORK</a></li>
+      <li><a href="process.html">PROTOCOLS</a></li>
+      <li><a href="team.html" class="active">NODES</a></li>
+      <li><a href="contact.html">DECRYPT</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu"><a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a><a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a href="contact.html">DECRYPT</a></div>
+
+  <header class="team-header reveal">
+    <div class="left">
+      <div class="tag">PERSONNEL_DATABASE_INIT</div>
+      <h1>THE<br/>ARCHITECTS</h1>
+    </div>
+    <div class="right">
+      <div class="meta-item"><div class="meta-label">System_Status</div><div class="meta-val">Active_Operational</div></div>
+      <div class="meta-item"><div class="meta-label">Core_Nodes</div><div class="meta-val primary">06_Verified</div></div>
+    </div>
+  </header>
+
+  <section class="team-grid">
+    <div class="member-card reveal">
+      <div class="card-hud hl"></div><div class="card-hud hr"></div><div class="card-hud bl"></div><div class="card-hud br"></div>
+      <div class="tracer-line"></div>
+      <div class="member-top"><span class="node-ref">NODE_REF: 001</span><span class="status-indicator">ONLINE</span></div>
+      <div class="member-photo">
+        <div class="photo-overlay"></div>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSiL-iWmGqpyYdRse09VCbfiTXYkBTjxhpHJm4dc0Y1Wnbtt-_8oKwTvpkiK--9w30ebYYDBrahZ6VlN2ZnIKvjXUKfiFoOMQJMBDhuTVWDEZR06Hf9QaSNA6tDgYaAVinJA2P0p4sbeg7llZORgYqUcRO67fW5FvGd1DptueG78stcNT1GYla1svImb8IAdRKBLZF61fNwFZ6S7bpc8HCGdVKiRJD4jTJjJvvftBIxg3Z190lolvIifreis82OVcSHdfUiqYV" alt="Xavier Volt"/>
+        <div class="glow-effect"></div>
+      </div>
+      <div class="member-info">
+        <h3>XAVIER_VOLT</h3>
+        <div class="role">CHIEF_SYSTEM_ARCHITECT</div>
+        <div class="member-meta">
+          <div><div class="meta-key">SPECIALIZATION</div><div class="meta-value">AUTOMATION</div></div>
+          <div><div class="meta-key">OPERATIONAL</div><div class="meta-value">SINCE_2021</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="member-card reveal">
+      <div class="card-hud hl"></div><div class="card-hud hr"></div><div class="card-hud bl"></div><div class="card-hud br"></div>
+      <div class="tracer-line"></div>
+      <div class="member-top"><span class="node-ref">NODE_REF: 002</span><span class="status-indicator">ONLINE</span></div>
+      <div class="member-photo">
+        <div class="photo-overlay"></div>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxj08PJ0gyae6xdaDsD_lomfQroU6-aLXEKUfq-pOnAhLk4uT1jbBJwf6RPS1Ixvd3VrSUCHUsV9NwsKluHsprGm02rBlmJd8iFPb73WwxUgFUjnTCPfuAfAMgSIxzl6Y7ylEgmkPcPaBSbE3UA6nqiQa5hKNvtgeHPLDMAxaS2fNHDsVtAu7cGoS5UNhsq2CBMsm6ZeaoKHAWJvRgmD2SQyDo1Vx6jytuFf9kcK7gaIzSbwEhmKdKmc-jY-RXT-no1kSM-ZZJ" alt="Lyra Neon"/>
+        <div class="glow-effect"></div>
+      </div>
+      <div class="member-info">
+        <h3>LYRA_NEON</h3>
+        <div class="role">CORE_INTERFACE_DESIGNER</div>
+        <div class="member-meta">
+          <div><div class="meta-key">SPECIALIZATION</div><div class="meta-value">QUANTUM_UI</div></div>
+          <div><div class="meta-key">OPERATIONAL</div><div class="meta-value">SINCE_2022</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="member-card reveal">
+      <div class="card-hud hl"></div><div class="card-hud hr"></div><div class="card-hud bl"></div><div class="card-hud br"></div>
+      <div class="tracer-line"></div>
+      <div class="member-top"><span class="node-ref">NODE_REF: 003</span><span class="status-indicator">ONLINE</span></div>
+      <div class="member-photo">
+        <div class="photo-overlay"></div>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwUChID0lB9QwQdqx68IK2l-jdF7yslqJlbSkwAVyEsUxoTfBpzcrqAtBuSQ8_4i0-70m666xSO5rByEGEi28KhbdEC1IqLRfwU06hqfppjsldddlv0rdJrLPr3mJs8omy4241wkY_Vy6Ebo2SCYiqHk3AGztC5RW-QeQyL_JyrctrYxcdmrrQ-oss7VwBW6wwwTrUV8HriBRVOS6GmriWFBRFxPFgtV6obl-ZNvNl1yY2foeaUmAbrNeVYnw-JAKqT3Iz0_Q0" alt="Kai Obsidian"/>
+        <div class="glow-effect"></div>
+      </div>
+      <div class="member-info">
+        <h3>KAI_OBSIDIAN</h3>
+        <div class="role">LEAD_BLOCKCHAIN_ENG</div>
+        <div class="member-meta">
+          <div><div class="meta-key">SPECIALIZATION</div><div class="meta-value">ETHEREUM_CORE</div></div>
+          <div><div class="meta-key">OPERATIONAL</div><div class="meta-value">SINCE_2023</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="member-card reveal">
+      <div class="card-hud hl"></div><div class="card-hud hr"></div><div class="card-hud bl"></div><div class="card-hud br"></div>
+      <div class="tracer-line"></div>
+      <div class="member-top"><span class="node-ref">NODE_REF: 004</span><span class="status-indicator">ONLINE</span></div>
+      <div class="member-photo">
+        <div class="photo-overlay"></div>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-NCz0bzNSUwEcz8HK6JRGYvbSy2ElqT-dpfEAOSTSAOowfjc-lHv-ioDSBb5Q9N-UjMRkMvrzdRF0AerUByFFdkGu8TGjtzYFFL3NUbSlMxUwAMqG0hyobuK1gisnRZq0O8Kw_2VclcaOcQyxzxhpRbxup1SiGLHpLrf1bgElQVwRDJDkmxT9wtrlZyP1x1Fpkv20VkscefUapq3AQuGJ4GpWsjpeY_9kXvTIP13asBz17Dl1xaUCGkL8BM-Avp5K6247rIjj" alt="Elara Void"/>
+        <div class="glow-effect"></div>
+      </div>
+      <div class="member-info">
+        <h3>ELARA_VOID</h3>
+        <div class="role">SECURITY_PROTOCOL_OFFICER</div>
+        <div class="member-meta">
+          <div><div class="meta-key">SPECIALIZATION</div><div class="meta-value">CRYPTOGRAPHY</div></div>
+          <div><div class="meta-key">OPERATIONAL</div><div class="meta-value">SINCE_2024</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="member-card reveal">
+      <div class="card-hud hl"></div><div class="card-hud hr"></div><div class="card-hud bl"></div><div class="card-hud br"></div>
+      <div class="tracer-line"></div>
+      <div class="member-top"><span class="node-ref">NODE_REF: 005</span><span class="status-indicator">ONLINE</span></div>
+      <div class="member-photo">
+        <div class="photo-overlay"></div>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkuLs0Gns-9S8D6ONCQZJuvWitfpLHHhECARXC8TNj4DmJlC3z7Ow0-zyYs05seJiMNLZFn3NpXuyyYh2sR9qj54hzU2WnkD9QZ7WHGVa3NbjoFM_ExILmdOOzX0FLK05iTP38PLkRiELWkj_gAqSMA9UX8Kje55-Zq0M9PLoVLA8xfnxVqQaF5_pZexlSJu9u4q6hlJ8_fhl1ipAYSzVjrDtGtXN2ECyLTNYRS9ry5mdWB8FCQu-vZiEcwV68FVQYhWLNsJXv" alt="Jax Trace"/>
+        <div class="glow-effect"></div>
+      </div>
+      <div class="member-info">
+        <h3>JAX_TRACE</h3>
+        <div class="role">NETWORK_STRATEGIST</div>
+        <div class="member-meta">
+          <div><div class="meta-key">SPECIALIZATION</div><div class="meta-value">NODE_SCALING</div></div>
+          <div><div class="meta-key">OPERATIONAL</div><div class="meta-value">SINCE_2020</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="member-card recruit-card reveal">
+      <div class="tracer-line"></div>
+      <span class="material-symbols-outlined">add</span>
+      <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">JOIN_THE_VOID</h3>
+      <div class="role">NODE_VACANCY_06</div>
+      <a href="contact.html" class="btn-outline" style="padding: 0.75rem 1.5rem; font-size: 0.6rem;">SUBMIT_CREDENTIALS</a>
+    </div>
+  </section>
+
+  <section class="team-stats">
+    <div class="team-stat reveal"><div class="stat-key">Total_Personnel</div><div class="stat-val">24_UNITS</div></div>
+    <div class="team-stat reveal"><div class="stat-key">Uptime_Metric</div><div class="stat-val">99.98%</div></div>
+    <div class="team-stat reveal"><div class="stat-key">Data_Throughput</div><div class="stat-val">4.2_PB/S</div></div>
+    <div class="team-stat reveal"><div class="stat-key">System_Load</div><div class="bar-wrap"><div class="bar-fill"></div></div></div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-left">©2024 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
+    <div class="footer-links"><a href="#">PRIVACY_POLICY</a><a href="#">SYSTEM_STATUS</a><a href="#">ENCRYPTION_STANDARDS</a></div>
+    <div class="footer-status"><span class="dot"></span>SYSTEM_ENCRYPTED</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DECRYPT — RAREWARE STUDIO</title>
+  <meta name="description" content="Initiate secure communication with RAREWARE STUDIO through the Uplink Terminal interface."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .terminal-container {
+      position: relative;
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      padding: 3rem;
+      max-width: 800px;
+      width: 90%;
+      z-index: 10;
+      box-shadow: 0 10px 60px rgba(0,0,0,0.6);
+    }
+    .terminal-header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--color-muted);
+      padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .terminal-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .terminal-header .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      animation: pulse 2s ease infinite;
+      box-shadow: var(--glow);
+    }
+    .terminal-header .term-id {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .terminal-sub {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .form-group label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .input-row {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .input-row .prompt {
+      color: var(--color-primary);
+      font-size: 1.2rem;
+      margin-right: 0.75rem;
+      font-family: var(--font-mono);
+    }
+    .input-row input,
+    .input-row textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--color-muted);
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      outline: none;
+      transition: border-color 0.3s ease;
+      resize: none;
+    }
+    .input-row input:focus,
+    .input-row textarea:focus {
+      border-bottom-color: var(--color-accent);
+    }
+    .input-row input::placeholder,
+    .input-row textarea::placeholder {
+      color: var(--color-muted);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+    .cursor-block {
+      width: 12px;
+      height: 24px;
+      background: var(--color-primary);
+      animation: blink 1s step-end infinite;
+      margin-left: 0.5rem;
+      flex-shrink: 0;
+      display: none;
+    }
+    .input-row input:focus ~ .cursor-block,
+    .input-row textarea:focus ~ .cursor-block { display: block; }
+
+    .submit-row {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .submit-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      background: none;
+      border: none;
+      position: relative;
+    }
+    .submit-btn:hover {
+      color: var(--color-accent);
+      text-shadow: 0 0 8px var(--color-primary);
+    }
+    .submit-btn .prompt {
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      transition: color 0.3s ease;
+    }
+    .submit-btn:hover .prompt { color: var(--color-accent); }
+    .submit-outline {
+      position: absolute;
+      inset: -8px;
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      pointer-events: none;
+    }
+    .submit-btn:hover .submit-outline {
+      border-color: var(--color-primary);
+      box-shadow: var(--glow);
+    }
+
+    .terminal-status {
+      display: none;
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+    }
+    .terminal-status.transmitting { display: block; animation: pulse 1s ease infinite; }
+    .terminal-status.success { display: block; color: var(--color-primary); }
+
+    .terminal-footer {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.5;
+    }
+
+    /* Corner brackets on terminal */
+    .t-bracket { position: absolute; width: 16px; height: 16px; }
+    .t-bracket.tl { top: 0; left: 0; border-top: 1px solid var(--color-muted); border-left: 1px solid var(--color-muted); }
+    .t-bracket.tr { top: 0; right: 0; border-top: 1px solid var(--color-muted); border-right: 1px solid var(--color-muted); }
+    .t-bracket.bl { bottom: 0; left: 0; border-bottom: 1px solid var(--color-muted); border-left: 1px solid var(--color-muted); }
+    .t-bracket.br { bottom: 0; right: 0; border-bottom: 1px solid var(--color-muted); border-right: 1px solid var(--color-muted); }
+
+    /* Page corners */
+    .page-corner { position: fixed; width: 32px; height: 32px; z-index: 100; pointer-events: none; opacity: 0.4; }
+    .page-corner.tl { top: 1rem; left: 1rem; border-top: 1px solid var(--color-primary); border-left: 1px solid var(--color-primary); }
+    .page-corner.tr { top: 1rem; right: 1rem; border-top: 1px solid var(--color-primary); border-right: 1px solid var(--color-primary); }
+    .page-corner.bl { bottom: 1rem; left: 1rem; border-bottom: 1px solid var(--color-primary); border-left: 1px solid var(--color-primary); }
+    .page-corner.br { bottom: 1rem; right: 1rem; border-bottom: 1px solid var(--color-primary); border-right: 1px solid var(--color-primary); }
+
+    @media (max-width: 768px) {
+      .terminal-container { padding: 2rem; }
+      .page-corner { display: none; }
+    }
+  </style>
+</head>
+<body class="grid-bg-sm">
+  <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
+
+  <div class="page-corner tl"></div>
+  <div class="page-corner tr"></div>
+  <div class="page-corner bl"></div>
+  <div class="page-corner br"></div>
+
+  <nav class="site-nav">
+    <a href="index.html" class="logo">RAREWARE_STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="about.html">INTEL</a></li>
+      <li><a href="services.html">SYSTEMS</a></li>
+      <li><a href="work.html">WORK</a></li>
+      <li><a href="process.html">PROTOCOLS</a></li>
+      <li><a href="team.html">NODES</a></li>
+      <li><a href="contact.html" class="active">DECRYPT</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a>
+    <a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a href="contact.html">DECRYPT</a>
+  </div>
+
+  <!-- Terminal Window -->
+  <main class="terminal-container">
+    <div class="t-bracket tl"></div>
+    <div class="t-bracket tr"></div>
+    <div class="t-bracket bl"></div>
+    <div class="t-bracket br"></div>
+
+    <header class="terminal-header">
+      <h1><span class="pulse-dot"></span>UPLINK_TERMINAL</h1>
+      <span class="term-id">TERM_ID: 0x9A4F</span>
+    </header>
+    <div class="terminal-sub">// INITIATE SECURE COMMUNICATION PROTOCOL</div>
+
+    <form id="uplink-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="client-id">CLIENT_ID</label>
+        <div class="input-row">
+          <span class="prompt">&gt;</span>
+          <input type="text" id="client-id" placeholder="ENTER DESIGNATION" required/>
+          <span class="cursor-block"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comm-vector">COMM_VECTOR</label>
+        <div class="input-row">
+          <span class="prompt">&gt;</span>
+          <input type="email" id="comm-vector" placeholder="ENTER TRANSMISSION ADDRESS" required/>
+          <span class="cursor-block"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="data-payload">DATA_PAYLOAD</label>
+        <div class="input-row" style="align-items: flex-start;">
+          <span class="prompt" style="margin-top: 0.75rem;">&gt;</span>
+          <textarea id="data-payload" rows="4" placeholder="ENTER TRANSMISSION DATA..." required></textarea>
+          <span class="cursor-block" style="margin-top: 0.75rem;"></span>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="submit-btn">
+          <span class="prompt">&gt;</span>
+          EXECUTE_UPLINK
+          <span class="submit-outline"></span>
+        </button>
+        <span class="cursor-block" style="display: inline-block;"></span>
+      </div>
+
+      <div class="terminal-status" id="status-transmitting">TRANSMITTING TO NEXUS CORE...</div>
+      <div class="terminal-status" id="status-success">&gt; SECURE CONNECTION ESTABLISHED. UPLINK SUCCESSFUL.</div>
+    </form>
+
+    <div class="terminal-footer">SYS.STATUS: ONLINE // ENCRYPTION: ACTIVE</div>
+  </main>
+
+  <script src="main.js"></script>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const transmitting = document.getElementById('status-transmitting');
+      const success = document.getElementById('status-success');
+      transmitting.classList.add('transmitting');
+      setTimeout(() => {
+        transmitting.classList.remove('transmitting');
+        success.classList.add('success');
+        document.getElementById('uplink-form').reset();
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PROTOCOLS — RAREWARE STUDIO</title>
+  <meta name="description" content="RAREWARE STUDIO process methodology. Four-phase protocol: Ingestion, Architecture, Execution, Deployment."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .process-header {
+      padding: 10rem 3rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-left: 4px solid var(--color-primary);
+      padding-left: 2.5rem;
+    }
+    .process-header .tag {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .process-header h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.1rem, 10vw, 8rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.85;
+      margin-bottom: 2rem;
+    }
+    .process-header .sub {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .process-header .sub p {
+      max-width: 600px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(244,244,246,0.7);
+    }
+    .process-header .sub-meta {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      text-transform: uppercase;
+    }
+
+    .process-grid {
+      max-width: 1200px;
+      margin: 4rem auto 0;
+      padding: 0 3rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      position: relative;
+    }
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 3.5rem;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--color-primary), transparent);
+      box-shadow: 0 0 15px var(--color-primary);
+      opacity: 0.3;
+    }
+    .process-phase {
+      padding: 3rem 3rem 3rem 5rem;
+      background: rgba(5,5,7,0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--color-muted);
+      border-left: none;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.5s ease, box-shadow 0.5s ease;
+    }
+    .process-phase::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: 50%;
+      transform: translateY(-50%);
+      width: 10px; height: 10px;
+      background: var(--color-bg);
+      border: 2px solid var(--color-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--color-primary);
+      z-index: 2;
+    }
+    .process-phase:hover { 
+      border-color: rgba(208,0,255,0.4);
+      box-shadow: inset 0 0 30px rgba(208,0,255,0.05);
+    }
+    .process-phase .ref {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-muted);
+    }
+    .process-phase .step-num {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .process-phase h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      transition: transform 0.3s ease;
+    }
+    .process-phase:hover h2 { transform: translateX(8px); }
+    .process-phase .stage {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+      margin-bottom: 2rem;
+    }
+    .process-phase .desc {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: rgba(244,244,246,0.7);
+      margin-bottom: 1.5rem;
+    }
+    .process-phase .deliverables {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .process-phase .deliverables li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      color: var(--color-text);
+    }
+    .process-phase .deliverables li .bullet {
+      width: 6px;
+      height: 6px;
+      background: var(--color-primary);
+      flex-shrink: 0;
+    }
+    .process-phase .phase-footer {
+      border-top: 1px solid var(--color-muted);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .process-phase .phase-footer .label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+    }
+    .process-phase .phase-footer .value {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--color-text);
+      text-transform: uppercase;
+    }
+
+    .process-cta {
+      max-width: 1200px;
+      margin: 5rem auto;
+      padding: 0 3rem;
+    }
+    .process-cta-inner {
+      border: 1px solid var(--color-primary);
+      padding: 3rem;
+      position: relative;
+      background: rgba(5,5,7,0.7);
+      backdrop-filter: blur(20px);
+    }
+    .process-cta-inner .bracket-tl { position: absolute; top: -1px; left: -1px; width: 2rem; height: 2rem; border-top: 1px solid var(--color-accent); border-left: 1px solid var(--color-accent); }
+    .process-cta-inner .bracket-br { position: absolute; bottom: -1px; right: -1px; width: 2rem; height: 2rem; border-bottom: 1px solid var(--color-accent); border-right: 1px solid var(--color-accent); }
+    .process-cta-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .process-cta-content h3 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+    .process-cta-content p {
+      color: rgba(244,244,246,0.5);
+      max-width: 400px;
+    }
+    .process-cta-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .process-header { padding: 7rem 1.5rem 3rem; padding-left: 1.5rem; border-left-width: 2px; }
+      .process-cta { padding: 0 1.5rem; }
+      .process-cta-content { flex-direction: column; }
+    }
+  </style>
+</head>
+<body class="grid-bg">
+  <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
+
+  <nav class="site-nav">
+    <a href="index.html" class="logo">RAREWARE_STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="about.html">INTEL</a></li>
+      <li><a href="services.html">SYSTEMS</a></li>
+      <li><a href="work.html">WORK</a></li>
+      <li><a href="process.html" class="active">PROTOCOLS</a></li>
+      <li><a href="team.html">NODES</a></li>
+      <li><a href="contact.html">DECRYPT</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu"><a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a><a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a href="contact.html">DECRYPT</a></div>
+
+  <header class="process-header reveal">
+    <div class="tag">
+      <span class="text-label" style="color: var(--color-muted);">SYSTEM_VERSION // PROTOCOL_MAPPING</span>
+      <span class="text-label" style="color: var(--color-primary);">UPTIME: 99.998%</span>
+    </div>
+    <h1>PROTOCOLS</h1>
+    <div class="sub">
+      <p>A rigorous architectural framework designed to transform raw variables into highly-optimized digital experiences. Our process is a non-linear loop of iteration and technical precision.</p>
+      <div class="sub-meta">
+        <span>COORDINATES: 34.0522° N, 118.2437° W</span>
+        <span>CORE_STATUS: OPERATIONAL</span>
+        <span>ENCRYPTION: AES-256</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="process-grid">
+    <section class="process-phase reveal">
+      <span class="ref">REF: P_01_INGEST</span>
+      <div class="step-num">[01]</div>
+      <h2>INGESTION</h2>
+      <div class="stage">STAGE: DISCOVERY</div>
+      <p class="desc">Data harvesting and strategic mapping. We intercept user signals, market stressors, and brand DNA to construct a comprehensive project telemetry.</p>
+      <ul class="deliverables">
+        <li><span class="bullet"></span> STAKEHOLDER_TELEMETRY</li>
+        <li><span class="bullet"></span> MARKET_VULNERABILITY_SCAN</li>
+        <li><span class="bullet"></span> USER_BEHAVIOR_LOGGING</li>
+      </ul>
+      <div class="phase-footer">
+        <div><div class="label">CORE_LOAD</div><div class="value">OPTIMIZED</div></div>
+        <div style="text-align: right;"><div class="label">PROCESSING_POWER</div><div class="value">HIGH_DENSITY</div></div>
+      </div>
+    </section>
+
+    <section class="process-phase reveal">
+      <span class="ref">REF: P_02_ARCH</span>
+      <div class="step-num">[02]</div>
+      <h2>ARCHITECTURE</h2>
+      <div class="stage">STAGE: DESIGN</div>
+      <p class="desc">Systemic blueprinting and visual engineering. We construct high-fidelity schematics that define spatial logic, user flow, and the visual frequency of the interface.</p>
+      <ul class="deliverables">
+        <li><span class="bullet"></span> GRID_STRUCTURALISM</li>
+        <li><span class="bullet"></span> KINETIC_UI_BLUEPRINTING</li>
+        <li><span class="bullet"></span> VISUAL_VOID_MAPPING</li>
+      </ul>
+      <div class="phase-footer">
+        <div><div class="label">RENDER_MODE</div><div class="value">PHYSICAL_BASED</div></div>
+        <div style="text-align: right;"><div class="label">ASPECT_RATIO</div><div class="value">ULTRA_WIDE</div></div>
+      </div>
+    </section>
+
+    <section class="process-phase reveal">
+      <span class="ref">REF: P_03_EXEC</span>
+      <div class="step-num">[03]</div>
+      <h2>EXECUTION</h2>
+      <div class="stage">STAGE: DEVELOPMENT</div>
+      <p class="desc">Compiling designs into performant infrastructure. We utilize low-latency frameworks and modular codebases to ensure maximum operational efficiency.</p>
+      <ul class="deliverables">
+        <li><span class="bullet"></span> NEXT_GEN_COMPILATION</li>
+        <li><span class="bullet"></span> NEURAL_API_INTEGRATION</li>
+        <li><span class="bullet"></span> PERFORMANCE_HARDENING</li>
+      </ul>
+      <div class="phase-footer">
+        <div><div class="label">COMPILE_TIME</div><div class="value">0.042ms</div></div>
+        <div style="text-align: right;"><div class="label">SERVER_LOAD</div><div class="value">MINIMAL</div></div>
+      </div>
+    </section>
+
+    <section class="process-phase reveal">
+      <span class="ref">REF: P_04_DEPL</span>
+      <div class="step-num">[04]</div>
+      <h2>DEPLOYMENT</h2>
+      <div class="stage">STAGE: LAUNCH</div>
+      <p class="desc">System initialization and global synchronization. We move from staging environments to the live obsidian void, monitoring performance metrics in real-time.</p>
+      <ul class="deliverables">
+        <li><span class="bullet"></span> EDGE_NETWORK_PROPAGATION</li>
+        <li><span class="bullet"></span> LIVE_SYSTEM_TELEMETRY</li>
+        <li><span class="bullet"></span> POST_LAUNCH_OPTIMIZATION</li>
+      </ul>
+      <div class="phase-footer">
+        <div><div class="label">NETWORK_STATUS</div><div class="value">LIVE</div></div>
+        <div style="text-align: right;"><div class="label">SYNC_RATE</div><div class="value">1:1_PARITY</div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="process-cta reveal">
+    <div class="process-cta-inner">
+      <div class="bracket-tl"></div>
+      <div class="bracket-br"></div>
+      <div class="process-cta-content">
+        <div>
+          <h3>INITIATE_PROTOCOL</h3>
+          <p>Ready to deploy your next objective? RareWare Studio is currently accepting high-priority directives.</p>
+        </div>
+        <div class="process-cta-btns">
+          <a href="contact.html" class="btn-primary">START_SEQUENCE</a>
+          <a href="work.html" class="btn-outline">VIEW_MANUAL</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-left">©2024 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
+    <div class="footer-links"><a href="#">PRIVACY_POLICY</a><a href="#">SYSTEM_STATUS</a><a href="#">ENCRYPTION_STANDARDS</a></div>
+    <div class="footer-status"><span class="dot"></span>SYSTEM_ENCRYPTED</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
