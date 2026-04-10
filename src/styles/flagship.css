@@ -1,0 +1,68 @@
+@theme {
+  --color-flagship-primary: #D000FF;
+  --color-flagship-bg: #000000;
+  --color-flagship-surface: #050507;
+  --color-flagship-text: #F4F4F6;
+  --color-flagship-muted: #2A2A35;
+  --color-flagship-accent: #FFFFFF;
+  
+  --font-flagship-heading: 'Syne', sans-serif;
+  --font-flagship-body: 'Outfit', sans-serif;
+  --font-flagship-mono: 'Space Mono', monospace;
+  --font-flagship-display: 'Space Grotesk', sans-serif;
+}
+
+.flagship-theme {
+  --color-bg: var(--color-flagship-bg);
+  --color-surface: var(--color-flagship-surface);
+  --color-text: var(--color-flagship-text);
+  --color-primary: var(--color-flagship-primary);
+  
+  background-color: var(--color-flagship-bg);
+  color: var(--color-flagship-text);
+  font-family: var(--font-flagship-body);
+  min-height: 100vh;
+}
+
+.flagship-theme h1, 
+.flagship-theme h2, 
+.flagship-theme h3 {
+  font-family: var(--font-flagship-heading);
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+/* ── Grid Background ────────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(208, 0, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(208, 0, 255, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* ── Animations ─────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-flagship-fade {
+  animation: fadeIn 1s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+/* ── Glass Paneling ─────────────────────────────────────────────── */
+.flagship-glass {
+  background: rgba(5, 5, 7, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-flagship-muted);
+}
+
+/* ── Glows ──────────────────────────────────────────────────────── */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(208, 0, 255, 0.3);
+}
+
+.neon-text {
+  text-shadow: 0 0 15px rgba(208, 0, 255, 0.5);
+}

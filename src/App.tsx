@@ -17,6 +17,7 @@ import Stories from './screens/Stories';
 import Create from './screens/Create';
 import Wisdom from './screens/Wisdom';
 import Profile from './screens/Profile';
+import Flagship from './screens/Flagship';
 import { BottomNav } from './components/Navigation';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -35,7 +36,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
 
 const AppContent = () => {
   const location = useLocation();
-  const hideNav = ['/onboarding', '/breathing', '/stories', '/create', '/profile'].includes(location.pathname);
+  const hideNav = ['/onboarding', '/breathing', '/stories', '/create', '/profile', '/flagship'].includes(location.pathname);
 
   return (
     <div className="min-h-screen bg-background">
@@ -52,6 +53,7 @@ const AppContent = () => {
           <Route path="/create" element={<PageTransition><Create /></PageTransition>} />
           <Route path="/wisdom" element={<PageTransition><Wisdom /></PageTransition>} />
           <Route path="/profile" element={<PageTransition><Profile /></PageTransition>} />
+          <Route path="/flagship" element={<PageTransition><Flagship /></PageTransition>} />
         </Routes>
       </AnimatePresence>
       {!hideNav && <BottomNav />}
