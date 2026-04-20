@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DECRYPT — RAREWARE STUDIO</title>
+  <title>Contact Us — RAREWARE STUDIO</title>
   <meta name="description"
-    content="Initiate secure communication with RAREWARE STUDIO through the Uplink Terminal interface." />
+    content="Get in touch with RAREWARE STUDIO. Start your project with our AI-powered consultation and expert team." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -20,301 +20,333 @@
     body {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
       min-height: 100vh;
+      position: relative;
     }
 
-    .terminal-container {
-      position: relative;
+    .contact-hero {
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-surface) 100%);
+    }
+
+    .contact-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-hero p {
+      font-size: 1.2rem;
+      color: var(--color-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    .contact-methods {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .contact-method {
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      color: var(--color-text);
+      transition: all 0.3s ease;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-method:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 20px rgba(45, 212, 191, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .contact-form-section {
       background: var(--color-surface);
       border: 1px solid var(--color-muted);
       padding: 3rem;
-      max-width: 800px;
-      width: 90%;
-      z-index: 10;
-      box-shadow: 0 10px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
     }
 
-    .terminal-header {
-      margin-bottom: 3rem;
+    .form-header {
+      margin-bottom: 2rem;
       border-bottom: 1px solid var(--color-muted);
       padding-bottom: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
     }
 
-    .terminal-header h1 {
+    .form-header h2 {
       font-family: var(--font-display);
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: 1.8rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: -0.03em;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
     }
 
-    .terminal-header .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--color-primary);
-      animation: pulse 2s ease infinite;
-      box-shadow: var(--glow);
-    }
-
-    .terminal-header .term-id {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
+    .form-header p {
       color: var(--color-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-
-    .terminal-sub {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--color-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
     .form-group {
-      position: relative;
       margin-bottom: 2rem;
     }
 
     .form-group label {
       display: block;
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--color-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-
-    .input-row {
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-
-    .input-row .prompt {
-      color: var(--color-primary);
-      font-size: 1.2rem;
-      margin-right: 0.75rem;
-      font-family: var(--font-mono);
-    }
-
-    .input-row input,
-    .input-row textarea {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid var(--color-muted);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
       color: var(--color-text);
-      font-family: var(--font-display);
-      font-size: 1rem;
-      padding: 0.5rem 0;
-      outline: none;
-      transition: border-color 0.3s ease;
-      resize: none;
-    }
-
-    .input-row input:focus,
-    .input-row textarea:focus {
-      border-bottom-color: var(--color-accent);
-    }
-
-    .input-row input::placeholder,
-    .input-row textarea::placeholder {
-      color: var(--color-muted);
+      margin-bottom: 0.5rem;
       text-transform: uppercase;
-      font-size: 0.85rem;
+      letter-spacing: 0.05em;
     }
 
-    .cursor-block {
-      width: 12px;
-      height: 24px;
-      background: var(--color-primary);
-      animation: blink 1s step-end infinite;
-      margin-left: 0.5rem;
-      flex-shrink: 0;
-      display: none;
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--color-bg);
+      border: 1px solid var(--color-muted);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      padding: 1rem;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      resize: vertical;
     }
 
-    .input-row input:focus~.cursor-block,
-    .input-row textarea:focus~.cursor-block {
-      display: block;
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.1);
     }
 
-    .submit-row {
-      margin-top: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    .form-group textarea {
+      min-height: 120px;
     }
 
     .submit-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: var(--font-display);
+      background: var(--color-primary);
+      color: var(--color-bg);
+      border: none;
+      padding: 1rem 2rem;
+      font-family: var(--font-body);
       font-size: 1rem;
-      font-weight: 700;
-      color: var(--color-text);
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       cursor: pointer;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-      background: none;
-      border: none;
-      position: relative;
+      transition: all 0.3s ease;
+      width: 100%;
     }
 
     .submit-btn:hover {
-      color: var(--color-accent);
-      text-shadow: 0 0 8px var(--color-primary);
+      background: var(--color-accent);
+      box-shadow: 0 0 30px rgba(45, 212, 191, 0.4);
+      transform: translateY(-2px);
     }
 
-    .submit-btn .prompt {
-      color: var(--color-primary);
-      font-family: var(--font-mono);
-      transition: color 0.3s ease;
+    .ai-assistant {
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      padding: 0;
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    .submit-btn:hover .prompt {
-      color: var(--color-accent);
+    .ai-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--color-muted);
+      background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg) 100%);
     }
 
-    .submit-outline {
-      position: absolute;
-      inset: -8px;
-      border: 1px solid transparent;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      pointer-events: none;
-    }
-
-    .submit-btn:hover .submit-outline {
-      border-color: var(--color-primary);
-      box-shadow: var(--glow);
-    }
-
-    .terminal-status {
-      display: none;
-      margin-top: 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
+    .ai-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--color-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .terminal-status.transmitting {
-      display: block;
-      animation: pulse 1s ease infinite;
+    .ai-status {
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
     }
 
-    .terminal-status.success {
-      display: block;
-      color: var(--color-primary);
-    }
-
-    .terminal-footer {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.55rem;
+    .ai-description {
       color: var(--color-muted);
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .ai-chat {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-height: 400px;
+    }
+
+    .ai-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      max-height: 300px;
+    }
+
+    .ai-message {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .ai-message.bot {
+      background: var(--color-bg);
+      border-left: 3px solid var(--color-primary);
+    }
+
+    .ai-message.user {
+      background: var(--color-muted);
+      margin-left: 2rem;
+      text-align: right;
+    }
+
+    .ai-input-area {
+      padding: 1rem;
+      border-top: 1px solid var(--color-muted);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .ai-input {
+      flex: 1;
+      background: var(--color-bg);
+      border: 1px solid var(--color-muted);
+      color: var(--color-text);
+      padding: 0.75rem;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .ai-send {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      border: none;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
+    }
+
+    .ai-send:hover {
+      background: var(--color-accent);
+    }
+
+    .quick-actions {
+      padding: 1rem;
+      border-top: 1px solid var(--color-muted);
+    }
+
+    .quick-actions h4 {
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      opacity: 0.5;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      color: var(--color-muted);
     }
 
-    /* Corner brackets on terminal */
-    .t-bracket {
-      position: absolute;
-      width: 16px;
-      height: 16px;
+    .quick-action {
+      display: block;
+      width: 100%;
+      background: none;
+      border: 1px solid var(--color-muted);
+      color: var(--color-text);
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
     }
 
-    .t-bracket.tl {
-      top: 0;
-      left: 0;
-      border-top: 1px solid var(--color-muted);
-      border-left: 1px solid var(--color-muted);
+    .quick-action:hover {
+      border-color: var(--color-primary);
+      background: var(--color-bg);
     }
 
-    .t-bracket.tr {
-      top: 0;
-      right: 0;
-      border-top: 1px solid var(--color-muted);
-      border-right: 1px solid var(--color-muted);
-    }
-
-    .t-bracket.bl {
-      bottom: 0;
-      left: 0;
-      border-bottom: 1px solid var(--color-muted);
-      border-left: 1px solid var(--color-muted);
-    }
-
-    .t-bracket.br {
-      bottom: 0;
-      right: 0;
-      border-bottom: 1px solid var(--color-muted);
-      border-right: 1px solid var(--color-muted);
-    }
-
-    /* Page corners */
-    .page-corner {
-      position: fixed;
-      width: 32px;
-      height: 32px;
-      z-index: 100;
-      pointer-events: none;
-      opacity: 0.4;
-    }
-
-    .page-corner.tl {
-      top: 1rem;
-      left: 1rem;
-      border-top: 1px solid var(--color-primary);
-      border-left: 1px solid var(--color-primary);
-    }
-
-    .page-corner.tr {
-      top: 1rem;
-      right: 1rem;
-      border-top: 1px solid var(--color-primary);
-      border-right: 1px solid var(--color-primary);
-    }
-
-    .page-corner.bl {
-      bottom: 1rem;
-      left: 1rem;
-      border-bottom: 1px solid var(--color-primary);
-      border-left: 1px solid var(--color-primary);
-    }
-
-    .page-corner.br {
-      bottom: 1rem;
-      right: 1rem;
-      border-bottom: 1px solid var(--color-primary);
-      border-right: 1px solid var(--color-primary);
+    @media (max-width: 1024px) {
+      .main-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .ai-assistant {
+        position: relative;
+        top: 0;
+        max-height: 500px;
+      }
     }
 
     @media (max-width: 768px) {
-      .terminal-container {
+      .contact-hero {
+        padding: 6rem 1rem 3rem;
+      }
+      
+      .main-content {
+        padding: 2rem 1rem;
+      }
+      
+      .contact-form-section,
+      .ai-assistant {
         padding: 2rem;
       }
-
-      .page-corner {
-        display: none;
+      
+      .contact-methods {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -325,11 +357,6 @@
     <div class="loader-line"></div>
   </div>
 
-  <div class="page-corner tl"></div>
-  <div class="page-corner tr"></div>
-  <div class="page-corner bl"></div>
-  <div class="page-corner br"></div>
-
   <nav class="site-nav">
     <a href="index.html" class="logo">RAREWARE_STUDIO</a>
     <ul class="nav-links">
@@ -338,7 +365,7 @@
       <li><a href="work.html">WORK</a></li>
       <li><a href="process.html">PROTOCOLS</a></li>
       <li><a href="team.html">NODES</a></li>
-      <li><a href="contact.html" class="active">DECRYPT</a></li>
+      <li><a href="contact.html" class="active">CONTACT</a></li>
     </ul>
     <div class="nav-right">
       <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
@@ -348,79 +375,350 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a>
     <a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a
-      href="contact.html">DECRYPT</a>
+      href="contact.html">CONTACT</a>
   </div>
 
-  <!-- Terminal Window -->
-  <main class="terminal-container">
-    <div class="t-bracket tl"></div>
-    <div class="t-bracket tr"></div>
-    <div class="t-bracket bl"></div>
-    <div class="t-bracket br"></div>
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <h1>Let's Build Something Extraordinary</h1>
+    <p>Ready to transform your digital presence? Our team of experts is here to help you create cutting-edge solutions that drive results. Get started with a free consultation.</p>
+    
+    <div class="contact-methods">
+      <a href="mailto:hello@rareware.studio" class="contact-method">
+        <span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 0.5rem;">mail</span>
+        Email Us Directly
+      </a>
+      <a href="tel:+1234567890" class="contact-method">
+        <span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 0.5rem;">call</span>
+        Schedule a Call
+      </a>
+      <a href="#ai-chat" class="contact-method">
+        <span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 0.5rem;">smart_toy</span>
+        Chat with AI Assistant
+      </a>
+    </div>
+  </section>
 
-    <header class="terminal-header">
-      <h1><span class="pulse-dot"></span>UPLINK_TERMINAL</h1>
-      <span class="term-id">TERM_ID: 0x9A4F</span>
-    </header>
-    <div class="terminal-sub">// INITIATE SECURE COMMUNICATION PROTOCOL</div>
-
-    <form id="uplink-form" onsubmit="handleSubmit(event)">
-      <div class="form-group">
-        <label for="client-id">CLIENT_ID</label>
-        <div class="input-row">
-          <span class="prompt">&gt;</span>
-          <input type="text" id="client-id" placeholder="ENTER DESIGNATION" required />
-          <span class="cursor-block"></span>
-        </div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+      <div class="form-header">
+        <h2>Start Your Project</h2>
+        <p>Tell us about your project and we'll get back to you within 24 hours with a detailed proposal and timeline.</p>
       </div>
 
-      <div class="form-group">
-        <label for="comm-vector">COMM_VECTOR</label>
-        <div class="input-row">
-          <span class="prompt">&gt;</span>
-          <input type="email" id="comm-vector" placeholder="ENTER TRANSMISSION ADDRESS" required />
-          <span class="cursor-block"></span>
+      <form id="contact-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="name">Your Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your full name" />
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="data-payload">DATA_PAYLOAD</label>
-        <div class="input-row" style="align-items: flex-start;">
-          <span class="prompt" style="margin-top: 0.75rem;">&gt;</span>
-          <textarea id="data-payload" rows="4" placeholder="ENTER TRANSMISSION DATA..." required></textarea>
-          <span class="cursor-block" style="margin-top: 0.75rem;"></span>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com" />
         </div>
-      </div>
 
-      <div class="submit-row">
+        <div class="form-group">
+          <label for="company">Company/Organization</label>
+          <input type="text" id="company" name="company" placeholder="Your company name" />
+        </div>
+
+        <div class="form-group">
+          <label for="project-type">Project Type *</label>
+          <select id="project-type" name="project-type" required>
+            <option value="">Select your project type</option>
+            <option value="web-design">Web Design & Development</option>
+            <option value="ecommerce">E-commerce Solutions</option>
+            <option value="automation">Business Automation</option>
+            <option value="branding">Brand Identity & Design</option>
+            <option value="mobile-app">Mobile App Development</option>
+            <option value="consulting">Digital Strategy Consulting</option>
+            <option value="other">Other (please specify in message)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="budget">Project Budget</label>
+          <select id="budget" name="budget">
+            <option value="">Select your budget range</option>
+            <option value="500-2k">$500 - $2,000</option>
+            <option value="2k-5k">$2,000 - $5,000</option>
+            <option value="5k-15k">$5,000 - $15,000</option>
+            <option value="15k-30k">$15,000 - $30,000</option>
+            <option value="30k-50k">$30,000 - $50,000</option>
+            <option value="50k+">$50,000+</option>
+            <option value="discuss">Let's discuss</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="timeline">Desired Timeline</label>
+          <select id="timeline" name="timeline">
+            <option value="">When do you need this completed?</option>
+            <option value="asap">ASAP (Rush project)</option>
+            <option value="1-month">Within 1 month</option>
+            <option value="2-3-months">2-3 months</option>
+            <option value="3-6-months">3-6 months</option>
+            <option value="6-months+">6+ months</option>
+            <option value="flexible">Flexible timeline</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Project Details *</label>
+          <textarea id="message" name="message" required placeholder="Tell us about your project goals, requirements, and any specific features you need. The more details you provide, the better we can help you."></textarea>
+        </div>
+
         <button type="submit" class="submit-btn">
-          <span class="prompt">&gt;</span>
-          EXECUTE_UPLINK
-          <span class="submit-outline"></span>
+          Send Project Inquiry
         </button>
-        <span class="cursor-block" style="display: inline-block;"></span>
+      </form>
+    </section>
+
+    <!-- AI Assistant -->
+    <aside class="ai-assistant" id="ai-chat">
+      <div class="ai-header">
+        <h3><span class="ai-status"></span>AI Project Assistant</h3>
+        <p class="ai-description">Get instant answers about our services, pricing, and process. I'm here 24/7 to help!</p>
       </div>
-
-      <div class="terminal-status" id="status-transmitting">TRANSMITTING TO NEXUS CORE...</div>
-      <div class="terminal-status" id="status-success">&gt; SECURE CONNECTION ESTABLISHED. UPLINK SUCCESSFUL.</div>
-    </form>
-
-    <div class="terminal-footer">SYS.STATUS: ONLINE // ENCRYPTION: ACTIVE</div>
-  </main>
+      
+      <div class="ai-chat">
+        <div class="ai-messages" id="ai-messages">
+          <div class="ai-message bot">
+            👋 Hi! I'm your AI assistant. I can help you with:
+            <br>• Service information & pricing
+            <br>• Project timeline estimates  
+            <br>• Technical questions
+            <br>• Portfolio examples
+            <br><br>What would you like to know?
+          </div>
+        </div>
+        
+        <div class="ai-input-area">
+          <input type="text" class="ai-input" id="ai-input" placeholder="Ask me anything..." onkeypress="handleAIKeyPress(event)" />
+          <button class="ai-send" onclick="sendAIMessage()">Send</button>
+        </div>
+      </div>
+      
+      <div class="quick-actions">
+        <h4>Quick Questions</h4>
+        <button class="quick-action" onclick="askQuickQuestion('What services do you offer?')">What services do you offer?</button>
+        <button class="quick-action" onclick="askQuickQuestion('How much does a website cost?')">How much does a website cost?</button>
+        <button class="quick-action" onclick="askQuickQuestion('How long does a project take?')">How long does a project take?</button>
+        <button class="quick-action" onclick="askQuickQuestion('Can you show me examples of your work?')">Show me your portfolio</button>
+        <button class="quick-action" onclick="askQuickQuestion('Do you offer ongoing support?')">Do you offer ongoing support?</button>
+      </div>
+    </aside>
+  </div>
 
   <script src="main.js"></script>
   <script>
-    function handleSubmit(e) {
+    // Form submission handler
+    function handleFormSubmit(e) {
       e.preventDefault();
-      const transmitting = document.getElementById('status-transmitting');
-      const success = document.getElementById('status-success');
-      transmitting.classList.add('transmitting');
+      const submitBtn = e.target.querySelector('.submit-btn');
+      const originalText = submitBtn.textContent;
+      
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      // Simulate form submission
       setTimeout(() => {
-        transmitting.classList.remove('transmitting');
-        success.classList.add('success');
-        document.getElementById('uplink-form').reset();
+        submitBtn.textContent = 'Message Sent! ✓';
+        submitBtn.style.background = '#10B981';
+        
+        // Add success message to AI chat
+        addAIMessage('bot', '✅ Thank you! Your project inquiry has been submitted. Our team will review your requirements and get back to you within 24 hours with a detailed proposal.');
+        
+        // Reset form after delay
+        setTimeout(() => {
+          e.target.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          submitBtn.style.background = '';
+        }, 3000);
       }, 2000);
     }
+
+    // AI Assistant functionality
+    const aiResponses = {
+      'services': {
+        keywords: ['service', 'what do you do', 'offer', 'capabilities'],
+        response: `We offer comprehensive digital solutions:
+
+🎨 **Web Design & Development** - Custom websites and web applications
+🛒 **E-commerce Solutions** - Online stores and payment systems  
+⚡ **Business Automation** - Workflow optimization and integrations
+🎯 **Brand Identity** - Logo design and brand strategy
+📱 **Mobile Apps** - iOS and Android development
+💡 **Digital Strategy** - Consulting and optimization
+
+Which service interests you most?`
+      },
+      'pricing': {
+        keywords: ['cost', 'price', 'budget', 'how much', 'expensive'],
+        response: `Our pricing varies by project scope:
+
+💰 **Small Projects**: $500 - $2,000
+🎨 **Website Design**: $2,000 - $15,000
+🛒 **E-commerce Store**: $5,000 - $30,000
+📱 **Mobile App**: $10,000 - $50,000
+⚡ **Automation**: $1,000 - $15,000
+🎯 **Branding Package**: $500 - $5,000
+
+We offer free consultations to provide accurate quotes based on your specific needs. Would you like to schedule one?`
+      },
+      'timeline': {
+        keywords: ['time', 'long', 'duration', 'timeline', 'when'],
+        response: `Project timelines depend on complexity:
+
+⚡ **Simple Website**: 2-4 weeks
+🏢 **Business Website**: 4-8 weeks  
+🛒 **E-commerce Store**: 6-12 weeks
+📱 **Mobile App**: 12-20 weeks
+⚙️ **Automation Project**: 2-8 weeks
+
+We provide detailed timelines during our initial consultation. Rush projects available with priority scheduling!`
+      },
+      'portfolio': {
+        keywords: ['work', 'portfolio', 'examples', 'show me', 'previous'],
+        response: `Check out our recent work:
+
+🏆 **Featured Projects**:
+• RareKits - E-commerce automation platform
+• Lumina Core - SaaS dashboard design
+• Neural Networks - AI company branding
+• Crypto Exchange - Trading platform UI
+
+👀 View our complete portfolio at [rareware.studio/work](work.html)
+
+Would you like to see examples in a specific industry?`
+      },
+      'support': {
+        keywords: ['support', 'maintenance', 'ongoing', 'after', 'help'],
+        response: `Yes! We provide comprehensive ongoing support:
+
+🔧 **Maintenance Plans**:
+• Monthly updates and security patches
+• Performance monitoring
+• Content updates
+• Technical support
+
+📞 **Support Options**:
+• 24/7 emergency support
+• Scheduled maintenance
+• Training for your team
+• Growth and scaling assistance
+
+Most clients choose our monthly maintenance plan for peace of mind.`
+      },
+      'process': {
+        keywords: ['process', 'how', 'work', 'steps', 'methodology'],
+        response: `Our proven 5-step process:
+
+1️⃣ **Discovery** - Understanding your goals and requirements
+2️⃣ **Strategy** - Creating a detailed project plan
+3️⃣ **Design** - Wireframes, mockups, and prototypes
+4️⃣ **Development** - Building and testing your solution
+5️⃣ **Launch** - Deployment and ongoing optimization
+
+We keep you involved at every step with regular updates and feedback sessions.`
+      },
+      'contact': {
+        keywords: ['contact', 'reach', 'call', 'email', 'meeting'],
+        response: `Ready to get started? Here's how to reach us:
+
+📧 **Email**: hello@rareware.studio
+📞 **Phone**: +1 (555) 123-4567
+💬 **This Chat**: Keep asking questions!
+📅 **Schedule**: Book a free 30-min consultation
+
+We typically respond to emails within 2-4 hours during business days.`
+      }
+    };
+
+    function addAIMessage(sender, message) {
+      const messagesContainer = document.getElementById('ai-messages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `ai-message ${sender}`;
+      messageDiv.innerHTML = message.replace(/\n/g, '<br>');
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function getAIResponse(userMessage) {
+      const message = userMessage.toLowerCase();
+      
+      // Check for greeting
+      if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+        return "👋 Hello! I'm here to help you learn about our services and get your project started. What would you like to know?";
+      }
+      
+      // Check for thank you
+      if (message.includes('thank') || message.includes('thanks')) {
+        return "You're welcome! Is there anything else I can help you with today?";
+      }
+      
+      // Find matching response
+      for (const [key, data] of Object.entries(aiResponses)) {
+        if (data.keywords.some(keyword => message.includes(keyword))) {
+          return data.response;
+        }
+      }
+      
+      // Default response
+      return `I'd be happy to help! I can provide information about:
+
+• Our services and capabilities
+• Pricing and project costs  
+• Timelines and process
+• Portfolio examples
+• Ongoing support options
+
+Try asking something like "What services do you offer?" or "How much does a website cost?"`;
+    }
+
+    function sendAIMessage() {
+      const input = document.getElementById('ai-input');
+      const message = input.value.trim();
+      
+      if (!message) return;
+      
+      // Add user message
+      addAIMessage('user', message);
+      input.value = '';
+      
+      // Add typing indicator
+      setTimeout(() => {
+        const response = getAIResponse(message);
+        addAIMessage('bot', response);
+      }, 500);
+    }
+
+    function handleAIKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendAIMessage();
+      }
+    }
+
+    function askQuickQuestion(question) {
+      document.getElementById('ai-input').value = question;
+      sendAIMessage();
+    }
+
+    // Auto-focus AI input when scrolled to
+    const aiSection = document.getElementById('ai-chat');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            document.getElementById('ai-input').focus();
+          }, 500);
+        }
+      });
+    });
+    observer.observe(aiSection);
   </script>
 </body>
 
