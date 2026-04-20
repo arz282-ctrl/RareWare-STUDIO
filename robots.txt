@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://rarewarestudio.space/sitemap.xml
+
+# Block admin/config files
+Disallow: /.vercel/
+Disallow: /.git/
+Disallow: /node_modules/
