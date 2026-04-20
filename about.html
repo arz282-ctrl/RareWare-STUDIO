@@ -1,169 +1,582 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — RAREWARE STUDIO</title>
+  <meta name="description" content="Rareware Studio is a full-stack digital agency building AI systems, web apps, e-commerce stores, and automation workflows for ambitious businesses."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <style>
+    .about-hero {
+      padding: 10rem 3rem 6rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: end;
+      border-bottom: 1px solid var(--color-muted);
+      position: relative;
+      background: linear-gradient(135deg, rgba(45,212,191,0.02) 0%, transparent 50%);
+      overflow: hidden;
+    }
+    .about-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+      filter: saturate(0.3) blur(1px);
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(45,212,191,0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .about-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+      line-height: 1.1;
+      position: relative;
+      z-index: 2;
+      color: #f0fdf9;
+    }
+    .about-hero .hero-right p {
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(240,253,249,0.75);
+      margin-bottom: 2.5rem;
+    }
+    .about-hero .hero-right .tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: var(--color-primary);
+      margin-bottom: 2rem;
+      display: block;
+    }
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lumina Manifest // Obsidian &amp; Neon</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "primary": "#cc06f9",
-          "background-light": "#f8f5f8",
-          "background-dark": "#1f0f23",
-          "void-black": "#000000",
-          "obsidian": "#050507",
-          "optic-white": "#F4F4F6",
-          "charcoal": "#2A2A35",
-        },
-        fontFamily: {
-          "display": ["Space Grotesk", "sans-serif"],
-          "mono": ["Space Grotesk", "monospace"], // Using Space Grotesk for mono feel as requested in theme application
-        },
-        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem", "none": "0px"},
-      },
-    },
-  }
-</script>
-<style>
-  body {
-    background-color: theme('colors.void-black');
-    color: theme('colors.optic-white');
-    font-family: theme('fontFamily.display');
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Prevent body scroll, handle in columns */
-  }
+    /* Manifesto section */
+    .manifesto-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 85vh;
+      border-bottom: 1px solid var(--color-muted);
+      position: relative;
+      background: linear-gradient(180deg, rgba(2,10,15,0.98) 0%, rgba(2,10,15,1) 100%);
+      overflow: hidden;
+    }
+    .manifesto-section::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(208,0,255,0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+    }
+    .manifesto-section::after {
+      content: '';
+      position: absolute;
+      bottom: 20%;
+      right: 10%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(208,0,255,0.03) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+    .manifesto-left {
+      padding: 8rem 5rem;
+      border-right: 1px solid var(--color-muted);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .floating-panel {
+      position: absolute;
+      top: 50%;
+      right: 2rem;
+      width: 300px;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 20px rgba(45,212,191,0.1);
+      z-index: 3;
+      transition: all 0.5s ease;
+      transform: translateY(-50%);
+    }
+    .floating-panel:hover {
+      border-color: rgba(45,212,191,0.3);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.4), 0 0 30px rgba(45,212,191,0.2), 0 0 60px rgba(208,0,255,0.1);
+      transform: translateY(-50%) translateX(-10px);
+    }
+    .floating-panel h4 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #f0fdf9;
+      margin-bottom: 1rem;
+    }
+    .floating-panel p {
+      font-size: 0.9rem;
+      color: rgba(240,253,249,0.7);
+      line-height: 1.6;
+    }
+    .manifesto-left .project-montage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .manifesto-left .project-montage img {
+      position: absolute;
+      width: 40%;
+      height: auto;
+      border-radius: 4px;
+      filter: grayscale(1) contrast(1.2);
+    }
+    .manifesto-left .project-montage img:nth-child(1) { top: 15%; left: 5%; }
+    .manifesto-left .project-montage img:nth-child(2) { top: 45%; right: 5%; }
+    .manifesto-left .project-montage img:nth-child(3) { bottom: 15%; left: 15%; }
+    .manifesto-left::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .manifesto-left .bg-num {
+      position: absolute;
+      font-family: var(--font-heading);
+      font-size: 25rem;
+      font-weight: 800;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(45,212,191,0.08);
+      bottom: -4rem;
+      right: -3rem;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.3;
+    }
+    .manifesto-left h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      position: relative;
+      z-index: 2;
+      color: #f0fdf9;
+      background: linear-gradient(135deg, #f0fdf9 0%, rgba(45,212,191,0.8) 50%, rgba(208,0,255,0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(45,212,191,0.3), 0 0 40px rgba(208,0,255,0.2);
+    }
+    .manifesto-right {
+      padding: 8rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      justify-content: center;
+    }
+    .manifesto-right article {
+      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(240,253,249,0.8);
+    }
+    .manifesto-right article strong {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .stat-row {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--color-muted);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .stat-row .stat-item {
+      flex: 1;
+      padding: 2rem;
+      border-right: 1px solid var(--color-muted);
+      box-shadow: 0 0 0 1px rgba(45,212,191,0.1), inset 0 0 0 1px rgba(208,0,255,0.05);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      background: linear-gradient(135deg, rgba(45,212,191,0.02) 0%, transparent 100%);
+    }
+    .stat-row .stat-item:last-child { border-right: none; }
+    .stat-row .stat-item:hover {
+      background: linear-gradient(135deg, rgba(45,212,191,0.05) 0%, rgba(45,212,191,0.02) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(45,212,191,0.1), 0 0 20px rgba(45,212,191,0.2), 0 0 40px rgba(208,0,255,0.1);
+      border-color: rgba(45,212,191,0.3);
+    }
+    .stat-row .stat-item:hover .sv {
+      text-shadow: 0 0 10px rgba(45,212,191,0.5), 0 0 20px rgba(208,0,255,0.3);
+    }
+    .stat-row .stat-item .sv {
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .stat-row .stat-item .sl {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-muted);
+      margin-top: 0.5rem;
+    }
 
-  /* Custom Scrollbar for the right column to maintain minimal aesthetic */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 2px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: theme('colors.void-black');
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: theme('colors.charcoal');
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: theme('colors.primary');
-  }
+    /* Values grid */
+    .values-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 8rem 3rem;
+      position: relative;
+    }
+    .values-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(45,212,191,0.3) 50%, transparent 100%);
+    }
+    .values-section h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      margin-bottom: 4rem;
+      text-align: center;
+      color: #f0fdf9;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--color-muted);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(45,212,191,0.1), 0 0 60px rgba(208,0,255,0.05);
+    }
+    .value-card {
+      background: linear-gradient(135deg, rgba(2,10,15,0.95) 0%, rgba(2,10,15,1) 100%);
+      padding: 4rem 3rem;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(45,212,191,0.02) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 80px rgba(45,212,191,0.15), 0 0 40px rgba(45,212,191,0.2), 0 0 80px rgba(208,0,255,0.1);
+      border: 1px solid rgba(45,212,191,0.3);
+    }
+    .value-card:hover::before { opacity: 1; }
+    .value-card .v-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--color-primary);
+      letter-spacing: 0.25em;
+      margin-bottom: 2rem;
+    }
+    .value-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      color: #f0fdf9;
+    }
+    .value-card p {
+      font-size: 1rem;
+      color: rgba(240,253,249,0.6);
+      line-height: 1.8;
+    }
 
-  /* Scroll illumination effect simulation (CSS only for this demo) */
-  .illuminate-keyword {
-    color: theme('colors.charcoal');
-    transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
-  }
-  
-  /* Hover effect to simulate scroll activation for demo purposes */
-  .manifest-text-container:hover .illuminate-keyword:nth-child(odd) {
-    color: theme('colors.primary');
-    text-shadow: 0 0 10px rgba(204, 6, 249, 0.5);
-  }
-  .manifest-text-container:active .illuminate-keyword:nth-child(even) {
-    color: theme('colors.primary');
-    text-shadow: 0 0 10px rgba(204, 6, 249, 0.5);
-  }
+    /* CTA */
+    .about-cta {
+      border-top: 1px solid var(--color-muted);
+      padding: 8rem 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      background: linear-gradient(180deg, rgba(2,10,15,1) 0%, rgba(45,212,191,0.02) 100%);
+    }
+    .about-cta::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(45,212,191,0.5) 50%, transparent 100%);
+    }
+    .about-cta h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      color: #f0fdf9;
+    }
 
-  /* Stat Block Hover Inner Shadow */
-  .stat-block {
-    transition: box-shadow 0.3s ease;
-  }
-  .stat-block:hover {
-    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1);
-    border-color: theme('colors.primary');
-  }
-  
-  /* Shared PageHeading Component Styles modified for split screen */
-  .split-heading-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    padding: 4rem;
-  }
-</style>
+    @media (max-width: 1024px) {
+      .about-hero { grid-template-columns: 1fr; gap: 4rem; padding: 8rem 3rem 4rem; }
+      .about-hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); }
+      .manifesto-section { grid-template-columns: 1fr; }
+      .manifesto-left { border-right: none; border-bottom: 1px solid var(--color-muted); padding: 5rem 3rem; min-height: auto; }
+      .manifesto-left .bg-num { font-size: 12rem; }
+      .manifesto-right { padding: 5rem 3rem; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .about-hero { padding: 6rem 1.5rem 3rem; }
+      .about-hero h1 { font-size: clamp(2rem, 8vw, 4rem); }
+      .values-section { padding: 5rem 1.5rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .about-cta { padding: 5rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .stat-row { flex-direction: column; }
+      .stat-row .stat-item { border-right: none; border-bottom: 1px solid var(--color-muted); }
+      .stat-row .stat-item:last-child { border-bottom: none; }
+    }
+  </style>
 </head>
-<body class="bg-void-black text-optic-white font-display antialiased min-h-screen selection:bg-primary selection:text-white">
-<!-- Back to Nexus Navigation (Focused View Exception) -->
-<nav class="fixed top-0 left-0 w-full z-50 p-6 pointer-events-none flex justify-between items-start">
-<a class="pointer-events-auto inline-flex items-center gap-2 text-charcoal hover:text-optic-white transition-colors duration-300 group" href="index.html">
-<span class="material-symbols-outlined text-xl group-hover:-translate-x-1 transition-transform">arrow_back</span>
-<span class="font-mono text-xs uppercase tracking-widest font-bold">RETURN TO NEXUS</span>
-</a>
-</nav>
-<!-- Main Split Layout -->
-<main class="flex w-full h-screen relative">
-<!-- Left Column: Fixed Header (Derived from Shared PageHeading) -->
-<section class="w-1/2 h-full border-r border-charcoal relative hidden md:block">
-<div class="split-heading-container">
-<div class="layout-content-container flex flex-col max-w-[960px] flex-1 justify-center">
-<div class="flex flex-wrap justify-between gap-3 p-4">
-<!-- 96px requested, mapping to text-[6rem] or tailwind equivalent, using custom class for exact sizing if needed, but 7xl+ is close. Let's use custom class for 96px -->
-<h1 class="text-optic-white font-black leading-[0.9] tracking-[-0.05em] uppercase" style="font-size: 96px;">
-            THE LIGHT IN THE VOID.
-          </h1>
-</div>
-<p class="text-charcoal text-xl font-normal leading-normal pb-3 pt-4 px-4 uppercase tracking-widest font-mono">
-          [01] // MANIFEST
-        </p>
-</div>
-</div>
-<!-- Decorative Grid Lines -->
-<div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(to right, #2A2A35 1px, transparent 1px), linear-gradient(to bottom, #2A2A35 1px, transparent 1px); background-size: 4rem 4rem; opacity: 0.1;"></div>
-</section>
-<!-- Right Column: Scrollable Content -->
-<section class="w-full md:w-1/2 h-full overflow-y-auto custom-scrollbar relative px-8 py-32 md:px-16 manifest-text-container bg-void-black">
-<div class="max-w-3xl mx-auto flex flex-col gap-16 pb-32">
-<!-- Philosophy Block 1 -->
-<article class="text-optic-white text-2xl font-light leading-[2.0] tracking-wide">
-        We exist at the intersection of <span class="illuminate-keyword font-bold uppercase text-[26px]">absolute structure</span> and raw, unbridled <span class="illuminate-keyword font-bold uppercase text-[26px]">energy</span>. The void is not empty; it is a canvas awaiting definition. 
-        <br/><br/>
-        In an era of digital noise, we forge clarity through subtraction. Every pixel, every line of logic must justify its existence. We strip away the superfluous until only the <span class="illuminate-keyword font-bold uppercase text-[26px]">core truth</span> remains. This is the essence of Lumina.
+<body class="grid-bg">
+  <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
+
+  <nav class="site-nav">
+    <a href="index.html" class="logo">RAREWARE_STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="crypto.html">AI Crypto</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span>Available for Projects</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="work.html" onclick="toggleMenu()">Work</a>
+    <a href="process.html" onclick="toggleMenu()">Process</a>
+    <a href="team.html" onclick="toggleMenu()">Team</a>
+    <a href="crypto.html" onclick="toggleMenu()">AI Crypto</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="about-hero reveal">
+    <video autoplay muted loop playsinline class="about-hero-bg" poster="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200">
+      <source src="https://cdn.pixabay.com/video/2024/01/18/198231-902078668_large.mp4" type="video/mp4">
+    </video>
+    <div>
+      <span class="text-label" style="color: var(--color-primary); display: block; margin-bottom: 1.5rem;">Est. 2024 — Global</span>
+      <h1 style="max-width: 500px;">We Build<br/>What Works.</h1>
+    </div>
+    <div class="hero-right">
+      <span class="tag">About Rareware Studio</span>
+      <p>We're a full-stack digital agency that builds AI systems, production-grade web apps, e-commerce stores, and automation workflows. We work with ambitious founders and businesses who want results — not just a pretty website.</p>
+      <p>Based globally, we accept projects from anywhere and settle payments in crypto or traditional methods.</p>
+      <a href="contact.html" class="btn-primary" style="margin-top: 1rem;">Start a Project <span class="material-symbols-outlined" style="font-size:1rem;">arrow_forward</span></a>
+    </div>
+  </section>
+
+  <!-- Manifesto -->
+  <section class="manifesto-section">
+    <div class="manifesto-left reveal">
+      <div class="project-montage">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600" alt="Office work">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600" alt="Team collaboration">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600" alt="Project meeting">
+      </div>
+      <span class="text-label" style="color: var(--color-primary); display: block; margin-bottom: 2rem;">Our Philosophy</span>
+      <h2>The Light<br/>In The<br/>Void.</h2>
+      <div class="bg-num">01</div>
+      <div class="floating-panel">
+        <h4>Precision Meets Ambition</h4>
+        <p>We blend cutting-edge engineering with bold creativity to deliver systems that not only function flawlessly but inspire growth.</p>
+      </div>
+    </div>
+    <div class="manifesto-right reveal">
+      <article>
+        We exist at the intersection of <strong>precision engineering</strong> and <strong>creative ambition</strong>. In a world full of generic templates and copy-paste solutions, we build things that are genuinely different — systems that think, interfaces that convert, and stores that sell.
       </article>
-<!-- Stat Block 1 -->
-<div class="stat-block w-full border-y border-charcoal bg-obsidian py-8 px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between group rounded-sm">
-<div class="flex flex-col gap-1">
-<span class="text-charcoal font-mono text-xs uppercase tracking-[0.1em] group-hover:text-optic-white transition-colors">METRIC // ALPHA</span>
-<span class="text-optic-white font-mono text-xl uppercase tracking-widest">DEPLOYED NODES</span>
-</div>
-<div class="text-primary font-mono text-3xl font-bold mt-4 sm:mt-0 drop-shadow-[0_0_10px_rgba(204,6,249,0.3)]">
-          1,024
-        </div>
-</div>
-<!-- Philosophy Block 2 -->
-<article class="text-optic-white text-2xl font-light leading-[2.0] tracking-wide">
-        The architecture we build—the Nexus—is unforgiving. It demands precision. Yet, within its rigid confines, we inject moments of <span class="illuminate-keyword font-bold uppercase text-[26px]">luminous intensity</span>. 
-        <br/><br/>
-        These flashes of electric violet are not mere decoration; they are pulses of data, signaling life within the machine. They guide the eye, reward intent, and elevate the interaction from functional to <span class="illuminate-keyword font-bold uppercase text-[26px]">cinematic</span>.
+
+      <div class="stat-row">
+        <div class="stat-item"><div class="sv">24+</div><div class="sl">Projects Live</div></div>
+        <div class="stat-item"><div class="sv">99.9%</div><div class="sl">Uptime</div></div>
+        <div class="stat-item"><div class="sv">48h</div><div class="sl">Avg Response</div></div>
+      </div>
+
+      <article>
+        Every project we take on gets our full attention. We don't outsource, we don't use cookie-cutter themes, and we don't disappear after launch. We build <strong>long-term partnerships</strong> with clients who want to grow — and we grow with them.
       </article>
-<!-- Stat Block 2 -->
-<div class="stat-block w-full border-y border-charcoal bg-obsidian py-8 px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between group rounded-sm">
-<div class="flex flex-col gap-1">
-<span class="text-charcoal font-mono text-xs uppercase tracking-[0.1em] group-hover:text-optic-white transition-colors">METRIC // BETA</span>
-<span class="text-optic-white font-mono text-xl uppercase tracking-widest">SYSTEM UPTIME</span>
-</div>
-<div class="text-primary font-mono text-3xl font-bold mt-4 sm:mt-0 drop-shadow-[0_0_10px_rgba(204,6,249,0.3)]">
-          99.999%
-        </div>
-</div>
-<!-- Philosophy Block 3 -->
-<article class="text-optic-white text-2xl font-light leading-[2.0] tracking-wide">
-        We do not design websites. We architect <span class="illuminate-keyword font-bold uppercase text-[26px]">digital monoliths</span>. Environments that command respect. Interfaces that operate with military precision while delivering high-end luxury aesthetics.
-        <br/><br/>
-        Embrace the darkness. <span class="illuminate-keyword font-bold uppercase text-[26px]">Find the light.</span>
-</article>
-<!-- EOF Indicator -->
-<div class="w-full flex justify-center py-12 opacity-50">
-<span class="font-mono text-xs text-charcoal tracking-[0.2em] uppercase">/// END OF MANIFEST ///</span>
-</div>
-</div>
-</section>
-</main>
-</body></html>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values-section" style="position: relative; overflow: hidden; background: #000;">
+    <!-- Video Background Layer -->
+    <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: grayscale(60%) brightness(0.4);">
+      <source src="https://cdn.pixabay.com/video/2022/11/28/141687-777037750_large.mp4" type="video/mp4"/>
+    </video>
+    <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 1;"></div>
+    
+    <h2 reveal style="position: relative; z-index: 2;">What We Stand For</h2>
+    <div class="values-grid" style="position: relative; z-index: 2;">
+      <div class="value-card reveal">
+        <div class="v-num">01 / CRAFT</div>
+        <h3>Quality Over Speed</h3>
+        <p>We take the time to build things right. Clean code, proper architecture, and interfaces that actually work on every device.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-num">02 / RESULTS</div>
+        <h3>Built to Perform</h3>
+        <p>Every decision — from tech stack to design — is made with one goal: does this help the business grow? If not, it doesn't ship.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-num">03 / HONESTY</div>
+        <h3>No Fluff, No Jargon</h3>
+        <p>We tell you exactly what we're building, why, and how long it takes. No hidden costs, no scope creep surprises.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-num">04 / SPEED</div>
+        <h3>Fast Delivery</h3>
+        <p>Most projects ship in 2–6 weeks. We use modern frameworks and proven workflows to move fast without breaking things.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-num">05 / INNOVATION</div>
+        <h3>AI-First Thinking</h3>
+        <p>We integrate AI into everything — from automating your workflows to generating ad creatives to building intelligent agents.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-num">06 / PARTNERSHIP</div>
+        <h3>We're In It With You</h3>
+        <p>Post-launch support, performance monitoring, and ongoing improvements. We don't just hand over a file and disappear.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="about-cta reveal">
+    <div>
+      <span class="text-label" style="color: var(--color-muted); display: block; margin-bottom: 0.75rem;">Ready to work together?</span>
+      <h3>Let's Build<br/>Something Real.</h3>
+    </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="contact.html" class="btn-primary">Get in Touch <span class="material-symbols-outlined" style="font-size:1rem;">arrow_forward</span></a>
+      <a href="work.html" class="btn-outline">See Our Work</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-left">©2025 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
+    <div class="footer-links">
+      <a href="contact.html">Contact</a>
+      <a href="services.html">Services</a>
+      <a href="process.html">Process</a>
+    </div>
+    <div class="footer-status"><span class="dot"></span>Available for Projects</div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Parallax effect for project montage images
+    const montageImages = document.querySelectorAll('.project-montage img');
+    const manifestoSection = document.querySelector('.manifesto-section');
+
+    function parallax() {
+      const scrollY = window.scrollY;
+      const sectionTop = manifestoSection.offsetTop;
+      const sectionHeight = manifestoSection.offsetHeight;
+      const scrollPos = scrollY - sectionTop;
+
+      if (scrollPos >= 0 && scrollPos <= sectionHeight) {
+        const parallaxFactor = 0.3;
+        montageImages.forEach((img, index) => {
+          const speed = (index + 1) * 0.1;
+          const yPos = -(scrollPos * parallaxFactor * speed);
+          img.style.transform = `translateY(${yPos}px)`;
+        });
+      }
+    }
+
+    window.addEventListener('scroll', parallax);
+  </script>
+</body>
+</html>

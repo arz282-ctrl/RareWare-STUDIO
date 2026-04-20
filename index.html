@@ -3,15 +3,61 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RAREWARE STUDIO — We Engineer Unfair Advantages</title>
-  <meta name="description" content="RAREWARE STUDIO is a premium digital agency engineering unfair advantages through elite design, automation, commerce, and development for the digital elite."/>
+  <title>RAREWARE STUDIO — Digital Flagship // AI, Web & Automation Engineering</title>
+  <meta name="description" content="Rareware Studio engineers absolute performance. We build high-density AI systems, premium web architectures, and advanced automation pipelines for global leaders."/>
+
+  <!-- SEO & Social Meta -->
+  <meta property="og:title" content="RAREWARE STUDIO — Digital Flagship"/>
+  <meta property="og:description" content="We engineer unfair advantages. Explore our 2025 flagship for AI and Web excellence."/>
+  <meta property="og:url" content="https://rarewarestudio.space/"/>
+  <meta property="og:image" content="https://rarewarestudio.space/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  <!-- Schema.org Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Rareware Studio",
+    "image": "https://rarewarestudio.space/favicon.svg",
+    "url": "https://rarewarestudio.space",
+    "telephone": "",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Global / Remote",
+      "addressCountry": "Global"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "21:00"
+    },
+    "sameAs": [
+      "https://twitter.com/rarewarestudio",
+      "https://github.com/rarewarestudio"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <style>
-    /* ── Home-specific styles ──────────────────────────────────── */
+     /* ── Home-specific styles ──────────────────────────────────── */
     .hero-section {
       min-height: 100vh;
       display: flex;
@@ -20,29 +66,9 @@
       align-items: center;
       text-align: center;
       position: relative;
-      padding: 8rem 2rem 4rem;
+      padding: 10rem 2rem 4rem;
       overflow: hidden;
-    }
-
-    /* Hero Video Background */
-    .hero-video-wrap {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-    .hero-video-wrap video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(60%) brightness(0.25) contrast(1.3);
-    }
-    .hero-video-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at center, transparent 0%, var(--color-bg) 75%),
-        linear-gradient(to top, var(--color-bg) 0%, transparent 30%, transparent 70%, var(--color-bg) 100%);
-      z-index: 1;
+      background: #000000;
     }
 
     /* Scroll hint at bottom of hero */
@@ -83,15 +109,14 @@
     }
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(3rem, 10vw, 8rem); /* Fixed letter cut-off */
+      font-size: clamp(4rem, 12vw, 9rem);
       font-weight: 800;
-      line-height: 0.85;
-      letter-spacing: -0.05em;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: var(--color-accent);
+      color: white;
       opacity: 0;
       animation: fadeIn 2s ease 1.4s forwards;
-      text-shadow: 0 0 60px rgba(255,255,255,0.03);
       position: relative;
       z-index: 2;
     }
@@ -148,6 +173,40 @@
       pointer-events: none;
     }
 
+    /* Floating Glass Panels */
+    .floating-panel {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 12px;
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      pointer-events: none;
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.7;
+    }
+
+    .floating-panel::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-10px) rotate(2deg); }
+      66% { transform: translateY(5px) rotate(-2deg); }
+    }
+
     /* Bento Grid */
     .bento-grid {
       display: grid;
@@ -160,11 +219,23 @@
       border: 1px solid var(--color-muted);
       overflow: hidden;
       position: relative;
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .bento-card:hover {
-      border-color: rgba(208,0,255,0.4);
-      box-shadow: 0 0 30px rgba(208,0,255,0.1);
+      border-image: linear-gradient(135deg, #8b5cf6, #06b6d4, #10b981) 1;
+      box-shadow:
+        0 0 40px rgba(139, 92, 246, 0.3),
+        0 0 80px rgba(6, 182, 212, 0.2),
+        0 0 120px rgba(16, 185, 129, 0.1);
+      transform: translateY(-5px) scale(1.02);
+      animation: neonPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes neonPulse {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.2); }
     }
     .bento-card img {
       width: 100%;
@@ -201,12 +272,36 @@
       flex-direction: column;
       justify-content: flex-end;
       gap: 1rem;
-      transition: all 0.4s ease;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       min-height: 400px;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-preview::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(6, 182, 212, 0.05));
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      z-index: -1;
     }
     .service-preview:hover {
-      background: rgba(208,0,255,0.03);
-      border-color: rgba(208,0,255,0.3);
+      background: rgba(45,212,191,0.05);
+      border-image: linear-gradient(135deg, #8b5cf6, #06b6d4) 1;
+      box-shadow:
+        inset 0 0 50px rgba(139, 92, 246, 0.1),
+        0 0 30px rgba(6, 182, 212, 0.2);
+      transform: translateY(-8px) scale(1.01);
+    }
+    .service-preview:hover::before {
+      opacity: 1;
     }
     .service-preview .material-symbols-outlined {
       font-size: 2rem;
@@ -287,6 +382,91 @@
       .cta-section { flex-direction: column; align-items: flex-start; }
       .service-grid-home { grid-template-columns: 1fr !important; }
     }
+
+    /* ── Crypto Announcement Section ─────────────────────── */
+    .crypto-announce {
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--color-muted);
+      border-bottom: 1px solid var(--color-muted);
+      background: var(--color-surface);
+    }
+    .crypto-announce .announce-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(247,147,26,0.06), transparent 60%);
+      pointer-events: none;
+    }
+    .announce-content {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      padding: 5rem 3rem;
+      position: relative;
+      z-index: 2;
+    }
+    .announce-left { flex: 1; min-width: 280px; }
+    .announce-right { flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 2rem; }
+    .announce-ticker {
+      overflow: hidden;
+      border-top: 1px solid var(--color-muted);
+      border-bottom: 1px solid var(--color-muted);
+      padding: 0.6rem 0;
+      background: var(--color-bg);
+    }
+    .announce-ticker-track {
+      display: flex;
+      gap: 2rem;
+      animation: tickerScrollHome 25s linear infinite;
+      width: max-content;
+    }
+    .announce-ticker-item {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(240,253,249,0.4);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .announce-ticker-item .ats { color: var(--color-accent); font-weight: 700; }
+    .announce-ticker-item .atg { color: #34D399; }
+    .announce-ticker-item .atr { color: #F87171; }
+    @keyframes tickerScrollHome {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .coin-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .coin-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--color-muted);
+      background: var(--color-bg);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--color-text);
+      letter-spacing: 0.1em;
+      transition: all 0.3s ease;
+    }
+    .coin-tag:hover {
+      border-color: #F7931A;
+      box-shadow: 0 0 15px rgba(247,147,26,0.15);
+      transform: translateY(-2px);
+    }
+    .coin-tag .cs {
+      font-weight: 700;
+      color: #F7931A;
+    }
+    @media (max-width: 768px) {
+      .announce-content { flex-direction: column; gap: 2rem; padding: 4rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -312,17 +492,18 @@
   <nav class="site-nav" id="site-nav">
     <a href="index.html" class="logo">RAREWARE_STUDIO</a>
     <ul class="nav-links">
-      <li><a href="about.html">INTEL</a></li>
-      <li><a href="services.html">SYSTEMS</a></li>
-      <li><a href="work.html">WORK</a></li>
-      <li><a href="process.html">PROTOCOLS</a></li>
-      <li><a href="team.html">NODES</a></li>
-      <li><a href="contact.html">DECRYPT</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="crypto.html">AI Crypto</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-right">
       <div class="nav-status">
         <span class="dot"></span>
-        SYSTEM_ONLINE
+        Available for Projects
       </div>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -332,29 +513,25 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html" onclick="toggleMenu()">HOME</a>
-    <a href="about.html" onclick="toggleMenu()">INTEL</a>
-    <a href="services.html" onclick="toggleMenu()">SYSTEMS</a>
-    <a href="work.html" onclick="toggleMenu()">WORK</a>
-    <a href="process.html" onclick="toggleMenu()">PROTOCOLS</a>
-    <a href="team.html" onclick="toggleMenu()">NODES</a>
-    <a href="contact.html" onclick="toggleMenu()">DECRYPT</a>
+    <a href="index.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="work.html" onclick="toggleMenu()">Work</a>
+    <a href="process.html" onclick="toggleMenu()">Process</a>
+    <a href="team.html" onclick="toggleMenu()">Team</a>
+    <a href="crypto.html" onclick="toggleMenu()">AI Crypto</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
   </div>
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="hero-section" id="hero">
-    <!-- Cinematic Video Background — Abstract dark-tech motion visualizer -->
-    <div class="hero-video-wrap">
-      <video autoplay muted loop playsinline id="heroVideo"
-        poster="https://lh3.googleusercontent.com/aida-public/AB6AXuBMY-6a4ycxB1ReajIsNLr_RlzgU6haJanEy8jDdS7xIQbm64ZUH5EUpxCHxsBVl9QR_mt-Y0ESZfLMq6QWdCvje6NcnZilKHNNQl5kj6ywhkJctZRT4CF7k1fqPHvdIlTL-j6V-UFvOUTSf0b1RupZVPagpyJn0ipsUMe3sll0f1ES5oC9MTm5nmvvDEWYuI28kGU-iGMXjm0vx7wWcewLu_KE66IHilpfQXV7K96plAWv7XI-JmNTm0fIoo32-R38LJ4KukH-">
-        <!-- Abstract dark technology particles / data flow motion graphic -->
-        <source src="https://cdn.pixabay.com/video/2021/10/01/90208-624955498_large.mp4" type="video/mp4"/>
-      </video>
-      <div class="hero-video-overlay"></div>
-    </div>
-
     <!-- 3rd Visual Layer: Interactive Nexus Canvas -->
     <canvas id="nexusCanvas" style="position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.8; mix-blend-mode: screen;"></canvas>
+
+    <!-- Floating Glass Panels -->
+    <div class="floating-panel" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+    <div class="floating-panel" style="top: 60%; right: 15%; animation-delay: 2s;"></div>
+    <div class="floating-panel" style="bottom: 25%; left: 70%; animation-delay: 4s;"></div>
 
     <div class="ambient-glow" style="top: -200px; left: -200px;"></div>
     <div class="ambient-glow" style="bottom: -200px; right: -200px;"></div>
@@ -364,8 +541,8 @@
     <div class="hero-meta-bl">VER_2.0.48</div>
     <div class="hero-meta-br">STATUS: OPERATIONAL</div>
 
-    <h1 class="hero-title">RAREWARE<br/><span style="font-size: 0.4em; letter-spacing: 0.15em; font-weight: 400; opacity: 0.7;">STUDIO</span></h1>
-    <p class="hero-sub">Precision engineering for the <span style="color: var(--color-primary);">digital elite</span>. We build the infrastructure that powers the next generation.</p>
+    <h1 class="hero-title"><span style="display: inline-block; transform: scaleX(1.15);">RAREWARE</span><br/><span style="font-size: 0.45em; letter-spacing: 0.3em; font-weight: 500; opacity: 1; display: block; margin-top: 0.3em;">STUDIO</span></h1>
+    <p class="hero-sub" style="opacity: 0; animation: fadeIn 2s ease 1.8s forwards;">Precision engineering for the <span style="color: var(--color-primary);">digital elite</span>. We build the architectures that power the next generation of global industry.</p>
 
     <div class="hero-ctas">
       <a href="services.html" class="btn-primary">View Systems</a>
@@ -380,22 +557,30 @@
   </section>
 
   <!-- ═══════════════ INTEL (MANIFEST) ═══════════════ -->
-  <section id="intel" style="display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--color-muted); overflow: hidden; background: var(--color-bg);">
+  <section id="intel" style="display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--color-muted); overflow: hidden; background: var(--color-bg); position: relative;">
+    <!-- Video Background Layer -->
+    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden;">
+      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%) brightness(0.25) contrast(1.4);">
+        <source src="https://cdn.pixabay.com/video/2026/01/21/329187_large.mp4" type="video/mp4"/>
+      </video>
+      <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--color-bg) 0%, rgba(2,10,15,0.7) 50%, var(--color-bg) 100%);"></div>
+    </div>
+    
     <!-- Left: Sticky Title -->
-    <div style="flex: 1; min-width: 300px; padding: 6rem 4rem; border-right: 1px solid var(--color-muted); position: relative; display: flex; flex-direction: column; justify-content: center; background: var(--color-surface);">
-      <div style="position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(42,42,53,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(42,42,53,0.08) 1px, transparent 1px); background-size: 4rem 4rem;"></div>
-      <h2 style="font-family: var(--font-heading); font-size: clamp(3rem, 5vw, 5rem); font-weight: 800; line-height: 1; letter-spacing: -0.05em; text-transform: uppercase; color: var(--color-accent); z-index: 2;">THE LIGHT<br/>IN THE<br/>VOID.</h2>
-      <div style="margin-top: 3rem; z-index: 2;">
+    <div style="flex: 1; min-width: 300px; padding: 6rem 4rem; border-right: 1px solid var(--color-muted); position: relative; display: flex; flex-direction: column; justify-content: center; background: rgba(4,13,18,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 2;">
+      <div style="position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(42,42,53,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(42,42,53,0.08) 1px, transparent 1px); background-size: 4rem 4rem; z-index: 0;"></div>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(4rem, 8vw, 7rem); font-weight: 800; line-height: 1; letter-spacing: -0.05em; text-transform: uppercase; color: var(--color-accent); z-index: 2; position: relative;">THE LIGHT<br/>IN THE<br/>VOID.</h2>
+      <div style="margin-top: 3rem; z-index: 2; position: relative;">
         <span class="text-label" style="color: var(--color-muted);">[01] // MANIFEST</span>
       </div>
     </div>
 
     <!-- Right: Manifesto Content -->
-    <div style="flex: 1; min-width: 300px; padding: 6rem 4rem; display: flex; flex-direction: column; gap: 3rem; background: var(--color-bg);">
+    <div style="flex: 1; min-width: 300px; padding: 6rem 4rem; display: flex; flex-direction: column; gap: 3rem; background: rgba(2,10,15,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 2; position: relative;">
         <article style="font-family: var(--font-body); font-size: 1.5rem; font-weight: 300; line-height: 2; color: var(--color-text);">
           We exist at the intersection of <span style="color: var(--color-muted); font-weight: 700; text-transform: uppercase;">absolute structure</span> and raw, unbridled <span style="color: var(--color-muted); font-weight: 700; text-transform: uppercase;">energy</span>. The void is not empty; it is a canvas awaiting definition.
           <br/><br/>
-          In an era of digital noise, we forge clarity through subtraction. Every pixel, every line of logic must justify its existence. We strip away the superfluous until only the <span style="color: var(--color-primary); text-shadow: 0 0 10px rgba(208,0,255,0.5); font-weight: 700; text-transform: uppercase;">core truth</span> remains. This is the essence of Lumina.
+          In an era of digital noise, we forge clarity through subtraction. Every pixel, every line of logic must justify its existence. We strip away the superfluous until only the <span style="color: var(--color-primary); text-shadow: 0 0 10px rgba(45,212,191,0.5); font-weight: 700; text-transform: uppercase;">core truth</span> remains. This is the essence of Lumina.
         </article>
 
         <div style="width: 100%; border-top: 1px solid var(--color-muted); border-bottom: 1px solid var(--color-muted); background: var(--color-surface); padding: 2rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
@@ -403,16 +588,16 @@
             <span style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--color-muted); letter-spacing: 0.1em;">METRIC // ALPHA</span>
             <span style="font-family: var(--font-mono); font-size: 0.875rem; text-transform: uppercase; color: var(--color-text); font-weight: 700; letter-spacing: 0.15em;">DEPLOYED NODES</span>
           </div>
-          <span style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 700; color: var(--color-primary); text-shadow: 0 0 10px rgba(208,0,255,0.3);">1,024</span>
+          <span style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 700; color: var(--color-primary); text-shadow: 0 0 10px rgba(45,212,191,0.3);">1,024</span>
           <span style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--color-primary);">
             <span class="material-symbols-outlined" style="font-size: 14px;">bolt</span> ACTIVE
           </span>
         </div>
 
         <article style="font-family: var(--font-body); font-size: 1.5rem; font-weight: 300; line-height: 2; color: var(--color-text);">
-          The architecture we build—the Nexus—is unforgiving. It demands precision. Yet, within its rigid confines, we inject moments of <span style="color: var(--color-primary); text-shadow: 0 0 10px rgba(208,0,255,0.5); font-weight: 700; text-transform: uppercase;">luminous intensity</span>.
+          The architecture we build—the Nexus—is unforgiving. It demands precision. Yet, within its rigid confines, we inject moments of <span style="color: var(--color-primary); text-shadow: 0 0 10px rgba(45,212,191,0.5); font-weight: 700; text-transform: uppercase;">Jade intensity</span>.
           <br/><br/>
-          These flashes of electric violet are not mere decoration; they are pulses of data, signaling life within the machine. They guide the eye, reward intent, and elevate the interaction from functional to <span style="color: var(--color-primary); text-shadow: 0 0 10px rgba(208,0,255,0.5); font-weight: 700; text-transform: uppercase;">cinematic</span>.
+          These pulses of <span style="color: var(--color-primary); text-shadow: 0 0 10px rgba(45,212,191,0.5); font-weight: 700; text-transform: uppercase;">Electric Teal</span> are not mere decoration; they are data signatures, signaling life within the machine. They guide the eye, reward intent, and elevate the interaction from functional to <span style="color: var(--color-primary); text-shadow: 0 0 10px rgba(45,212,191,0.5); font-weight: 700; text-transform: uppercase;">cinematic dominance</span>.
         </article>
 
         <div style="width: 100%; border-top: 1px solid var(--color-muted); border-bottom: 1px solid var(--color-muted); background: var(--color-surface); padding: 2rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
@@ -420,7 +605,7 @@
             <span style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--color-muted); letter-spacing: 0.1em;">METRIC // BETA</span>
             <span style="font-family: var(--font-mono); font-size: 0.875rem; text-transform: uppercase; color: var(--color-text); font-weight: 700; letter-spacing: 0.15em;">SYSTEM UPTIME</span>
           </div>
-          <span style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 700; color: var(--color-primary); text-shadow: 0 0 10px rgba(208,0,255,0.3);">99.999%</span>
+          <span style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 700; color: var(--color-primary); text-shadow: 0 0 10px rgba(45,212,191,0.3);">99.999%</span>
           <span style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--color-primary);">
             <span class="material-symbols-outlined" style="font-size: 14px;">shield</span> SECURE
           </span>
@@ -473,7 +658,7 @@
       <div class="bento-card" style="grid-column: span 8; height: 400px; position: relative;">
         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtdkVQ04KDCbT-hj1jYephhKZnEysh5BmEbx1RWjzCBmUkp41equKPCTLXNMvCzPBozWMm8UcD3VXFVXzbgo-bAzl6IuYZ2aQCdNOKA6fDbc7rcEN4-lKikfzkfQbvvKWp_dxVatjjNHO2bc0Ntf8orEQSNPg0cBh6x07R2nq3fPsIQtzWrb9X3dxHsyTgCZPL0AEAGw4zGUnEAcxgiYwN3bj6z0lLvyGzzrkZQ-nfUTni7ZDV-67kGU7NDhmx__aYwvx3p7Jy" alt="System Core — Server motherboard with violet LED accents"/>
         <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
-          <div style="padding: 2rem; border: 1px solid rgba(208,0,255,0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+          <div style="padding: 2rem; border: 1px solid rgba(45,212,191,0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
             <span style="font-family: var(--font-mono); font-size: 1rem; letter-spacing: 0.5em; text-transform: uppercase;">Architecture</span>
           </div>
         </div>
@@ -514,6 +699,74 @@
     </div>
   </section>
 
+  <!-- ═══════════════ CRYPTO ANNOUNCEMENT ═══════════════ -->
+  <section class="crypto-announce reveal">
+    <div class="announce-glow"></div>
+
+    <!-- Mini Ticker -->
+    <div class="announce-ticker">
+      <div class="announce-ticker-track">
+        <span class="announce-ticker-item"><span class="ats">BTC</span> $104,289 <span class="atg">+2.34%</span></span>
+        <span class="announce-ticker-item"><span class="ats">ETH</span> $3,847 <span class="atg">+5.12%</span></span>
+        <span class="announce-ticker-item"><span class="ats">SOL</span> $187.43 <span class="atg">+8.67%</span></span>
+        <span class="announce-ticker-item"><span class="ats">BNB</span> $612.88 <span class="atr">-0.43%</span></span>
+        <span class="announce-ticker-item"><span class="ats">XRP</span> $2.41 <span class="atg">+3.21%</span></span>
+        <span class="announce-ticker-item"><span class="ats">ADA</span> $0.892 <span class="atg">+1.87%</span></span>
+        <span class="announce-ticker-item"><span class="ats">AVAX</span> $42.16 <span class="atg">+4.55%</span></span>
+        <!-- Duplicate for loop -->
+        <span class="announce-ticker-item"><span class="ats">BTC</span> $104,289 <span class="atg">+2.34%</span></span>
+        <span class="announce-ticker-item"><span class="ats">ETH</span> $3,847 <span class="atg">+5.12%</span></span>
+        <span class="announce-ticker-item"><span class="ats">SOL</span> $187.43 <span class="atg">+8.67%</span></span>
+        <span class="announce-ticker-item"><span class="ats">BNB</span> $612.88 <span class="atr">-0.43%</span></span>
+        <span class="announce-ticker-item"><span class="ats">XRP</span> $2.41 <span class="atg">+3.21%</span></span>
+        <span class="announce-ticker-item"><span class="ats">ADA</span> $0.892 <span class="atg">+1.87%</span></span>
+        <span class="announce-ticker-item"><span class="ats">AVAX</span> $42.16 <span class="atg">+4.55%</span></span>
+      </div>
+    </div>
+
+    <div class="announce-content">
+      <!-- Left: Announcement Copy -->
+      <div class="announce-left">
+        <span class="text-label" style="color: #F7931A; display: block; margin-bottom: 1rem; letter-spacing: 0.3em;">NEW_PROTOCOL // NEXUS_ALPHA</span>
+        <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 4.5vw, 3rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1.5rem; word-break: keep-all;">
+          AI CRYPTO<br/>
+          <span style="background: linear-gradient(135deg, #F7931A, #F3BA2F); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">AUTOMATION</span>
+        </h2>
+        <p style="color: rgba(240,253,249,0.5); line-height: 1.7; margin-bottom: 2rem;">Individual AI agents analyze markets with systematic precision, executing high-frequency trades to maximize alpha generation — powered by absolute engineering.</p>
+        <a href="crypto.html" class="btn-primary">
+          Explore NEXUS_α
+          <span class="material-symbols-outlined" style="font-size: 1rem;">rocket_launch</span>
+        </a>
+      </div>
+
+      <!-- Right: Crypto Payments Acceptance -->
+      <div class="announce-right">
+        <div>
+          <span class="text-label" style="color: var(--color-muted); display: block; margin-bottom: 1rem;">GLOBAL_CRYPTO_PAYMENTS</span>
+          <p style="color: rgba(240,253,249,0.45); font-size: 0.9rem; line-height: 1.7;">Rareware Studio accepts universal cryptocurrency payments globally. Borderless. Instant. Zero-friction.</p>
+        </div>
+        <div class="coin-row">
+          <div class="coin-tag"><span class="cs">₿</span> Bitcoin</div>
+          <div class="coin-tag"><span class="cs">Ξ</span> Ethereum</div>
+          <div class="coin-tag"><span class="cs">◎</span> Solana</div>
+          <div class="coin-tag"><span class="cs">₮</span> USDT</div>
+          <div class="coin-tag"><span class="cs">◈</span> BNB</div>
+          <div class="coin-tag"><span class="cs">✕</span> XRP</div>
+        </div>
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="material-symbols-outlined" style="color: #F7931A; font-size: 1rem;">lock</span>
+            <span class="text-label" style="color: var(--color-muted);">E2E_ENCRYPTED</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="material-symbols-outlined" style="color: #F7931A; font-size: 1rem;">public</span>
+            <span class="text-label" style="color: var(--color-muted);">190+_COUNTRIES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════ CTA ═══════════════ -->
   <section class="cta-section reveal">
     <div style="max-width: 600px;">
@@ -528,17 +781,17 @@
 
   <!-- ═══════════════ LUMINA DISCOVERY CTA ═══════════════ -->
   <section id="lumina-discovery" class="reveal" style="position: relative; overflow: hidden; padding: 12rem 3rem; text-align: center; border-top: 1px solid var(--color-muted); background: var(--color-void-black);">
-    <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(208, 0, 255, 0.15), transparent 60%); pointer-events: none;"></div>
+    <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(45, 212, 191, 0.15), transparent 60%); pointer-events: none;"></div>
     
     <span class="text-label" style="color: var(--color-primary); letter-spacing: 0.3em;">LUMINA_CORE // ALPHA_V1</span>
     
-    <h2 style="font-family: var(--font-heading); font-size: clamp(3rem, 10vw, 8rem); font-weight: 800; color: var(--color-optic-white); margin: 2rem 0; text-transform: uppercase; line-height: 0.85; letter-spacing: -0.04em;">
-      ENERGY IS <br/> <span style="background: linear-gradient(90deg, #fff, var(--color-primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 40px rgba(208,0,255,0.4);">FLUID.</span>
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: var(--color-optic-white); margin: 2rem 0; text-transform: uppercase; line-height: 1.1; letter-spacing: -0.04em;">
+      ENERGY IS<br/><span style="background: linear-gradient(90deg, #fff, var(--color-primary)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">FLUID.</span>
     </h2>
     
     <p style="font-size: 1.125rem; color: rgba(244,244,246,0.6); max-width: 600px; margin: 0 auto 4rem; line-height: 1.6;">A continuous state of becoming. Free from the rigid architecture of the grid, Lumina represents the chaotic beauty of pure light and unchecked motion.</p>
     
-    <a href="lumina.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 1rem; padding: 1.5rem 3rem; background: rgba(255,255,255,0.05); border: 1px solid var(--color-muted); color: var(--color-optic-white); font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.background='rgba(208,0,255,0.1)'; this.style.borderColor='var(--color-primary)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='var(--color-muted)';">
+    <a href="lumina.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 1rem; padding: 1.5rem 3rem; background: rgba(255,255,255,0.05); border: 1px solid var(--color-muted); color: var(--color-optic-white); font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.background='rgba(45,212,191,0.1)'; this.style.borderColor='var(--color-primary)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='var(--color-muted)';">
       EXPLORE THE NEXUS
       <span class="material-symbols-outlined" style="transition: transform 0.3s ease;">east</span>
     </a>
@@ -546,15 +799,15 @@
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="site-footer">
-    <div class="footer-left">©2024 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
+    <div class="footer-left">©2025 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
     <div class="footer-links">
-      <a href="#">PRIVACY_POLICY</a>
-      <a href="#">SYSTEM_STATUS</a>
-      <a href="#">ENCRYPTION_STANDARDS</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
     </div>
     <div class="footer-status">
       <span class="dot"></span>
-      SYSTEM_ENCRYPTED
+      Available for Projects
     </div>
   </footer>
 
@@ -596,7 +849,7 @@
         draw() {
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = '#D000FF';
+          ctx.fillStyle = 'rgba(45, 212, 191, 0.8)';
           ctx.fill();
         }
       }
@@ -626,7 +879,7 @@
             
             if (dist < 100) {
               ctx.beginPath();
-              ctx.strokeStyle = `rgba(208, 0, 255, ${1 - dist/100})`;
+              ctx.strokeStyle = `rgba(45, 212, 191, ${(1 - dist/100) * 0.6})`;
               ctx.lineWidth = 0.5;
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
@@ -655,6 +908,18 @@
       init();
       animate();
     }
+
+    // Parallax Scrolling
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroTitle = document.querySelector('.hero-title');
+      const heroSub = document.querySelector('.hero-sub');
+      const heroCtas = document.querySelector('.hero-ctas');
+
+      if (heroTitle) heroTitle.style.transform = `translateY(${scrolled * 0.2}px)`;
+      if (heroSub) heroSub.style.transform = `translateY(${scrolled * 0.1}px)`;
+      if (heroCtas) heroCtas.style.transform = `translateY(${scrolled * 0.05}px)`;
+    });
   </script>
 </body>
 </html>

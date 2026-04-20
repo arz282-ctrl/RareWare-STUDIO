@@ -3,392 +3,314 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CASE STUDY — PHANTOM PROTOCOL — RAREWARE STUDIO</title>
-  <meta name="description" content="Immersive case study: Phantom Protocol by RAREWARE STUDIO. Re-engineering visual language for high-security cryptographic exchanges."/>
+  <title>CASE_STUDY: PHANTOM_PROTOCOL — RAREWARE STUDIO</title>
+  <meta name="description" content="Detailed breakdown of PHANTOM_PROTOCOL. Discover how Rareware Studio engineered a high-security automation pipeline using n8n and advanced neural architectures."/>
+  
+  <!-- SEO & Social Meta -->
+  <meta property="og:title" content="CASE_STUDY: PHANTOM_PROTOCOL — RAREWARE STUDIO"/>
+  <meta property="og:description" content="Absolute performance engineering. See the n8n automation and custom UI/UX deployed for Aether Dynamics."/>
+  <meta property="og:image" content="https://rarewarestudio.space/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  
   <style>
+    /* ── CASE STUDY ELITE STYLING ───────────────────── */
     .cs-hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 90vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 8rem 3rem 3rem 3rem;
+      padding: 9rem 3rem 6rem;
       border-bottom: 1px solid var(--color-muted);
+      overflow: hidden;
     }
-    .cs-hero-bg {
+    .cs-hero-video {
       position: absolute;
       inset: 0;
       z-index: 0;
     }
-    .cs-hero-bg img {
+    .cs-hero-video img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.4;
-      filter: grayscale(100%);
+      filter: grayscale(100%) brightness(0.4);
     }
-    .cs-hero-bg .overlay {
+    .cs-hero-video::after {
+      content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.3) 40%, transparent 100%);
+      background: linear-gradient(to top, var(--color-bg) 0%, transparent 100%);
     }
+
     .cs-hero-content {
       position: relative;
       z-index: 10;
-      max-width: 1000px;
-    }
-    .cs-hero-content .case-label {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--color-primary);
-      letter-spacing: 0.5em;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
+      max-width: 1200px;
     }
     .cs-hero-content h1 {
       font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 10vw, 10rem);
+      font-size: clamp(2.5rem, 9vw, 5.5rem);
       font-weight: 800;
-      line-height: 0.8;
+      line-height: 1.1;
       letter-spacing: -0.05em;
       text-transform: uppercase;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
-    .cs-hero-content h1 .outline {
-      color: transparent;
-      -webkit-text-stroke: 1px white;
+    .cs-hero-content h1 .gradient {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .cs-meta {
+
+    /* Technical Breakout - n8n Visualizer */
+    .tech-breakout {
+      padding: 8rem 3rem;
+      background: rgba(4,13,18,0.5);
+      border-bottom: 1px solid var(--color-muted);
+    }
+    .n8n-flow-container {
+      max-width: 1200px;
+      margin: 4rem auto 0;
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .n8n-node-grid {
       display: flex;
-      flex-wrap: wrap;
-      gap: 3rem;
-      border-top: 1px solid var(--color-muted);
-      padding-top: 2rem;
-    }
-    .cs-meta-item .key {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--color-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.25rem;
-    }
-    .cs-meta-item .val {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-    .cs-meta-item .val.status {
-      color: var(--color-primary);
-      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
+      position: relative;
+      z-index: 2;
     }
-    .cs-meta-item .val.status .dot {
+    .n8n-node {
+      width: 120px;
+      padding: 1.5rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-muted);
+      text-align: center;
+      transition: border-color 0.3s ease;
+    }
+    .n8n-node:hover { border-color: var(--color-primary); }
+    .n8n-node .icon { font-size: 2rem; color: var(--color-primary); margin-bottom: 1rem; }
+    .n8n-node .label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-muted); text-transform: uppercase; }
+    
+    .flow-line {
+      flex-grow: 1;
+      height: 1px;
+      background: var(--color-muted);
+      position: relative;
+    }
+    .flow-pulse {
+      position: absolute;
       width: 6px;
       height: 6px;
       background: var(--color-primary);
-      animation: pulse 2s ease infinite;
+      border-radius: 50%;
+      top: -2px;
+      left: 0;
+      box-shadow: 0 0 10px var(--color-primary);
+      animation: flowStream 3s linear infinite;
+    }
+    @keyframes flowStream {
+      0% { left: 0; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
     }
 
-    /* Editorial Content */
-    .cs-editorial {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 3rem;
-      padding: 6rem 3rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .cs-editorial .sidebar {
-      grid-column: span 4;
-      position: sticky;
-      top: 6rem;
-      align-self: start;
-    }
-    .cs-editorial .sidebar .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--color-muted);
-      letter-spacing: 0.3em;
-      margin-bottom: 1rem;
-    }
-    .cs-editorial .sidebar h2 {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-    .cs-editorial .sidebar p {
-      color: rgba(244,244,246,0.5);
-      line-height: 1.6;
-      max-width: 350px;
-      margin-bottom: 2rem;
-    }
-    .cs-editorial .content {
-      grid-column: span 8;
-    }
-    .cs-editorial .content img {
-      width: 100%;
-      filter: grayscale(100%);
-      border: 1px solid var(--color-muted);
-      margin-bottom: 2rem;
-    }
-    .cs-editorial .content .img-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    /* Immersive break */
-    .cs-immersive {
-      position: relative;
-      width: 100%;
-      height: 80vh;
-      overflow: hidden;
-      border-top: 1px solid var(--color-muted);
+    /* Client Review Section */
+    .client-review {
+      padding: 8rem 3rem;
+      text-align: center;
       border-bottom: 1px solid var(--color-muted);
     }
-    .cs-immersive img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .cs-immersive .stat-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cs-immersive .stat-card {
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      padding: 4rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
-      max-width: 500px;
-    }
-    .cs-immersive .stat-card .label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
+    .quote-mark {
+      font-family: var(--font-heading);
+      font-size: 6rem;
       color: var(--color-primary);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .cs-immersive .stat-card .num {
-      font-family: var(--font-heading);
-      font-size: 5rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-    .cs-immersive .stat-card .sub {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      color: rgba(244,244,246,0.4);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    /* Next project grid */
-    .cs-next {
-      padding: 4rem 3rem;
-      border-top: 1px solid var(--color-muted);
-    }
-    .cs-next-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 3rem;
-    }
-    .cs-next-header h3 {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: -0.04em;
-    }
-    .cs-next-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-    }
-    .cs-next-item {
-      aspect-ratio: 1;
-      background: var(--color-surface);
-      border: 1px solid var(--color-muted);
-      overflow: hidden;
-      position: relative;
-    }
-    .cs-next-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%);
+      line-height: 0;
+      margin-bottom: 2rem;
+      display: block;
       opacity: 0.3;
-      transition: all 0.7s ease;
-      transform: scale(1.05);
     }
-    .cs-next-item:hover img {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .cs-next-item .item-info {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .cs-next-item:hover .item-info { opacity: 1; }
-    .cs-next-item .item-info .item-label {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--color-primary);
-    }
-    .cs-next-item .item-info .item-name {
+    .review-text {
       font-family: var(--font-heading);
-      font-size: 1.2rem;
+      font-size: clamp(1.5rem, 4vw, 2.8rem);
       font-weight: 700;
-      text-transform: uppercase;
+      color: var(--color-text);
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      line-height: 1.3;
+      font-style: italic;
     }
+    .review-author {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .author-name { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--color-text); text-transform: uppercase; }
+    .author-role { font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-muted); text-transform: uppercase; }
 
-    @media (max-width: 1024px) {
-      .cs-editorial { grid-template-columns: 1fr; }
-      .cs-editorial .sidebar { grid-column: 1; position: relative; top: 0; }
-      .cs-editorial .content { grid-column: 1; }
-    }
     @media (max-width: 768px) {
-      .cs-hero { padding: 2rem; }
-      .cs-editorial { padding: 3rem 1.5rem; }
-      .cs-editorial .content .img-grid { grid-template-columns: 1fr; }
-      .cs-next-grid { grid-template-columns: 1fr; }
-      .cs-next { padding: 3rem 1.5rem; }
-      .cs-immersive .stat-card { padding: 2rem; }
-      .cs-immersive .stat-card .num { font-size: 3rem; }
+      .n8n-node-grid { flex-direction: column; gap: 3rem; }
+      .flow-line { width: 1px; height: 50px; }
+      .flow-pulse { top: 0; left: -2px; animation: flowStreamV 3s linear infinite; }
+    }
+    @keyframes flowStreamV {
+      0% { top: 0; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
     }
   </style>
 </head>
-<body class="mode-lumina">
+<body class="grid-bg">
   <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
 
-  <!-- Nav -->
   <nav class="site-nav">
     <a href="index.html" class="logo">RAREWARE_STUDIO</a>
     <ul class="nav-links">
-      <li><a href="about.html">INTEL</a></li>
-      <li><a href="services.html">SYSTEMS</a></li>
-      <li><a href="work.html" class="active">WORK</a></li>
-      <li><a href="process.html">PROTOCOLS</a></li>
-      <li><a href="team.html">NODES</a></li>
-      <li><a href="contact.html">DECRYPT</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html" class="active">Work</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="crypto.html">AI Crypto</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
+      <div class="nav-status"><span class="dot"></span>ACTIVE_CASE_LINK</div>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </nav>
-  <div class="mobile-menu" id="mobile-menu"><a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a><a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a href="contact.html">DECRYPT</a></div>
 
   <!-- Hero -->
-  <section class="cs-hero" style="border-bottom-color: var(--color-lumina-muted);">
-    <div class="cs-hero-bg">
-      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVEmrZ5BcWpVQ8TZFSW183umdCDcnJZA2Ofv5J_S6Nu1xNr0y2uIaxnxbhSfMWulfrxquq7ZE6hykHbkaRZuV3gkINLtB4z3aaHkNgJDOKMsMTUuMhcX3D0eTTvrus5519x0xRJAsnhCrZqX6TMKstObB-wqDS7rH990rv7yKX0EeNzYMKXgs9LQ5-WVtPGx1bJF4UsPYJkJIzHfn3IGWEW5w-fVwHFZ__trHmR1kZ0_FFnVEKR40-5Vg0V5-wrtTyP9j6PIJz" alt="Dark glass texture"/>
-      <div class="overlay" style="background: linear-gradient(to top, var(--color-lumina-bg) 0%, rgba(255,255,255,0.3) 40%, transparent 100%);"></div>
+  <section class="cs-hero reveal">
+    <div class="cs-hero-video">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920&q=80" alt="Technical background"/>
     </div>
     <div class="cs-hero-content">
-      <div class="case-label">CASE_STUDY_001</div>
-      <h1 style="color: var(--color-lumina-text);">PHANTOM<br/><span class="outline" style="-webkit-text-stroke: 1px var(--color-lumina-text);">PROTOCOL</span></h1>
-      <div class="cs-meta" style="border-top-color: var(--color-lumina-muted);">
-        <div class="cs-meta-item"><div class="key" style="color: var(--color-lumina-muted);">Client</div><div class="val" style="color: var(--color-lumina-text);">AETHER_DYNAMICS</div></div>
-        <div class="cs-meta-item"><div class="key" style="color: var(--color-lumina-muted);">Year</div><div class="val" style="color: var(--color-lumina-text);">2024.V2</div></div>
-        <div class="cs-meta-item"><div class="key" style="color: var(--color-lumina-muted);">Role</div><div class="val" style="color: var(--color-lumina-text);">SYSTEM ARCHITECT</div></div>
-        <div class="cs-meta-item"><div class="key" style="color: var(--color-lumina-muted);">Status</div><div class="val status"><span class="dot"></span>ACTIVE_LINK</div></div>
+      <span class="text-label" style="display:block; margin-bottom: 2rem;">Case_Study // 001</span>
+      <h1 style="white-space: nowrap;">PHANTOM<br/><span class="gradient" style="white-space: nowrap;">PROTOCOL</span></h1>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; border-top: 1px solid var(--color-muted); padding-top: 3rem; margin-top: 4rem;">
+        <div>
+          <span class="text-label" style="font-size: 0.6rem; color: var(--color-muted);">CLIENT</span>
+          <div style="font-family: var(--font-mono); margin-top: 0.5rem;">AETHER_DYNAMICS</div>
+        </div>
+        <div>
+          <span class="text-label" style="font-size: 0.6rem; color: var(--color-muted);">SCOPE</span>
+          <div style="font-family: var(--font-mono); margin-top: 0.5rem;">AUTOMATION_ECOSYSTEM</div>
+        </div>
+        <div>
+          <span class="text-label" style="font-size: 0.6rem; color: var(--color-muted);">IMPACT</span>
+          <div style="font-family: var(--font-mono); margin-top: 0.5rem; color: var(--color-primary);">99.9%_UPTIME</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Editorial Block 01 -->
-  <section class="cs-editorial reveal">
-    <div class="sidebar">
-      <div class="section-label" style="color: var(--color-lumina-muted);">CONTEXT // 01</div>
-      <h2 style="color: var(--color-lumina-text);">The Quantum<br/>Framework</h2>
-      <p style="color: rgba(26,26,26,0.6);">Re-engineering the visual language for a high-security cryptographic exchange. The goal was to eliminate all cognitive friction while maintaining an atmosphere of absolute digital security.</p>
-      <a href="contact.html" class="btn-primary" style="padding: 1rem 2rem; font-size: 0.65rem;">INIT_DECRYPT</a>
-    </div>
-    <div class="content">
-      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHLYOa4rztyt1pZ44SiOG4L90xrw6Vc7lHfc2N9UO1EB2eBwtsH2BQNnn-DSghNnlwFQp8535Zb3-FvSocxsR6DjWLkgU-CZqbsg8rJydJn-m6Y0iC_zhmFLlx_emg__O3slINJWuHDdvSqPIKVBj64Z7OsvaG3k9GZt8nXqGrMMjj2uqYUwiBJxIo_zQbQUZ45EI7ppmIWW8r6T6eWBMq9hqNyiiYg3RdAOEwvZ5kj8utyQrfMqspWpfamGZtwFc-JtuYaJJy" alt="Tech interface" style="border-color: var(--color-lumina-muted);"/>
-      <div class="img-grid">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_r-ZNgLgT0tDqA39FoyZxaJY28CPE-kgRskFQjmguuosLI74Tnbachx2_t0ND1w5slAVQZ8k6PXpSpM1C0f_NE3UxZVBpaVw-PSN-HwWcKPEr_5qs8ijzMgyknKhDmSXg6dkmh5FBXhdm4vxO6jukIdagsVoWwNnEHnJxYtrviXwezIb6d9nXX5fONRDJurg7_2C_kuLSxUJ8AyBEITwCICv-AsAHDxOc9gq4eLddrOE5Pxeb0kKLMWvlAzrux8U6UPJ9X4h_" alt="Data visualization" style="border-color: var(--color-lumina-muted);"/>
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr7i2F0HH9QsNhVmnoe34rY5uuzjFEaMKA7GaGubAmPKjs2rWJUnGCn2zCMinzjWJG9gjV9qVyOSVw93cbLnPA8Gs3L7x8wamihJBnZ837zvivfDXkO6jOs1AUli1ll4NNQS2CYj2juEeiffeQmAioNIIsBgw0tVWzew4oAOQeFKNkSSne9vrlvg6AjvwPraXJs-iGadXAWD1HNOrXfcr60AZJbnLpam3KcxJdO5i9k_JE1QBuQjpjg-bkowOpt-X498Qm89mO" alt="Processor chip" style="border-color: var(--color-lumina-muted);"/>
+  <!-- Editorial Section -->
+  <section style="padding: 10rem 3rem; max-width: 1400px; margin: 0 auto;" class="reveal">
+    <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 4rem;">
+      <div style="grid-column: span 5;">
+        <span class="text-label" style="color: var(--color-primary); display:block; margin-bottom: 2rem;">THE_CHALLENGE</span>
+        <h2 style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; line-height: 1; text-transform: uppercase;">Fragmented<br/>Complexity.</h2>
+      </div>
+      <div style="grid-column: span 7;">
+        <p style="font-size: 1.25rem; line-height: 1.8; color: rgba(240,253,249,0.6); font-weight: 300;">
+          Aether Dynamics was struggling with a disparate web of manual touchpoints and legacy systems. Data was trapped in silos, latency was high, and visual consistency was non-existent. They needed a high-density digital infrastructure that could move as fast as their internal logic.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Immersive Break -->
-  <section class="cs-immersive">
-    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhASz1P3VhD4MPbamw3p0BQsN8YpEn91meXkpf_bp7kS6BBgaxDy-l7rgCXncJs0hoQ7NpWGwkVYAvx0JShirsysocXqh_fOKPAR1ZwfTznbD0j-Mk_GPlSCFQIwG17Aq24Km-K9plp6NHmjXJIMbK0iHHqf8Vesg524WEc5yFW0fRqUhmuicOGeg1ULqz3LOwlTqPg8Ro7ma0vc9AmmPsVNzSKuYRMD89x-etHRdHYWrXa7qisJAQIgvAQxpPND1GZtKG-9BE" alt="Gradient background"/>
-    <div class="stat-overlay">
-      <div class="stat-card">
-        <div class="label">Performance Metric</div>
-        <div class="num">99.9%</div>
-        <div class="sub">Uptime // Security Persistence</div>
+  <!-- n8n Technical Breakout -->
+  <section class="tech-breakout reveal">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <span class="text-label" style="color: var(--color-primary); display:block; margin-bottom: 1.5rem;">The_Engine // n8n_Automation</span>
+      <h2 style="font-family: var(--font-heading); font-size: 3rem; font-weight: 800; text-transform: uppercase;">Zero-Touch<br/>Pipeline</h2>
+      <p style="color: var(--color-muted); margin-top: 1.5rem;">
+        We deployed a private n8n instance orchestrated via custom Typescript nodes to bridge the gap between their CRM, Blockchain ledger, and Client front-end.
+      </p>
+    </div>
+
+    <!-- n8n Interactive Visualizer -->
+    <div class="n8n-flow-container">
+      <div class="n8n-node-grid">
+        <div class="n8n-node">
+          <span class="material-symbols-outlined icon">webhook</span>
+          <div class="label">Trigger</div>
+        </div>
+        <div class="flow-line"><div class="flow-pulse"></div></div>
+        <div class="n8n-node">
+          <span class="material-symbols-outlined icon">hub</span>
+          <div class="label">AI_Routing</div>
+        </div>
+        <div class="flow-line"><div class="flow-pulse" style="animation-delay: 1.5s;"></div></div>
+        <div class="n8n-node">
+          <span class="material-symbols-outlined icon">database</span>
+          <div class="label">Ledger_Sync</div>
+        </div>
+        <div class="flow-line"><div class="flow-pulse" style="animation-delay: 0.7s;"></div></div>
+        <div class="n8n-node">
+          <span class="material-symbols-outlined icon">security</span>
+          <div class="label">Deploy</div>
+        </div>
+      </div>
+      <div style="margin-top: 4rem; display: flex; justify-content: center; gap: 4rem;">
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">0.8s</div>
+          <div class="text-label" style="font-size: 0.5rem; color: var(--color-muted);">AVG_LATENCY</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">14.2k</div>
+          <div class="text-label" style="font-size: 0.5rem; color: var(--color-muted);">DAILY_HOOKS</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Editorial Block 02 -->
-  <section class="cs-editorial reveal" style="padding-top: 4rem;">
-    <div class="content" style="grid-column: span 8;">
-      <div style="background: var(--color-surface); padding: 2px; border: 1px solid var(--color-muted);">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnYDYB5VQfHwgfVeN9kD1Dbc6X_qyhsUYrbLtNht0jmd9CNBnNvPDo6sCx6Wh6at5RpD_qO5M3QkAG1gNz4kiLeWgxzc7qxcdNa8e21PrHJ-Ce88_JnkpIJxlPzN-Hft19JdNMjVBWN_eRSZtcBOv8TNQSMl0wnxg0X6Y7wMIYZcYw3QuXm9tVHFOZwAceM4GwCrhLCK44PMFe-TOqsS6_2JoDwaq9jvqf56E8SxQqxBxYq62-npxmf5ogAmHpqUDkJVJKPDiC" alt="Brutalist architecture" style="filter: grayscale(100%) brightness(0.5); margin-bottom: 0;"/>
-      </div>
-    </div>
-    <div class="sidebar" style="grid-column: span 4; text-align: right;">
-      <div class="section-label">EXECUTION // 02</div>
-      <h2>Monolithic<br/>Structure</h2>
-      <p style="margin-left: auto;">By leveraging a zero-radius philosophy, we achieved a visual weight that feels permanent. Every interaction is mapped to a 1px grid, ensuring total alignment across all device states.</p>
+  <!-- Client Testimonial -->
+  <section class="client-review reveal">
+    <span class="quote-mark">“</span>
+    <blockquote class="review-text">
+       Rareware Studio didn't just build a website; they engineered a performance weapon. Our throughput increased by 400% within the first quarter. Permanent dominance is now our baseline. 
+    </blockquote>
+    <div class="review-author">
+      <div class="author-name">MARCUS_VOSS</div>
+      <div class="author-role">Director of Operations // AETHER_DYNAMICS</div>
     </div>
   </section>
 
-  <!-- Next Projects -->
-  <section class="cs-next reveal">
-    <div class="cs-next-header">
-      <h3>NEXT_REF</h3>
-      <a href="work.html" style="display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.1em;">
-        VIEW_ALL_WORK <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
-      </a>
-    </div>
-    <div class="cs-next-grid">
-      <a href="case-study.html" class="cs-next-item" style="text-decoration: none; color: inherit;">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB90EBH8mtEi1JWD9LQkfUeXI7KK92huEjXdzNRLuU7IW8wDV2_NvhdsZ2PhjNqo0z5RxIOyxi6Oxi-hcqQqfJdrK7_cky8jYRvhOw7kegxO6kxNeT7IJXlGg3J9dq1cFomea9WxXGXMsscKJT2M1M7LN-3zwzvnMOyphr8_PdY2D1Fi6fod04gXNCtQAQYDq8uG7qkmPhyw1BHpFSxv0iRqmU-xsBePP6-2deg0DF9Nm-Y-OfCbfiWJTmo0wDdjq-Lc-b0nYWj" alt="Cyber Dyne"/>
-        <div class="item-info"><div class="item-label">PROJECT_002</div><div class="item-name">CYBER_DYNE</div></div>
-      </a>
-      <a href="case-study.html" class="cs-next-item" style="text-decoration: none; color: inherit;">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTpgyHkL8utsW_ABQ2gqJoTZtBv_RIHRKtA7B-JrCl7PEq6FsH_3ACnUMxMGzy7xJZyfGuqd1MFRT_thXeW-t0pHTnaeQu6TLha3C96I-j-Jp0MtiELzqUJg4rBuJ7nTolyOkH1Ecb63DfYUlgYSXGqQGBbW9SnaTGFmHmWH49Q1R5EVBrdC9EF3btsiYpfRL0VBfnqdCnbwWdbALxEB2TW-uOfVBbaR2xL9C1pVcje8jWxLvhagIvS6d9hqKoeqy8QEmb7Q67" alt="Void Systems"/>
-        <div class="item-info"><div class="item-label">PROJECT_003</div><div class="item-name">VOID_SYSTEMS</div></div>
-      </a>
-      <a href="case-study.html" class="cs-next-item" style="text-decoration: none; color: inherit;">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFj3AE-FNKHW8DF3bJ7S7A_cW9sxyx7DA7IgGdH-yRYBI8R1l61tbbpyZKO8Nj5qSpWxZn8NAovUyBEOfbl13W8fTBXXxwc3rB0xXRv0MJCYbmESLOreyMISFRnuFs6diuv1VycEQHhfz9UmfFZBbhQChuWOzuvdjd7l08E8SOc-DmW1-Q8BKmIsyhxcDLDFsK5HE4JpJs2LrZt8xR77egeDnZL31bakVg1YBCtUJg4exs8QAtfZiDt_czaiyy60mvY3SBEpPZ" alt="Nova Core"/>
-        <div class="item-info"><div class="item-label">PROJECT_004</div><div class="item-name">NOVA_CORE</div></div>
-      </a>
-    </div>
+  <!-- Call to Action -->
+  <section style="padding: 10rem 3rem; text-align: center; background: var(--color-bg);" class="reveal">
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 800; text-transform: uppercase; line-height: 0.9; margin-bottom: 3rem;">
+      Ready to<br/>Engineer Your<br/><span style="color: var(--color-primary);">Advantage?</span>
+    </h2>
+    <a href="contact.html" class="btn-primary" style="margin: 0 auto; display: inline-flex;">
+      Consult With ARCHITECTS
+      <span class="material-symbols-outlined" style="margin-left: 0.5rem;">arrow_forward</span>
+    </a>
   </section>
 
   <footer class="site-footer">
-    <div class="footer-left">©2024 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
-    <div class="footer-links"><a href="#">PRIVACY_POLICY</a><a href="#">SYSTEM_STATUS</a><a href="#">ENCRYPTION_STANDARDS</a></div>
-    <div class="footer-status"><span class="dot"></span>SYSTEM_ENCRYPTED</div>
+    <div class="footer-left">©2025 RAREWARE_STUDIO. ALL_SYSTEMS_OPERATIONAL.</div>
+    <div class="footer-links">
+      <a href="work.html">WORK</a>
+      <a href="services.html">SYSTEMS</a>
+      <a href="contact.html">DECRYPT</a>
+    </div>
+    <div class="footer-status"><span class="dot"></span>ENCRYPTED</div>
   </footer>
 
   <script src="main.js"></script>

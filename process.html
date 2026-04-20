@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <style>
     .process-header {
       padding: 10rem 3rem 4rem;
@@ -72,6 +73,12 @@
       box-shadow: 0 0 15px var(--color-primary);
       opacity: 0.3;
     }
+    @media (max-width: 768px) {
+      .process-grid { padding: 0 1.5rem; }
+      .process-grid::before { left: 1.5rem; }
+      .process-phase { padding: 2rem 1.5rem 2rem 3rem; }
+      .process-phase::before { left: -5px; }
+    }
     .process-phase {
       padding: 3rem 3rem 3rem 5rem;
       background: rgba(5,5,7,0.7);
@@ -86,8 +93,7 @@
     .process-phase::before {
       content: '';
       position: absolute;
-      left: -5px; top: 50%;
-      transform: translateY(-50%);
+      left: -5px; top: 2.5rem;
       width: 10px; height: 10px;
       background: var(--color-bg);
       border: 2px solid var(--color-primary);
@@ -229,32 +235,32 @@
   <nav class="site-nav">
     <a href="index.html" class="logo">RAREWARE_STUDIO</a>
     <ul class="nav-links">
-      <li><a href="about.html">INTEL</a></li>
-      <li><a href="services.html">SYSTEMS</a></li>
-      <li><a href="work.html">WORK</a></li>
-      <li><a href="process.html" class="active">PROTOCOLS</a></li>
-      <li><a href="team.html">NODES</a></li>
-      <li><a href="contact.html">DECRYPT</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="process.html" class="active">Process</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="crypto.html">AI Crypto</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
+      <div class="nav-status"><span class="dot"></span>Available for Projects</div>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </nav>
-  <div class="mobile-menu" id="mobile-menu"><a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a><a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a href="contact.html">DECRYPT</a></div>
+  <div class="mobile-menu" id="mobile-menu"><a href="index.html" onclick="toggleMenu()">Home</a><a href="about.html" onclick="toggleMenu()">About</a><a href="services.html" onclick="toggleMenu()">Services</a><a href="work.html" onclick="toggleMenu()">Work</a><a href="process.html" onclick="toggleMenu()">Process</a><a href="team.html" onclick="toggleMenu()">Team</a><a href="crypto.html" onclick="toggleMenu()">AI Crypto</a><a href="contact.html" onclick="toggleMenu()">Contact</a></div>
 
   <header class="process-header reveal">
     <div class="tag">
-      <span class="text-label" style="color: var(--color-muted);">SYSTEM_VERSION // PROTOCOL_MAPPING</span>
-      <span class="text-label" style="color: var(--color-primary);">UPTIME: 99.998%</span>
+      <span class="text-label" style="color: var(--color-primary);">How We Work</span>
     </div>
-    <h1>PROTOCOLS</h1>
+    <h1>Our Process</h1>
     <div class="sub">
-      <p>A rigorous architectural framework designed to transform raw variables into highly-optimized digital experiences. Our process is a non-linear loop of iteration and technical precision.</p>
+      <p>Four clear phases from first conversation to live deployment. No surprises, no scope creep — just a structured path to a finished product that works.</p>
       <div class="sub-meta">
-        <span>COORDINATES: 34.0522° N, 118.2437° W</span>
-        <span>CORE_STATUS: OPERATIONAL</span>
-        <span>ENCRYPTION: AES-256</span>
+        <span>Avg. Project Duration: 2–6 Weeks</span>
+        <span>Delivery Rate: 100% On-Time</span>
+        <span>Post-Launch Support: Included</span>
       </div>
     </div>
   </header>
@@ -263,13 +269,13 @@
     <section class="process-phase reveal">
       <span class="ref">REF: P_01_INGEST</span>
       <div class="step-num">[01]</div>
-      <h2>INGESTION</h2>
-      <div class="stage">STAGE: DISCOVERY</div>
-      <p class="desc">Data harvesting and strategic mapping. We intercept user signals, market stressors, and brand DNA to construct a comprehensive project telemetry.</p>
+      <h2>Discovery</h2>
+      <div class="stage">PHASE 01 — Understanding Your Goals</div>
+      <p class="desc">We start by listening. A deep-dive into your business, your users, and what success looks like. We map out the full scope before a single line of code is written.</p>
       <ul class="deliverables">
-        <li><span class="bullet"></span> STAKEHOLDER_TELEMETRY</li>
-        <li><span class="bullet"></span> MARKET_VULNERABILITY_SCAN</li>
-        <li><span class="bullet"></span> USER_BEHAVIOR_LOGGING</li>
+        <li><span class="bullet"></span> Stakeholder interviews &amp; requirements gathering</li>
+        <li><span class="bullet"></span> Competitive research &amp; market analysis</li>
+        <li><span class="bullet"></span> Technical scope &amp; project roadmap</li>
       </ul>
       <div class="phase-footer">
         <div><div class="label">CORE_LOAD</div><div class="value">OPTIMIZED</div></div>
@@ -280,13 +286,13 @@
     <section class="process-phase reveal">
       <span class="ref">REF: P_02_ARCH</span>
       <div class="step-num">[02]</div>
-      <h2>ARCHITECTURE</h2>
-      <div class="stage">STAGE: DESIGN</div>
-      <p class="desc">Systemic blueprinting and visual engineering. We construct high-fidelity schematics that define spatial logic, user flow, and the visual frequency of the interface.</p>
+      <h2>Design</h2>
+      <div class="stage">PHASE 02 — Visual &amp; System Architecture</div>
+      <p class="desc">We design the full user experience before building. Wireframes, UI mockups, and system architecture diagrams — all reviewed and approved by you before development starts.</p>
       <ul class="deliverables">
-        <li><span class="bullet"></span> GRID_STRUCTURALISM</li>
-        <li><span class="bullet"></span> KINETIC_UI_BLUEPRINTING</li>
-        <li><span class="bullet"></span> VISUAL_VOID_MAPPING</li>
+        <li><span class="bullet"></span> Wireframes &amp; user flow diagrams</li>
+        <li><span class="bullet"></span> High-fidelity UI design (Figma)</li>
+        <li><span class="bullet"></span> System architecture &amp; tech stack plan</li>
       </ul>
       <div class="phase-footer">
         <div><div class="label">RENDER_MODE</div><div class="value">PHYSICAL_BASED</div></div>
@@ -297,13 +303,13 @@
     <section class="process-phase reveal">
       <span class="ref">REF: P_03_EXEC</span>
       <div class="step-num">[03]</div>
-      <h2>EXECUTION</h2>
-      <div class="stage">STAGE: DEVELOPMENT</div>
-      <p class="desc">Compiling designs into performant infrastructure. We utilize low-latency frameworks and modular codebases to ensure maximum operational efficiency.</p>
+      <h2>Build</h2>
+      <div class="stage">PHASE 03 — Development &amp; Integration</div>
+      <p class="desc">Clean, production-grade code. We build with modern frameworks (Next.js, React, Python, n8n) and integrate all third-party services — APIs, payment gateways, AI models, and more.</p>
       <ul class="deliverables">
-        <li><span class="bullet"></span> NEXT_GEN_COMPILATION</li>
-        <li><span class="bullet"></span> NEURAL_API_INTEGRATION</li>
-        <li><span class="bullet"></span> PERFORMANCE_HARDENING</li>
+        <li><span class="bullet"></span> Full-stack development &amp; API integration</li>
+        <li><span class="bullet"></span> AI model &amp; automation setup</li>
+        <li><span class="bullet"></span> Performance optimization &amp; testing</li>
       </ul>
       <div class="phase-footer">
         <div><div class="label">COMPILE_TIME</div><div class="value">0.042ms</div></div>
@@ -314,13 +320,13 @@
     <section class="process-phase reveal">
       <span class="ref">REF: P_04_DEPL</span>
       <div class="step-num">[04]</div>
-      <h2>DEPLOYMENT</h2>
-      <div class="stage">STAGE: LAUNCH</div>
-      <p class="desc">System initialization and global synchronization. We move from staging environments to the live obsidian void, monitoring performance metrics in real-time.</p>
+      <h2>Launch</h2>
+      <div class="stage">PHASE 04 — Deployment &amp; Support</div>
+      <p class="desc">We deploy to Vercel, Netlify, or your preferred host — with zero downtime. After launch, we monitor performance, fix any issues, and provide 30 days of post-launch support.</p>
       <ul class="deliverables">
-        <li><span class="bullet"></span> EDGE_NETWORK_PROPAGATION</li>
-        <li><span class="bullet"></span> LIVE_SYSTEM_TELEMETRY</li>
-        <li><span class="bullet"></span> POST_LAUNCH_OPTIMIZATION</li>
+        <li><span class="bullet"></span> Production deployment (Vercel / Netlify / custom)</li>
+        <li><span class="bullet"></span> Live performance monitoring</li>
+        <li><span class="bullet"></span> 30-day post-launch support included</li>
       </ul>
       <div class="phase-footer">
         <div><div class="label">NETWORK_STATUS</div><div class="value">LIVE</div></div>
@@ -335,21 +341,21 @@
       <div class="bracket-br"></div>
       <div class="process-cta-content">
         <div>
-          <h3>INITIATE_PROTOCOL</h3>
-          <p>Ready to deploy your next objective? RareWare Studio is currently accepting high-priority directives.</p>
+          <h3>Ready to Start?</h3>
+          <p>We're currently accepting new projects. Tell us what you're building and we'll get back to you within 24 hours.</p>
         </div>
         <div class="process-cta-btns">
-          <a href="contact.html" class="btn-primary">START_SEQUENCE</a>
-          <a href="work.html" class="btn-outline">VIEW_MANUAL</a>
+          <a href="contact.html" class="btn-primary">Start a Project</a>
+          <a href="work.html" class="btn-outline">See Our Work</a>
         </div>
       </div>
     </div>
   </div>
 
   <footer class="site-footer">
-    <div class="footer-left">©2024 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
-    <div class="footer-links"><a href="#">PRIVACY_POLICY</a><a href="#">SYSTEM_STATUS</a><a href="#">ENCRYPTION_STANDARDS</a></div>
-    <div class="footer-status"><span class="dot"></span>SYSTEM_ENCRYPTED</div>
+    <div class="footer-left">©2025 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
+    <div class="footer-links"><a href="contact.html">Contact</a><a href="services.html">Services</a><a href="work.html">Work</a></div>
+    <div class="footer-status"><span class="dot"></span>Available for Projects</div>
   </footer>
 
   <script src="main.js"></script>

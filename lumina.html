@@ -1,149 +1,312 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUMINA_CORE — RAREWARE STUDIO</title>
+  <meta name="description" content="LUMINA_CORE is the systemic archive and experimental dimension of Rareware Studio. High-density digital architectures and absolute performance."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <style>
+    /* ── NEXUS_CORE — Architectural Grid ───────────────────── */
+    :root {
+      --color-hairline: rgba(45, 212, 191, 0.1);
+    }
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Dual Polarity - Lumina Core</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "primary": "#f93706",
-          "background-light": "#f8f6f5",
-          "background-dark": "#23130f",
-        },
-        fontFamily: {
-          "display": ["Space Grotesk", "sans-serif"],
-          "mono": ["Space Mono", "monospace"]
-        },
-        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
-      },
-    },
-  }
-</script>
-<style>
-  body {
-    font-family: 'Space Grotesk', sans-serif;
-  }
-  .glass-panel {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  .flare {
-    background: radial-gradient(circle, rgba(249, 55, 6, 0.15) 0%, rgba(249, 55, 6, 0) 70%);
-  }
-  /* Parallax utility classes */
-  .parallax-slow { transform: translateY(0px); transition: transform 0.1s ease-out; }
-  .parallax-fast { transform: translateY(0px); transition: transform 0.1s ease-out; }
-</style>
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+    }
+
+    .nexus-layout {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Hairline borders */
+    .border-h { border-right: 1px solid var(--color-hairline); }
+    .border-v { border-bottom: 1px solid var(--color-hairline); }
+
+    .nexus-header {
+      grid-column: span 2;
+      padding: 6rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 300px;
+      position: relative;
+    }
+    .nexus-header h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .nexus-header h1 .gradient {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nexus-content-left {
+      grid-column: span 2;
+      padding: 3rem;
+      border-right: 1px solid var(--color-hairline);
+      position: relative;
+    }
+
+    .nexus-directory {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .directory-item {
+      display: flex;
+      align-items: center;
+      padding: 2.5rem 3rem;
+      border-bottom: 1px solid var(--color-hairline);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      color: inherit;
+    }
+    .directory-item:hover {
+      background: rgba(45,212,191,0.03);
+      padding-left: 4rem;
+    }
+    .directory-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--color-primary);
+      width: 4rem;
+      opacity: 0.6;
+    }
+    .directory-info {
+      flex-grow: 1;
+    }
+    .directory-title {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+    .directory-desc {
+      font-size: 0.8rem;
+      color: rgba(240,253,249,0.4);
+      margin-top: 0.25rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .directory-arrow {
+      color: var(--color-primary);
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
+    }
+    .directory-item:hover .directory-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ETH Section Integration */
+    .eth-nexus-visual {
+      grid-column: span 4;
+      min-height: 600px;
+      border-top: 1px solid var(--color-hairline);
+      border-bottom: 1px solid var(--color-hairline);
+      display: flex;
+      overflow: hidden;
+    }
+    .eth-nexus-text {
+      flex: 1;
+      padding: 6rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--color-surface);
+      border-right: 1px solid var(--color-hairline);
+    }
+    .eth-nexus-img {
+      flex: 1.5;
+      position: relative;
+    }
+    .eth-nexus-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.2) brightness(0.7);
+    }
+
+    /* Footer */
+    .nexus-footer {
+      grid-column: span 4;
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 0.5rem;
+      box-shadow: 0 0 10px var(--color-primary);
+      animation: pulse 2s infinite;
+    }
+
+    @media (max-width: 1024px) {
+      .nexus-layout { grid-template-columns: repeat(2, 1fr); }
+      .nexus-header { grid-column: span 2; }
+      .nexus-content-left { display: none; }
+      .nexus-directory { grid-column: span 2; }
+      .eth-nexus-visual { flex-direction: column; }
+      .eth-nexus-text { padding: 4rem 2rem; border-right: none; border-bottom: 1px solid var(--color-hairline); }
+      .eth-nexus-img { min-height: 350px; }
+    }
+    @media (max-width: 768px) {
+      .nexus-layout { grid-template-columns: 1fr; }
+      .nexus-header, .nexus-directory, .eth-nexus-visual, .nexus-footer { grid-column: span 1; }
+      .directory-item { padding: 2rem; }
+    }
+  </style>
 </head>
-<body class="bg-[#000000] text-[#F4F4F4] min-h-[2048px] overflow-x-hidden relative">
-<!-- Background Ambient Flares -->
-<div class="fixed top-[-20%] left-[-10%] w-[80vw] h-[80vw] flare rounded-full mix-blend-screen pointer-events-none z-0"></div>
-<div class="fixed bottom-[-30%] right-[-20%] w-[60vw] h-[60vw] flare rounded-full mix-blend-screen pointer-events-none z-0 opacity-70"></div>
-<!-- Included Shared Component: TopNavBar (Since this is a destination/browsing screen) -->
-<div class="fixed top-0 left-0 w-full z-50">
-<div class="relative flex h-auto w-full flex-col bg-transparent group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-<div class="layout-container flex h-full grow flex-col">
-<div class="px-40 flex flex-1 justify-center py-5">
-<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-white/10 px-10 py-3 glass-panel rounded-sm">
-<div class="flex items-center gap-4 text-white">
-<div class="size-4 text-primary">
-<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_6_330)">
-<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
-</g>
-<defs>
-<clippath id="clip0_6_330"><rect fill="white" height="48" width="48"></rect></clippath>
-</defs>
-</svg>
-</div>
-<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Dual Polarity</h2>
-</div>
-<div class="flex flex-1 justify-end gap-8">
-<div class="flex items-center gap-9">
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium leading-normal tracking-[0.1em]" href="index.html">RETURN</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium leading-normal tracking-[0.1em]" href="#">NEXUS</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium leading-normal tracking-[0.1em]" href="#">SYNTHESIS</a>
-</div>
-</div>
-</header>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Main Content Area -->
-<main class="relative z-10 pt-48 px-12 md:px-24 max-w-[1440px] mx-auto">
-<!-- Hero Section -->
-<div class="mb-32 relative z-20">
-<h1 class="text-[84px] font-bold leading-[0.9] tracking-[-0.02em] text-white max-w-4xl mix-blend-difference z-30 relative">
-      ENERGY <br/> IS FLUID
-    </h1>
-<div class="w-24 h-1 bg-primary mt-12 mb-8"></div>
-<p class="text-xl text-white/70 max-w-xl font-light tracking-wide leading-relaxed">
-      A continuous state of becoming. Free from the rigid architecture of the grid, Lumina represents the chaotic beauty of pure light and unchecked motion.
-    </p>
-</div>
-<!-- Floating Glass Panels Layout -->
-<div class="relative w-full h-[1200px]">
-<!-- Panel 1 -->
-<div class="absolute top-0 right-0 w-full max-w-[600px] glass-panel rounded-sm p-12 shadow-[0_8px_32px_rgba(0,0,0,0.4)] parallax-slow z-20 hover:border-primary/30 transition-colors duration-500">
-<div class="flex items-start gap-6">
-<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">water_drop</span>
-<div>
-<h3 class="text-2xl font-semibold mb-4 text-white tracking-wide">STATELESS FORM</h3>
-<p class="text-white/60 leading-relaxed font-light mb-6">
-            Energy adapts to its container. It seeks the path of least resistance, flowing through the digital space unburdened by rigid structure or absolute coordinates.
-          </p>
-<img alt="abstract flowing liquid light ribbons in orange and dark tones" class="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700 opacity-80" data-alt="abstract flowing liquid light ribbons in orange and dark tones with deep shadows and ethereal glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjlxAE2Eudfiss4fWHw_pf43nmA_qWNclkcC6IZGgPARMNhDLG8QYW2C_JfqZRiFst1oxR1gHHe_ZPHBUnMQXpdwAnEVeRT7dKjlqDLObNsr2ZMSaZrZeFvNO2ZVA_J0qQYq-s8aGDYFeudJSA2d7B8fSmYqu0DyAX92b0h5uMjaWSyPdfpc6sXLaEjhtohQxDt09TSyqjjoMuyKBwEXiksfmb_--EZwLvREhJlgzL82G5T_oUENqy2B5BJUGrr9E3bEjYdvqz"/>
-</div>
-</div>
-</div>
-<!-- Panel 2 -->
-<div class="absolute top-[400px] left-0 w-full max-w-[500px] glass-panel rounded-sm p-10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] parallax-fast z-30 hover:border-primary/30 transition-colors duration-500">
-<span class="text-primary font-mono text-xs tracking-[0.2em] uppercase mb-4 block">Observation 02</span>
-<h3 class="text-3xl font-bold mb-6 text-white tracking-tight">KINETIC POTENTIAL</h3>
-<div class="h-[1px] w-full bg-white/10 mb-6"></div>
-<p class="text-white/70 leading-relaxed font-light">
-        The absence of grid lines does not imply the absence of order. It is an order defined by relationships, gravity, and momentum rather than strict geometry.
+<body>
+  <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
+
+  <div class="nexus-layout">
+    <!-- Header -->
+    <header class="nexus-header border-h border-v reveal">
+      <div class="absolute top-12 left-12 font-mono text-[10px] tracking-[0.3em] text-primary">SYSTEM_STATUS: ACTIVE</div>
+      <span class="text-label" style="display:block; margin-bottom: 1rem;">Protocol_Archival</span>
+      <h1 style="white-space: nowrap;">LUMINA<br/><span class="gradient" style="white-space: nowrap;">ARTIFACTS</span></h1>
+    </header>
+
+    <div class="hidden lg:flex nexus-header border-v reveal" style="padding-bottom: 0;">
+      <p style="color: rgba(240,253,249,0.5); max-width: 400px; margin-bottom: 6rem; line-height: 1.8; font-size: 0.95rem;">
+        The Lumina Core serves as the high-density directory for Rareware Studio's experimental prototypes, neural architectures, and kinetic manifestations.
       </p>
-<button class="mt-8 px-6 py-3 border border-white/20 hover:border-primary text-white/80 hover:text-primary transition-all duration-300 font-mono text-xs uppercase tracking-[0.15em] flex items-center gap-3 group rounded-sm">
-        Explore Dynamics
-        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-</div>
-<!-- Panel 3 -->
-<div class="absolute top-[800px] right-[10%] w-full max-w-[700px] glass-panel rounded-sm p-16 shadow-[0_8px_32px_rgba(0,0,0,0.4)] parallax-slow z-10 hover:border-primary/30 transition-colors duration-500">
-<div class="grid grid-cols-2 gap-12 items-center">
-<div>
-<h3 class="text-xl font-medium mb-4 text-white uppercase tracking-widest">Illumination</h3>
-<p class="text-white/50 text-sm leading-loose">
-            Light defines space entirely differently than lines do. It reveals texture, creates depth through shadow, and guides focus organically.
-          </p>
-</div>
-<div class="relative w-full aspect-square rounded-full overflow-hidden border border-white/5">
-<img alt="abstract macro photography of dark textured surface with sharp orange light streak" class="w-full h-full object-cover mix-blend-luminosity opacity-60" data-alt="abstract macro photography of dark textured surface with sharp neon orange light streak creating deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF6xXG8OdeE4c37qH_qTjWq-qqFrPumqEadVmBizCEYWiujuoAupGDaqr7IFTRDWGJGjfBTXt83Tx323N2NVaiUO8MkUWGkoGAfyunJ7icSDBxmE7ZJKWxeKGfbVfP253ohyLS-66y2ewO3A5o5zNmr_pku5rx2NYNXsfqMMxciTT4hXoBRlrDBlnfV6wj7O0hYis9JZ8Pw5Pbztr7Vzcxn9poGChLLGoaqhDefKLmlbwG1Fh2sEQiOUvlFBzkOIYwS21PYD44"/>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- Fixed Bottom Right Navigation (Specific to design requirements) -->
-<div class="fixed bottom-12 right-12 z-50 flex flex-col items-end gap-2 mix-blend-difference font-mono text-[10px] tracking-[0.2em] uppercase text-white/40">
-<div class="flex items-center gap-4 hover:text-primary cursor-pointer transition-colors">
-<span>Scroll to Discover</span>
-<div class="w-8 h-[1px] bg-current"></div>
-</div>
-<div class="mt-4 opacity-50">Lumina Core v1.0</div>
-</div>
-</body></html>
+    </div>
+
+    <!-- Content Left (Structural) -->
+    <div class="nexus-content-left reveal">
+      <div class="absolute top-6 left-6 text-[11px] font-mono tracking-[0.2em] text-muted uppercase">Structural_Overview</div>
+      <div style="margin-top: 4rem;">
+        <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; display: block; margin-bottom: 1.5rem;">SYS_LOGS</span>
+        <div style="font-family: var(--font-mono); font-size: 0.7rem; line-height: 2; color: var(--color-muted);">
+          &gt; INITIATING NEURAL_FLOW... [OK]<br/>
+          &gt; ANALYZING MEV_DATA... [OK]<br/>
+          &gt; DEPLOYING NEXUS_ROUTING... [ACTIVE]<br/>
+          &gt; ARCHIVING CORE_ARTIFACTS... [98.4%]<br/>
+          &gt; SYSTEM_READY_FOR_INTERACTION.
+        </div>
+      </div>
+    </div>
+
+    <!-- Directory List -->
+    <div class="nexus-directory reveal">
+      <a href="crypto.html" class="directory-item">
+        <span class="directory-num">01</span>
+        <div class="directory-info">
+          <span class="directory-title">NEXUS_ALPHA</span>
+          <span class="directory-desc">AI Crypto Automation Engine // Live Protocol</span>
+        </div>
+        <span class="material-symbols-outlined directory-arrow">arrow_forward</span>
+      </a>
+      <a href="services.html" class="directory-item">
+        <span class="directory-num">02</span>
+        <div class="directory-info">
+          <span class="directory-title">SYSTEM_ARCHITECTURE</span>
+          <span class="directory-desc">High-Density Infrastructure // Multi-Cloud Nodes</span>
+        </div>
+        <span class="material-symbols-outlined directory-arrow">arrow_forward</span>
+      </a>
+      <a href="work.html" class="directory-item">
+        <span class="directory-num">03</span>
+        <div class="directory-info">
+          <span class="directory-title">MANIFESTO_X</span>
+          <span class="directory-desc">The Philosophy of Absolute Performance</span>
+        </div>
+        <span class="material-symbols-outlined directory-arrow">arrow_forward</span>
+      </a>
+      <a href="about.html" class="directory-item">
+        <span class="directory-num">04</span>
+        <div class="directory-info">
+          <span class="directory-title">NEURAL_INTERFACES</span>
+          <span class="directory-desc">Post-Human Interaction Models</span>
+        </div>
+        <span class="material-symbols-outlined directory-arrow">arrow_forward</span>
+      </a>
+      <a href="contact.html" class="directory-item">
+        <span class="directory-num">05</span>
+        <div class="directory-info">
+          <span class="directory-title">TERMINAL_DECRYPT</span>
+          <span class="directory-desc">Encrypted Communication Pipeline</span>
+        </div>
+        <span class="material-symbols-outlined directory-arrow">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Ethereum Visual Section -->
+    <section class="eth-nexus-visual reveal">
+      <div class="eth-nexus-text">
+        <span class="text-label" style="color: var(--color-primary); display: block; margin-bottom: 1.5rem;">Visual_Expansion // Ethereum</span>
+        <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; line-height: 0.95; text-transform: uppercase;">LIQUIDITY<br/><span style="color: var(--color-secondary);">SYNTHESIS</span></h2>
+        <p style="color: rgba(240,253,249,0.5); line-height: 1.8; margin-top: 2rem; max-width: 500px;">
+          Tapping directly into Ethereum's neural core. Our AI routers navigate the mempool to execute sub-millisecond liquidity synthesis and MEV extraction. Precision at its most absolute.
+        </p>
+        <div style="display: flex; gap: 3rem; margin-top: 3rem;">
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">99.9%</span>
+            <span class="text-label" style="display: block; color: var(--color-muted);">ROUTE_SUCCESS</span>
+          </div>
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">0.3ms</span>
+            <span class="text-label" style="display: block; color: var(--color-muted);">LATENCY</span>
+          </div>
+        </div>
+      </div>
+      <div class="eth-nexus-img">
+        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1920&q=80" alt="Ethereum High-Tech Visual"/>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="nexus-footer reveal">
+      <div>
+        <span class="status-dot"></span>
+        System_Active // 2025_Flagship
+      </div>
+      <div class="hidden md:block">
+        COORD: 34.0522° N, 118.2437° W // RAREWARE_STUDIO
+      </div>
+      <div>
+        <a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid var(--color-primary);">RETURN_TO_HOME</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -3,13 +3,54 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SYSTEMS — RAREWARE STUDIO</title>
-  <meta name="description" content="Capabilities and services offered by RAREWARE STUDIO. Design, Automation, Commerce, Content, and Development."/>
+  <title>SYSTEMS & CAPABILITIES — RAREWARE STUDIO</title>
+  <meta name="description" content="Explore the architectural capabilities of Rareware Studio. We engineer high-performance AI systems, n8n automations, and custom web applications for the digital elite."/>
+
+  <!-- SEO & Social Meta -->
+  <meta property="og:title" content="SYSTEMS & CAPABILITIES — RAREWARE STUDIO"/>
+  <meta property="og:description" content="High-density digital architectures. AI, Web, and Automation at the absolute limit."/>
+  <meta property="og:url" content="https://rarewarestudio.space/services.html"/>
+  <meta property="og:image" content="https://rarewarestudio.space/og-image-services.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  <!-- Schema.org Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "AI & Web Engineering",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Rareware Studio",
+      "url": "https://rarewarestudio.space"
+    },
+    "areaServed": "Global",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Engineering Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "AI Systems & RAG" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "n8n Workflow Automation" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Next.js Web Engineering" }
+        }
+      ]
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <style>
     .services-header {
       padding: 10rem 3rem 4rem;
@@ -26,11 +67,11 @@
     }
     .services-header h1 {
       font-family: var(--font-heading);
-      font-size: clamp(4rem, 10vw, 9rem);
+      font-size: clamp(3rem, 8vw, 5.8rem);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -0.04em;
-      line-height: 0.85;
+      line-height: 1.1;
     }
     .service-blocks {
       max-width: 1400px;
@@ -58,13 +99,13 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top right, rgba(208,0,255,0.1), transparent 70%);
+      background: radial-gradient(circle at top right, rgba(45, 212, 191, 0.1), transparent 70%);
       opacity: 0;
       transition: opacity 0.5s ease;
     }
     .service-block:hover {
       border-color: var(--color-primary);
-      box-shadow: 0 0 30px rgba(208,0,255,0.15);
+      box-shadow: 0 0 30px rgba(45, 212, 191, 0.15);
       transform: translateY(-5px);
     }
     .service-block:hover::before { opacity: 1; }
@@ -131,7 +172,8 @@
       .services-header { padding: 7rem 1.5rem 3rem; }
       .service-blocks { padding: 0 1.5rem; }
       .service-block { padding: 1.5rem; }
-      .service-block .desc { display: none; }
+      .service-block .desc { display: block; font-size: 0.8rem; }
+      .service-block[style*="grid-column: span 2"] { grid-column: span 1 !important; }
       .services-cta { flex-direction: column; padding: 0 1.5rem; }
     }
   </style>
@@ -144,90 +186,91 @@
   <nav class="site-nav">
     <a href="index.html" class="logo">RAREWARE_STUDIO</a>
     <ul class="nav-links">
-      <li><a href="about.html">INTEL</a></li>
-      <li><a href="services.html" class="active">SYSTEMS</a></li>
-      <li><a href="work.html">WORK</a></li>
-      <li><a href="process.html">PROTOCOLS</a></li>
-      <li><a href="team.html">NODES</a></li>
-      <li><a href="contact.html">DECRYPT</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="crypto.html">AI Crypto</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
+      <div class="nav-status"><span class="dot"></span>Available for Projects</div>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </nav>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a>
-    <a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a href="contact.html">DECRYPT</a>
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+    <a href="work.html">Work</a><a href="process.html">Process</a><a href="team.html">Team</a><a href="contact.html">Contact</a>
   </div>
 
   <header class="services-header reveal">
-    <div class="sys-label">SYSTEM.SERVICES.04</div>
-    <h1>CAPABILITIES</h1>
+    <div class="sys-label">SYSTEM_CAPABILITIES</div>
+    <h1>CORE<br/>ARCHITECTURES</h1>
   </header>
 
   <div class="service-blocks">
     <div class="service-block reveal" onclick="location.href='contact.html'">
-      <span class="num">OP_01</span>
+      <span class="num">01</span>
       <div>
-        <h3>DESIGN</h3>
-        <p class="desc" style="margin-top: 1rem;">Structural architecture and cinematic interface design for high-density technical ecosystems. Precision-focused aesthetics for the absolute pinnacle of digital environments.</p>
+        <h3>AI Systems</h3>
+        <p class="desc" style="margin-top: 1rem;">Multi-agent AI pipelines that automate real business operations. Built with LangChain, CrewAI, and RAG — these systems think, learn, and act on your behalf 24/7.</p>
       </div>
       <span class="material-symbols-outlined arrow">arrow_forward</span>
     </div>
-    <div class="service-block reveal" onclick="location.href='contact.html'" style="grid-row: span 2; min-height: auto; justify-content: space-between; background: url('https://w.forfun.com/fetch/f2/f29b47e8529244ee1a6d96205e45a2c2.jpeg') center/cover; padding: 0;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3)); z-index: 1;"></div>
+    <div class="service-block reveal" onclick="location.href='contact.html'" style="grid-row: span 2; min-height: auto; justify-content: space-between; background: url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80') center/cover; padding: 0;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.3)); z-index: 1;"></div>
       <div style="position: relative; z-index: 2; padding: 3rem; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-        <span class="num" style="color: var(--color-accent); background: var(--color-primary); padding: 0.25rem 0.5rem; width: fit-content;">OP_02</span>
+        <span class="num" style="color: var(--color-accent); background: var(--color-primary); padding: 0.25rem 0.5rem; width: fit-content;">02</span>
         <div>
-          <h3 style="text-shadow: 0 0 20px rgba(0,0,0,0.8);">AUTOMATION</h3>
-          <p class="desc" style="margin-top: 1rem; color: #fff;">Algorithmic workflow optimization. We build self-sustaining protocols that eliminate friction in complex operational environments. Zero latency execution.</p>
+          <h3 style="text-shadow: 0 0 20px rgba(0,0,0,0.8);">AI Automation</h3>
+          <p class="desc" style="margin-top: 1rem; color: #fff;">End-to-end workflow automation using n8n, Claude API, and Python. Booking agents, customer service bots, CRM sync — we eliminate repetitive work so your team can focus on what matters.</p>
         </div>
       </div>
     </div>
     <div class="service-block reveal" onclick="location.href='contact.html'">
-      <span class="num">OP_03</span>
+      <span class="num">03</span>
       <div>
-        <h3>COMMERCE</h3>
-        <p class="desc" style="margin-top: 1rem;">Encrypted transactional infrastructures. Scalable marketplaces designed for velocity, security, and absolute reliability. High-conversion monoliths.</p>
+        <h3>Web Engineering</h3>
+        <p class="desc" style="margin-top: 1rem;">Fast, production-grade web apps and websites built with Next.js, React, and Tailwind. Deployed on Vercel or Netlify with sub-1s load times and full mobile optimization.</p>
       </div>
       <span class="material-symbols-outlined arrow">arrow_forward</span>
     </div>
     <div class="service-block reveal" onclick="location.href='contact.html'">
-      <span class="num">OP_04</span>
+      <span class="num">04</span>
       <div>
-        <h3>CONTENT</h3>
-        <p class="desc" style="margin-top: 1rem;">Hyper-targeted editorial strategy. Deploying narrative clusters across decentralized networks to command authority and absolute mindshare.</p>
+        <h3>Shopify &amp; E-Commerce</h3>
+        <p class="desc" style="margin-top: 1rem;">Custom Shopify stores with Liquid theming, Meta Pixel tracking, local payment gateways (bKash/Nagad), and WhatsApp order automation. Built to convert.</p>
       </div>
       <span class="material-symbols-outlined arrow">arrow_forward</span>
     </div>
     <div class="service-block reveal" onclick="location.href='contact.html'" style="grid-column: span 2;">
-      <span class="num">OP_05</span>
-      <div style="display: flex; gap: 4rem; align-items: flex-start; justify-content: space-between; height: 100%;">
-        <div style="max-width: 50%;">
-          <h3>DEVELOPMENT</h3>
-          <p class="desc" style="margin-top: 1rem;">Full-stack monolith creation. Low-latency codebases engineered for maximum resilience and high-throughput performance. We code the nexus.</p>
+      <span class="num">05</span>
+      <div style="display: flex; gap: 4rem; align-items: flex-start; justify-content: space-between; height: 100%; flex-wrap: wrap;">
+        <div style="max-width: 50%; min-width: 200px;">
+          <h3>Meta Ads &amp; AI Creative</h3>
+          <p class="desc" style="margin-top: 1rem;">High-performing Facebook and Instagram campaigns with AI-generated ad creatives, Meta Pixel setup, and Google AI Studio integration. We run ads that actually convert.</p>
         </div>
-        <span class="material-symbols-outlined arrow" style="font-size: 3rem;">integration_instructions</span>
+        <span class="material-symbols-outlined arrow" style="font-size: 3rem;">campaign</span>
       </div>
     </div>
   </div>
 
   <div class="services-cta reveal">
     <div>
-      <div class="label">READY_FOR_DEPLOYMENT</div>
+      <div class="label">READY TO BUILD?</div>
       <div style="display: flex; gap: 3rem;">
-        <a href="work.html" style="font-family: var(--font-body); color: var(--color-accent); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; border-bottom: 1px solid var(--color-muted); padding-bottom: 4px;">Work</a>
-        <a href="index.html" style="font-family: var(--font-body); color: var(--color-accent); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; border-bottom: 1px solid var(--color-muted); padding-bottom: 4px;">Home</a>
+        <a href="work.html" style="font-family: var(--font-body); color: var(--color-accent); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; border-bottom: 1px solid var(--color-muted); padding-bottom: 4px;">See Our Work</a>
+        <a href="about.html" style="font-family: var(--font-body); color: var(--color-accent); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; border-bottom: 1px solid var(--color-muted); padding-bottom: 4px;">About Us</a>
       </div>
     </div>
-    <a href="contact.html" class="btn-primary" style="font-size: 1rem; padding: 1.75rem 3rem;">Start a Protocol</a>
+    <a href="contact.html" class="btn-primary" style="font-size: 1rem; padding: 1.75rem 3rem;">Start a Project</a>
   </div>
 
   <footer class="site-footer">
-    <div class="footer-left">©2024 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
-    <div class="footer-links"><a href="#">PRIVACY_POLICY</a><a href="#">SYSTEM_STATUS</a><a href="#">ENCRYPTION_STANDARDS</a></div>
-    <div class="footer-status"><span class="dot"></span>SYSTEM_ENCRYPTED</div>
+    <div class="footer-left">©2025 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
+    <div class="footer-links"><a href="contact.html">Contact</a><a href="work.html">Work</a><a href="process.html">Process</a></div>
+    <div class="footer-status"><span class="dot"></span>Available for Projects</div>
   </footer>
 
   <script src="main.js"></script>

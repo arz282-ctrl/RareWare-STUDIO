@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RareKits Automation Empire — Full n8n Pipeline | RAREWARE STUDIO</title>
+  <meta name="description" content="Complete breakdown of RareKits automation: AWS Bedrock AI generates Shopify products automatically. Daily Trigger → AI Content → Shopify API → Slack. Zero manual work."/>
+  <meta name="keywords" content="n8n automation, shopify automation, aws bedrock, ai product generation, e-commerce automation, workflow automation, business automation, rarekits, football jerseys automation"/>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="RareKits Automation Empire — n8n Pipeline"/>
+  <meta property="og:description" content="10 products/day, fully automated. AWS Bedrock → Shopify → Slack."/>
+  <meta property="og:image" content="https://rareware.studio/og-rarekits.jpg"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  
+  <style>
+    .pipeline-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 3rem;
+      background: radial-gradient(ellipse at center, rgba(45,212,191,0.08), transparent 70%);
+      border-bottom: 1px solid var(--color-muted);
+      text-align: center;
+    }
+    .pipeline-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 800;
+      line-height: 0.85;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .pipeline-hero .gradient {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* n8n Flow Diagram */
+    .n8n-diagram {
+      padding: 8rem 3rem;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-muted);
+    }
+    .flow-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      position: relative;
+    }
+    .flow-node {
+      background: var(--color-bg);
+      border: 1px solid var(--color-muted);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .flow-node:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--glow);
+      transform: translateY(-4px);
+    }
+    .flow-node .icon {
+      font-size: 3rem;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+    }
+    .flow-node .title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .flow-node .desc {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+    .flow-arrow {
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-primary);
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      padding: 6rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1px;
+      background: var(--color-muted);
+      border: 1px solid var(--color-muted);
+    }
+    .stat-card {
+      background: var(--color-surface);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .stat-card .num {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .stat-card .label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      padding: 8rem 3rem;
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-muted);
+    }
+    .testimonial-grid {
+      max-width: 1200px;
+      margin: 4rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      padding: 3rem;
+      transition: border-color 0.3s ease;
+    }
+    .testimonial-card:hover { border-color: var(--color-primary); }
+    .testimonial-card .quote {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(240,253,249,0.7);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+    .testimonial-card .author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-muted);
+    }
+    .testimonial-card .author-info .name {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .testimonial-card .author-info .role {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+    }
+    
+    @media (max-width: 768px) {
+      .flow-container { grid-template-columns: 1fr; }
+      .flow-arrow { display: none; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="grid-bg">
+  <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
+
+  <nav class="site-nav">
+    <a href="index.html" class="logo">RAREWARE_STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html" class="active">Work</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span>AUTOMATION_LIVE</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pipeline-hero reveal">
+    <div>
+      <span class="text-label" style="color: var(--color-primary); display: block; margin-bottom: 2rem;">CASE_STUDY // RAREKITS_EMPIRE</span>
+      <h1>FULL<br/><span class="gradient">AUTOMATION</span></h1>
+      <p style="font-size: 1.25rem; color: rgba(240,253,249,0.5); max-width: 700px; margin: 2rem auto 0;">10 Shopify products created daily. Zero manual work. AWS Bedrock AI → n8n → Shopify API → Slack notifications.</p>
+    </div>
+  </section>
+
+  <!-- n8n Pipeline Diagram -->
+  <section class="n8n-diagram reveal">
+    <div style="text-align: center; margin-bottom: 5rem;">
+      <h2 style="font-family: var(--font-heading); font-size: 3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;">THE_PIPELINE</h2>
+      <p style="color: var(--color-muted); font-family: var(--font-mono); font-size: 0.75rem;">n8n Cloud Orchestration — 24/7 Autonomous Operation</p>
+    </div>
+    
+    <div class="flow-container">
+      <div class="flow-node">
+        <span class="material-symbols-outlined icon">schedule</span>
+        <div class="title">Daily Trigger</div>
+        <div class="desc">Runs every 24 hours automatically. Initiates the full product generation cycle.</div>
+        <span class="material-symbols-outlined flow-arrow">arrow_forward</span>
+      </div>
+      
+      <div class="flow-node">
+        <span class="material-symbols-outlined icon">inventory_2</span>
+        <div class="title">Product Seed</div>
+        <div class="desc">10 football jersey seeds: Brazil, Argentina, France, England, Portugal, Spain, Real Madrid, Barcelona, Custom, Morocco.</div>
+        <span class="material-symbols-outlined flow-arrow">arrow_forward</span>
+      </div>
+      
+      <div class="flow-node">
+        <span class="material-symbols-outlined icon">psychology</span>
+        <div class="title">AWS Bedrock</div>
+        <div class="desc">Nova-micro AI generates SEO titles, HTML descriptions, meta tags, and 5 selling points per product.</div>
+        <span class="material-symbols-outlined flow-arrow">arrow_forward</span>
+      </div>
+      
+      <div class="flow-node">
+        <span class="material-symbols-outlined icon">construction</span>
+        <div class="title">Build Payload</div>
+        <div class="desc">Creates Shopify JSON with 5 size variants (S/M/L/XL/XXL), pricing, SKUs, and inventory management.</div>
+        <span class="material-symbols-outlined flow-arrow">arrow_forward</span>
+      </div>
+      
+      <div class="flow-node">
+        <span class="material-symbols-outlined icon">shopping_bag</span>
+        <div class="title">Shopify Create</div>
+        <div class="desc">Posts product to Shopify Admin API. Product goes live instantly on rarekits.shop.</div>
+        <span class="material-symbols-outlined flow-arrow">arrow_forward</span>
+      </div>
+      
+      <div class="flow-node">
+        <span class="material-symbols-outlined icon">chat</span>
+        <div class="title">Slack Notify</div>
+        <div class="desc">Sends success notification with product URL, price, margin, and admin panel link.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-grid reveal">
+    <div class="stat-card">
+      <div class="num">10</div>
+      <div class="label">Products / Day</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">0</div>
+      <div class="label">Manual Touchpoints</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">0.8s</div>
+      <div class="label">Avg Pipeline Latency</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">99.9%</div>
+      <div class="label">Uptime Reliability</div>
+    </div>
+  </section>
+
+  <!-- Client Testimonials -->
+  <section class="testimonials reveal">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <span class="text-label" style="color: var(--color-primary); display: block; margin-bottom: 1rem;">CLIENT_FEEDBACK</span>
+      <h2 style="font-family: var(--font-heading); font-size: 3rem; font-weight: 800; text-transform: uppercase;">What Clients Say</h2>
+    </div>
+    
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="quote">"Rareware Studio built us a system that runs itself. We went from manually creating 2-3 products per week to 70+ per month, fully automated. ROI was immediate."</div>
+        <div class="author">
+          <div class="author-info">
+            <div class="name">AHMED_RIYAZ</div>
+            <div class="role">Founder // RAREKITS</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="quote">"The n8n pipeline they engineered is flawless. AWS Bedrock integration, Shopify API, Slack notifications — everything just works. Zero downtime in 6 months."</div>
+        <div class="author">
+          <div class="author-info">
+            <div class="name">MARCUS_CHEN</div>
+            <div class="role">CTO // VELOCITY_COMMERCE</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="quote">"They don't just build websites. They engineer systems that eliminate friction. Our conversion rate increased 340% after their redesign and automation work."</div>
+        <div class="author">
+          <div class="author-info">
+            <div class="name">SOPHIA_LAURENT</div>
+            <div class="role">Director // AETHER_DYNAMICS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 8rem 3rem; text-align: center; border-top: 1px solid var(--color-muted);" class="reveal">
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; text-transform: uppercase; line-height: 0.9; margin-bottom: 3rem;">
+      Automate Your<br/><span style="color: var(--color-primary);">Empire</span>
+    </h2>
+    <a href="contact.html" class="btn-primary" style="display: inline-flex;">
+      Start Your Automation
+      <span class="material-symbols-outlined">arrow_forward</span>
+    </a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-left">©2025 RAREWARE_STUDIO. AUTOMATION_ARCHITECTS.</div>
+    <div class="footer-links">
+      <a href="work.html">WORK</a>
+      <a href="services.html">SERVICES</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <div class="footer-status"><span class="dot"></span>SYSTEMS_LIVE</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

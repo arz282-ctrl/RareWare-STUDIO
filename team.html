@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <style>
     .team-header {
       padding: 10rem 3rem 4rem;
@@ -81,7 +82,7 @@
     }
     .member-card:hover { background: var(--color-surface); }
     .member-card:hover .glow-effect {
-      box-shadow: 0 0 40px 10px rgba(208,0,255,0.1);
+      box-shadow: 0 0 40px 10px rgba(45, 212, 191, 0.1);
     }
     .member-card:hover .tracer-line { width: 100%; }
     .member-card:hover .status-indicator { opacity: 1; }
@@ -213,28 +214,37 @@
   <nav class="site-nav">
     <a href="index.html" class="logo">RAREWARE_STUDIO</a>
     <ul class="nav-links">
-      <li><a href="about.html">INTEL</a></li>
-      <li><a href="services.html">SYSTEMS</a></li>
-      <li><a href="work.html">WORK</a></li>
-      <li><a href="process.html">PROTOCOLS</a></li>
-      <li><a href="team.html" class="active">NODES</a></li>
-      <li><a href="contact.html">DECRYPT</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <div class="nav-status"><span class="dot"></span>SYSTEM_ONLINE</div>
+      <div class="nav-status"><span class="dot"></span>Available for Projects</div>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </nav>
-  <div class="mobile-menu" id="mobile-menu"><a href="index.html">HOME</a><a href="about.html">INTEL</a><a href="services.html">SYSTEMS</a><a href="work.html">WORK</a><a href="process.html">PROTOCOLS</a><a href="team.html">NODES</a><a href="contact.html">DECRYPT</a></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="work.html" onclick="toggleMenu()">Work</a>
+    <a href="process.html" onclick="toggleMenu()">Process</a>
+    <a href="team.html" onclick="toggleMenu()">Team</a>
+    <a href="crypto.html" onclick="toggleMenu()">AI Crypto</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  </div>
 
   <header class="team-header reveal">
     <div class="left">
-      <div class="tag">PERSONNEL_DATABASE_INIT</div>
+      <div class="tag">Our Team</div>
       <h1>THE<br/>ARCHITECTS</h1>
     </div>
     <div class="right">
-      <div class="meta-item"><div class="meta-label">System_Status</div><div class="meta-val">Active_Operational</div></div>
-      <div class="meta-item"><div class="meta-label">Core_Nodes</div><div class="meta-val primary">06_Verified</div></div>
+      <div class="meta-item"><div class="meta-label">Status</div><div class="meta-val">Active & Available</div></div>
+      <div class="meta-item"><div class="meta-label">Core Team</div><div class="meta-val primary">6 Members</div></div>
     </div>
   </header>
 
@@ -245,7 +255,7 @@
       <div class="member-top"><span class="node-ref">NODE_REF: 001</span><span class="status-indicator">ONLINE</span></div>
       <div class="member-photo">
         <div class="photo-overlay"></div>
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSiL-iWmGqpyYdRse09VCbfiTXYkBTjxhpHJm4dc0Y1Wnbtt-_8oKwTvpkiK--9w30ebYYDBrahZ6VlN2ZnIKvjXUKfiFoOMQJMBDhuTVWDEZR06Hf9QaSNA6tDgYaAVinJA2P0p4sbeg7llZORgYqUcRO67fW5FvGd1DptueG78stcNT1GYla1svImb8IAdRKBLZF61fNwFZ6S7bpc8HCGdVKiRJD4jTJjJvvftBIxg3Z190lolvIifreis82OVcSHdfUiqYV" alt="Xavier Volt"/>
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Xavier Volt"/>
         <div class="glow-effect"></div>
       </div>
       <div class="member-info">
@@ -264,7 +274,7 @@
       <div class="member-top"><span class="node-ref">NODE_REF: 002</span><span class="status-indicator">ONLINE</span></div>
       <div class="member-photo">
         <div class="photo-overlay"></div>
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxj08PJ0gyae6xdaDsD_lomfQroU6-aLXEKUfq-pOnAhLk4uT1jbBJwf6RPS1Ixvd3VrSUCHUsV9NwsKluHsprGm02rBlmJd8iFPb73WwxUgFUjnTCPfuAfAMgSIxzl6Y7ylEgmkPcPaBSbE3UA6nqiQa5hKNvtgeHPLDMAxaS2fNHDsVtAu7cGoS5UNhsq2CBMsm6ZeaoKHAWJvRgmD2SQyDo1Vx6jytuFf9kcK7gaIzSbwEhmKdKmc-jY-RXT-no1kSM-ZZJ" alt="Lyra Neon"/>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80" alt="Lyra Neon"/>
         <div class="glow-effect"></div>
       </div>
       <div class="member-info">
@@ -283,7 +293,7 @@
       <div class="member-top"><span class="node-ref">NODE_REF: 003</span><span class="status-indicator">ONLINE</span></div>
       <div class="member-photo">
         <div class="photo-overlay"></div>
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwUChID0lB9QwQdqx68IK2l-jdF7yslqJlbSkwAVyEsUxoTfBpzcrqAtBuSQ8_4i0-70m666xSO5rByEGEi28KhbdEC1IqLRfwU06hqfppjsldddlv0rdJrLPr3mJs8omy4241wkY_Vy6Ebo2SCYiqHk3AGztC5RW-QeQyL_JyrctrYxcdmrrQ-oss7VwBW6wwwTrUV8HriBRVOS6GmriWFBRFxPFgtV6obl-ZNvNl1yY2foeaUmAbrNeVYnw-JAKqT3Iz0_Q0" alt="Kai Obsidian"/>
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80" alt="Kai Obsidian"/>
         <div class="glow-effect"></div>
       </div>
       <div class="member-info">
@@ -302,7 +312,7 @@
       <div class="member-top"><span class="node-ref">NODE_REF: 004</span><span class="status-indicator">ONLINE</span></div>
       <div class="member-photo">
         <div class="photo-overlay"></div>
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-NCz0bzNSUwEcz8HK6JRGYvbSy2ElqT-dpfEAOSTSAOowfjc-lHv-ioDSBb5Q9N-UjMRkMvrzdRF0AerUByFFdkGu8TGjtzYFFL3NUbSlMxUwAMqG0hyobuK1gisnRZq0O8Kw_2VclcaOcQyxzxhpRbxup1SiGLHpLrf1bgElQVwRDJDkmxT9wtrlZyP1x1Fpkv20VkscefUapq3AQuGJ4GpWsjpeY_9kXvTIP13asBz17Dl1xaUCGkL8BM-Avp5K6247rIjj" alt="Elara Void"/>
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Elara Void"/>
         <div class="glow-effect"></div>
       </div>
       <div class="member-info">
@@ -321,7 +331,7 @@
       <div class="member-top"><span class="node-ref">NODE_REF: 005</span><span class="status-indicator">ONLINE</span></div>
       <div class="member-photo">
         <div class="photo-overlay"></div>
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkuLs0Gns-9S8D6ONCQZJuvWitfpLHHhECARXC8TNj4DmJlC3z7Ow0-zyYs05seJiMNLZFn3NpXuyyYh2sR9qj54hzU2WnkD9QZ7WHGVa3NbjoFM_ExILmdOOzX0FLK05iTP38PLkRiELWkj_gAqSMA9UX8Kje55-Zq0M9PLoVLA8xfnxVqQaF5_pZexlSJu9u4q6hlJ8_fhl1ipAYSzVjrDtGtXN2ECyLTNYRS9ry5mdWB8FCQu-vZiEcwV68FVQYhWLNsJXv" alt="Jax Trace"/>
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80" alt="Jax Trace"/>
         <div class="glow-effect"></div>
       </div>
       <div class="member-info">
@@ -351,9 +361,9 @@
   </section>
 
   <footer class="site-footer">
-    <div class="footer-left">©2024 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
-    <div class="footer-links"><a href="#">PRIVACY_POLICY</a><a href="#">SYSTEM_STATUS</a><a href="#">ENCRYPTION_STANDARDS</a></div>
-    <div class="footer-status"><span class="dot"></span>SYSTEM_ENCRYPTED</div>
+    <div class="footer-left">©2025 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
+    <div class="footer-links"><a href="contact.html">Contact</a><a href="services.html">Services</a><a href="work.html">Work</a></div>
+    <div class="footer-status"><span class="dot"></span>Available for Projects</div>
   </footer>
 
   <script src="main.js"></script>

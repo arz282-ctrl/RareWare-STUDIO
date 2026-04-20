@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEXUS_ALPHA — AI Crypto Automation by RAREWARE STUDIO</title>
+  <meta name="description" content="NEXUS_ALPHA is Rareware Studio's AI-powered crypto automation engine. Individual AI agents analyze markets, execute trades, and generate profits — built by elite engineers."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <style>
+    /* ── Crypto Theme Override ────────────────────────────── */
+    :root {
+      --color-primary: #F7931A; /* BTC Orange */
+      --color-secondary: #F3BA2F; /* BNB Yellow */
+      --color-tertiary: #627EEA; /* ETH Blue */
+      --glow: 0 0 15px rgba(247, 147, 26, 0.45), 0 0 30px rgba(243, 186, 47, 0.15);
+    }
+    
+    /* ── NEXUS_ALPHA — Crypto Page Styles ──────────────────── */
+
+    /* Hero */
+    .crypto-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+      overflow: hidden;
+      background: var(--color-bg);
+    }
+    .crypto-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .crypto-hero-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(40%) brightness(0.2) contrast(1.4) saturate(1.2);
+    }
+    .crypto-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(247,147,26,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at center, transparent 0%, var(--color-bg) 70%),
+        linear-gradient(to top, var(--color-bg) 0%, transparent 25%, transparent 75%, var(--color-bg) 100%);
+      z-index: 1;
+    }
+
+    .crypto-hero .content { position: relative; z-index: 2; max-width: 1100px; }
+
+    .crypto-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--color-primary);
+      background: rgba(247,147,26,0.06);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-primary);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.8s forwards;
+    }
+    .crypto-badge .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+      box-shadow: 0 0 8px var(--color-primary);
+    }
+
+    .crypto-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 9vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 1.5s ease 1.2s forwards;
+    }
+    .crypto-hero h1 .gradient-text {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-tertiary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .crypto-hero .hero-desc {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      color: rgba(240,253,249,0.55);
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeInUp 1s ease 1.6s forwards;
+    }
+    .crypto-hero .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease 2s forwards;
+    }
+
+    /* Live Ticker Strip */
+    .ticker-strip {
+      width: 100%;
+      overflow: hidden;
+      border-top: 1px solid var(--color-muted);
+      border-bottom: 1px solid var(--color-muted);
+      background: var(--color-surface);
+      padding: 0.75rem 0;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 3rem;
+      animation: tickerScroll 30s linear infinite;
+      width: max-content;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(240,253,249,0.5);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ticker-item .t-symbol { color: var(--color-accent); font-weight: 700; }
+    .ticker-item .t-up { color: #34D399; }
+    .ticker-item .t-down { color: #F87171; }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Feature Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(58,40,15,0.2);
+    }
+    .feature-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s ease;
+    }
+    .feature-card:hover::before { transform: scaleX(1); }
+    .feature-card:hover {
+      background: rgba(247,147,26,0.03);
+      border-color: rgba(247,147,26,0.3);
+    }
+    .feature-card .f-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-muted);
+      color: var(--color-primary);
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover .f-icon {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 20px rgba(247,147,26,0.2);
+    }
+    .feature-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+      color: rgba(240,253,249,0.45);
+      line-height: 1.7;
+    }
+    .feature-card .f-stat {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feature-card .f-stat .val {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-shadow: 0 0 10px rgba(45,212,191,0.3);
+    }
+    .feature-card .f-stat .label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      letter-spacing: 0.15em;
+    }
+
+    /* Dashboard Preview / How It Works */
+    .dashboard-section {
+      display: flex;
+      border-top: 1px solid var(--color-muted);
+      border-bottom: 1px solid var(--color-muted);
+      min-height: 600px;
+    }
+    .dashboard-left {
+      flex: 1;
+      min-width: 300px;
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+      border-right: 1px solid var(--color-muted);
+      background: var(--color-surface);
+    }
+    .dashboard-right {
+      flex: 1.5;
+      min-width: 400px;
+      position: relative;
+      overflow: hidden;
+      background: var(--color-bg);
+    }
+
+    /* Animated Chart Canvas */
+    .chart-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-muted);
+    }
+    .chart-header .pair {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .chart-header .price {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      text-shadow: 0 0 10px rgba(247,147,26,0.3);
+    }
+    .chart-canvas-wrap {
+      flex: 1;
+      position: relative;
+      border: 1px solid var(--color-muted);
+      background: rgba(4,13,18,0.5);
+    }
+    .chart-canvas-wrap canvas {
+      width: 100%;
+      height: 100%;
+    }
+    .chart-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 1rem;
+    }
+    .chart-stat-item {
+      padding: 0.75rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      text-align: center;
+    }
+    .chart-stat-item .csv { font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: var(--color-primary); }
+    .chart-stat-item .csl { font-family: var(--font-mono); font-size: 0.5rem; text-transform: uppercase; color: var(--color-muted); letter-spacing: 0.1em; margin-top: 0.25rem; }
+
+    /* Step Pipeline */
+    .step-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-primary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .step-content h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .step-content p {
+      font-size: 0.875rem;
+      color: rgba(240,253,249,0.45);
+      line-height: 1.6;
+    }
+
+    /* Crypto Payments */
+    .payments-section {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-muted);
+      padding: 6rem 3rem;
+      text-align: center;
+    }
+    .crypto-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 3rem 0;
+    }
+    .crypto-icon {
+      width: 80px;
+      height: 80px;
+      border: 1px solid var(--color-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.4s ease;
+      background: var(--color-bg);
+    }
+    .crypto-icon:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--glow);
+      transform: translateY(-4px);
+    }
+    .crypto-icon .c-symbol {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-accent);
+    }
+    .crypto-icon .c-name {
+      font-family: var(--font-mono);
+      font-size: 0.45rem;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* Global CTA */
+    .crypto-cta {
+      position: relative;
+      padding: 10rem 3rem;
+      text-align: center;
+      overflow: hidden;
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-muted);
+    }
+    .crypto-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(247,147,26,0.1), transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ETH Visual Section */
+    .eth-visual-section {
+      display: flex;
+      min-height: 80vh;
+      border-top: 1px solid var(--color-muted);
+      border-bottom: 1px solid var(--color-muted);
+      background: var(--color-surface);
+      overflow: hidden;
+    }
+    .eth-left {
+      flex: 1;
+      padding: 6rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .eth-right {
+      flex: 1;
+      position: relative;
+      min-height: 400px;
+    }
+    .eth-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.1) brightness(0.9);
+      mask-image: linear-gradient(to left, black, transparent);
+      -webkit-mask-image: linear-gradient(to left, black, transparent);
+    }
+    .hero-networks {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease 2.2s forwards;
+    }
+    .network-pill {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--color-muted);
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(240,253,249,0.8);
+    }
+    .network-pill span {
+      color: var(--color-primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .dashboard-section, .eth-visual-section { flex-direction: column; }
+      .dashboard-left, .eth-left { border-right: none; border-bottom: 1px solid var(--color-muted); padding: 4rem 2rem; }
+      .dashboard-right { min-height: 450px; }
+      .eth-right { min-height: 350px; }
+      .eth-right img { 
+        mask-image: linear-gradient(to top, black, transparent); 
+        -webkit-mask-image: linear-gradient(to top, black, transparent); 
+      }
+    }
+    @media (max-width: 768px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .chart-stats { grid-template-columns: repeat(2, 1fr); }
+      .crypto-hero h1 { font-size: clamp(2.5rem, 14vw, 4.5rem); }
+      .payments-section { padding: 4rem 1.5rem; }
+      .crypto-cta { padding: 6rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Cover -->
+  <div class="loading-cover" id="loader"><div class="loader-line"></div></div>
+
+  <!-- Corner Brackets -->
+  <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="corner-br"></div>
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <nav class="site-nav" id="site-nav">
+    <a href="index.html" class="logo">RAREWARE_STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="crypto.html" class="active">AI Crypto</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span>Available for Projects</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="work.html" onclick="toggleMenu()">Work</a>
+    <a href="process.html" onclick="toggleMenu()">Process</a>
+    <a href="crypto.html" onclick="toggleMenu()">AI Crypto</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="crypto-hero" id="crypto-hero">
+    <div class="crypto-hero-bg">
+      <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=1920&q=80">
+        <!-- Working abstract gold/finance data video -->
+        <source src="https://cdn.pixabay.com/video/2020/01/30/31441-385558055_large.mp4" type="video/mp4"/>
+      </video>
+      <div class="crypto-hero-overlay"></div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="cryptoCanvas" style="position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.6; mix-blend-mode: screen;"></canvas>
+
+    <div class="content">
+      <div class="crypto-badge">
+        <span class="pulse-dot"></span>
+        NEXUS_ALPHA // LIVE_PROTOCOL
+      </div>
+
+      <h1>
+        <span class="gradient-text" style="white-space: nowrap; display: block; margin-bottom: 0.75rem;">AI-POWERED</span>
+        <span style="white-space: nowrap; display: block; margin-bottom: 0.75rem;">CRYPTO</span>
+        <span style="font-size: 0.35em; letter-spacing: 0.15em; font-weight: 400; opacity: 0.6; display: block;">AUTOMATION ENGINE</span>
+      </h1>
+
+      <p class="hero-desc">
+        Individual AI agents analyze markets in real-time, execute precision trades, and secure systematic revenue streams.
+        Engineered for absolute performance by <span style="color: var(--color-primary);">RAREWARE STUDIO</span>.
+      </p>
+
+      <div class="hero-actions">
+        <a href="contact.html" class="btn-primary">
+          Initialize Access
+          <span class="material-symbols-outlined" style="font-size: 1rem;">rocket_launch</span>
+        </a>
+        <a href="#features" class="btn-outline">
+          View Architecture
+          <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_downward</span>
+        </a>
+      </div>
+
+      <div class="hero-networks">
+        <div class="network-pill"><span>₿</span> BTC NATIVE</div>
+        <div class="network-pill"><span>◈</span> BSC ROUTING</div>
+        <div class="network-pill"><span>◎</span> SOLANA SPL</div>
+        <div class="network-pill"><span style="color: var(--color-tertiary);">Ξ</span> ETHEREUM L2</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LIVE TICKER ═══════════════ -->
+  <div class="ticker-strip">
+    <div class="ticker-track" id="ticker">
+      <div class="ticker-item"><span class="t-symbol">BTC/USDT</span> $104,289.47 <span class="t-up">+2.34%</span></div>
+      <div class="ticker-item"><span class="t-symbol">ETH/USDT</span> $3,847.21 <span class="t-up">+5.12%</span></div>
+      <div class="ticker-item"><span class="t-symbol">SOL/USDT</span> $187.43 <span class="t-up">+8.67%</span></div>
+      <div class="ticker-item"><span class="t-symbol">BNB/USDT</span> $612.88 <span class="t-down">-0.43%</span></div>
+      <div class="ticker-item"><span class="t-symbol">XRP/USDT</span> $2.41 <span class="t-up">+3.21%</span></div>
+      <div class="ticker-item"><span class="t-symbol">ADA/USDT</span> $0.892 <span class="t-up">+1.87%</span></div>
+      <div class="ticker-item"><span class="t-symbol">AVAX/USDT</span> $42.16 <span class="t-up">+4.55%</span></div>
+      <div class="ticker-item"><span class="t-symbol">DOT/USDT</span> $8.94 <span class="t-down">-1.12%</span></div>
+      <div class="ticker-item"><span class="t-symbol">LINK/USDT</span> $18.73 <span class="t-up">+6.33%</span></div>
+      <div class="ticker-item"><span class="t-symbol">MATIC/USDT</span> $1.24 <span class="t-up">+2.91%</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="ticker-item"><span class="t-symbol">BTC/USDT</span> $104,289.47 <span class="t-up">+2.34%</span></div>
+      <div class="ticker-item"><span class="t-symbol">ETH/USDT</span> $3,847.21 <span class="t-up">+5.12%</span></div>
+      <div class="ticker-item"><span class="t-symbol">SOL/USDT</span> $187.43 <span class="t-up">+8.67%</span></div>
+      <div class="ticker-item"><span class="t-symbol">BNB/USDT</span> $612.88 <span class="t-down">-0.43%</span></div>
+      <div class="ticker-item"><span class="t-symbol">XRP/USDT</span> $2.41 <span class="t-up">+3.21%</span></div>
+      <div class="ticker-item"><span class="t-symbol">ADA/USDT</span> $0.892 <span class="t-up">+1.87%</span></div>
+      <div class="ticker-item"><span class="t-symbol">AVAX/USDT</span> $42.16 <span class="t-up">+4.55%</span></div>
+      <div class="ticker-item"><span class="t-symbol">DOT/USDT</span> $8.94 <span class="t-down">-1.12%</span></div>
+      <div class="ticker-item"><span class="t-symbol">LINK/USDT</span> $18.73 <span class="t-up">+6.33%</span></div>
+      <div class="ticker-item"><span class="t-symbol">MATIC/USDT</span> $1.24 <span class="t-up">+2.91%</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FEATURES ═══════════════ -->
+  <section id="features" class="section-pad" style="padding-bottom: 0;">
+    <div style="margin-bottom: 4rem;" class="reveal">
+      <span class="text-label" style="color: var(--color-primary); display: block; margin-bottom: 1rem;">SYSTEM.ARCHITECTURE</span>
+      <h2 class="text-hero">CORE<br/>CAPABILITIES</h2>
+    </div>
+
+    <div class="feature-grid reveal">
+      <div class="feature-card">
+        <div class="f-icon"><span class="material-symbols-outlined">psychology</span></div>
+        <h3>NEURAL_ANALYSIS</h3>
+        <p>Deep learning models analyze 10,000+ data points per second — order books, sentiment, whale movements, on-chain metrics, and macro indicators in real-time.</p>
+        <div class="f-stat">
+          <div>
+            <span class="val">10K+</span>
+            <span class="label" style="display: block;">Data Points/sec</span>
+          </div>
+          <span class="material-symbols-outlined" style="color: var(--color-muted);">trending_up</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="f-icon"><span class="material-symbols-outlined">bolt</span></div>
+        <h3>AUTO_EXECUTION</h3>
+        <p>Sub-millisecond trade execution across all major exchanges. AI agents place, manage, and close positions with precision — zero emotional bias.</p>
+        <div class="f-stat">
+          <div>
+            <span class="val">0.3ms</span>
+            <span class="label" style="display: block;">Avg Execution</span>
+          </div>
+          <span class="material-symbols-outlined" style="color: var(--color-muted);">speed</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="f-icon"><span class="material-symbols-outlined">shield</span></div>
+        <h3>RISK_PROTOCOL</h3>
+        <p>Multi-layer risk management with dynamic stop-losses, portfolio rebalancing, and drawdown protection. Your capital is guarded 24/7.</p>
+        <div class="f-stat">
+          <div>
+            <span class="val">99.97%</span>
+            <span class="label" style="display: block;">Risk Mitigation</span>
+          </div>
+          <span class="material-symbols-outlined" style="color: var(--color-muted);">verified_user</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="f-icon"><span class="material-symbols-outlined">analytics</span></div>
+        <h3>PROFIT_ENGINE</h3>
+        <p>Proprietary algorithms optimized for consistent returns. Backtested across 5+ years of market data including black swan events.</p>
+        <div class="f-stat">
+          <div>
+            <span class="val">247%</span>
+            <span class="label" style="display: block;">Avg Annual ROI</span>
+          </div>
+          <span class="material-symbols-outlined" style="color: var(--color-muted);">show_chart</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="f-icon"><span class="material-symbols-outlined">hub</span></div>
+        <h3>MULTI_EXCHANGE</h3>
+        <p>Seamless integration with Binance, Coinbase, Kraken, Bybit, and 20+ exchanges. One brain, infinite execution nodes.</p>
+        <div class="f-stat">
+          <div>
+            <span class="val">24+</span>
+            <span class="label" style="display: block;">Exchanges</span>
+          </div>
+          <span class="material-symbols-outlined" style="color: var(--color-muted);">lan</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="f-icon"><span class="material-symbols-outlined">visibility</span></div>
+        <h3>LIVE_DASHBOARD</h3>
+        <p>Real-time portfolio tracking, P&L charts, trade history, and AI decision logs — complete transparency over every algorithmic action.</p>
+        <div class="f-stat">
+          <div>
+            <span class="val">24/7</span>
+            <span class="label" style="display: block;">Monitoring</span>
+          </div>
+          <span class="material-symbols-outlined" style="color: var(--color-muted);">monitoring</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DASHBOARD PREVIEW ═══════════════ -->
+  <section class="dashboard-section reveal">
+    <div class="dashboard-left">
+      <span class="text-label" style="color: var(--color-primary); display: block;">PROTOCOL_PIPELINE</span>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.04em; line-height: 0.95;">HOW THE<br/>ENGINE<br/>OPERATES</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 2rem; margin-top: 1rem;">
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h4>DATA_INGESTION</h4>
+            <p>Real-time feeds from 24+ exchanges, 500+ trading pairs, social sentiment APIs, and on-chain analytics aggregated into a unified data lake.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h4>AI_ANALYSIS</h4>
+            <p>Individual AI agents run technical analysis, pattern recognition, and predictive modeling on each asset simultaneously.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h4>SIGNAL_GENERATION</h4>
+            <p>Confidence-scored trade signals are generated and validated against risk parameters before execution approval.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h4>EXECUTION_&_OPTIMIZE</h4>
+            <p>Trades execute at optimal price points. Post-trade analysis feeds back into the model for continuous improvement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-right">
+      <div class="chart-container">
+        <div class="chart-header">
+          <div>
+            <span class="pair">BTC / USDT</span>
+            <span class="text-label" style="color: var(--color-muted); display: block; margin-top: 0.25rem;">PERPETUAL_FUTURES</span>
+          </div>
+          <div style="text-align: right;">
+            <span class="price" id="livePrice">$104,289.47</span>
+            <span class="text-label" style="color: #34D399; display: block; margin-top: 0.25rem;">▲ +2.34% (24H)</span>
+          </div>
+        </div>
+
+        <div class="chart-canvas-wrap">
+          <canvas id="chartCanvas"></canvas>
+        </div>
+
+        <div class="chart-stats">
+          <div class="chart-stat-item">
+            <div class="csv">$2.4B</div>
+            <div class="csl">24H Volume</div>
+          </div>
+          <div class="chart-stat-item">
+            <div class="csv">68.4</div>
+            <div class="csl">RSI Index</div>
+          </div>
+          <div class="chart-stat-item">
+            <div class="csv">0.87</div>
+            <div class="csl">Confidence</div>
+          </div>
+          <div class="chart-stat-item">
+            <div class="csv" style="color: #34D399;">LONG</div>
+            <div class="csl">AI Signal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ETHEREUM 3RD VISUAL ═══════════════ -->
+  <section class="eth-visual-section reveal">
+    <div class="eth-left">
+      <span class="text-label" style="color: var(--color-tertiary); display: block; margin-bottom: 1rem;">L2_ROUTING // ETHEREUM</span>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.04em; line-height: 0.95; margin-bottom: 1.5rem;">
+        DEEP <span style="background: linear-gradient(135deg, var(--color-tertiary), #38BDF8); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">LIQUIDITY</span>
+      </h2>
+      <p style="color: rgba(240,253,249,0.5); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem; max-width: 500px;">
+        Our AI agents tap directly into Ethereum Layer-2 protocols (Arbitrum, Optimism, Base). Executing high-frequency MEV strategies and flash loans with millisecond precision to maximize yield across DeFi ecosystems.
+      </p>
+      <div style="display: flex; gap: 2rem;">
+        <div>
+          <span style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--color-tertiary); display: block;">&lt; 0.1s</span>
+          <span class="text-label" style="color: var(--color-muted);">Tx Confirmation</span>
+        </div>
+        <div>
+          <span style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--color-tertiary); display: block;">15+</span>
+          <span class="text-label" style="color: var(--color-muted);">DEX Integrations</span>
+        </div>
+      </div>
+    </div>
+    <div class="eth-right">
+      <img src="https://images.unsplash.com/photo-1622790698141-94e30457ef12?w=1920&q=80" alt="Ethereum Neural Network Hub"/>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CRYPTO PAYMENTS ═══════════════ -->
+  <section class="payments-section reveal">
+    <span class="text-label" style="color: var(--color-primary); display: block; margin-bottom: 1rem; letter-spacing: 0.3em;">GLOBAL_PAYMENTS</span>
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em;">WE ACCEPT<br/><span style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">CRYPTO GLOBALLY</span></h2>
+    <p style="color: rgba(240,253,249,0.45); max-width: 550px; margin: 1.5rem auto 0; line-height: 1.7;">All Rareware Studio services can be settled in cryptocurrency. Borderless, instant, zero friction — the way digital commerce should be.</p>
+
+    <div class="crypto-icons">
+      <div class="crypto-icon">
+        <span class="c-symbol">₿</span>
+        <span class="c-name">Bitcoin</span>
+      </div>
+      <div class="crypto-icon">
+        <span class="c-symbol">Ξ</span>
+        <span class="c-name">Ethereum</span>
+      </div>
+      <div class="crypto-icon">
+        <span class="c-symbol">◎</span>
+        <span class="c-name">Solana</span>
+      </div>
+      <div class="crypto-icon">
+        <span class="c-symbol">₮</span>
+        <span class="c-name">USDT</span>
+      </div>
+      <div class="crypto-icon">
+        <span class="c-symbol">◈</span>
+        <span class="c-name">BNB</span>
+      </div>
+      <div class="crypto-icon">
+        <span class="c-symbol">✕</span>
+        <span class="c-name">XRP</span>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 1.25rem;">lock</span>
+        <span class="text-label" style="color: var(--color-muted);">E2E_ENCRYPTED</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 1.25rem;">public</span>
+        <span class="text-label" style="color: var(--color-muted);">190+_COUNTRIES</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 1.25rem;">bolt</span>
+        <span class="text-label" style="color: var(--color-muted);">INSTANT_SETTLEMENT</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="crypto-cta reveal">
+    <div style="position: relative; z-index: 2;">
+      <span class="text-label" style="color: var(--color-primary); letter-spacing: 0.3em; display: block; margin-bottom: 2rem;">NEXUS_ALPHA // ACCESS_REQUEST</span>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.04em; line-height: 0.9; margin-bottom: 2rem;">
+        READY TO<br/>
+        <span style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">AUTOMATE?</span>
+      </h2>
+      <p style="color: rgba(240,253,249,0.5); max-width: 500px; margin: 0 auto 3rem; line-height: 1.7;">
+        We're onboarding a limited number of clients for NEXUS_ALPHA. Secure your slot in the autonomous profit machine.
+      </p>
+      <a href="contact.html" class="btn-primary" style="margin: 0 auto;">
+        REQUEST_ACCESS
+        <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="site-footer">
+    <div class="footer-left">©2025 RAREWARE_STUDIO. ALL_RIGHTS_RESERVED.</div>
+    <div class="footer-links">
+      <a href="contact.html">Contact</a>
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+    </div>
+    <div class="footer-status">
+      <span class="dot"></span>
+      Available for Projects
+    </div>
+  </footer>
+
+  <!-- ═══════════════ SCRIPTS ═══════════════ -->
+  <script src="main.js"></script>
+  <script>
+    // ── Live Trading Chart Animation ──────────────────────
+    const chartCanvas = document.getElementById('chartCanvas');
+    if (chartCanvas) {
+      const ctx = chartCanvas.getContext('2d');
+      let cW, cH;
+      let dataPoints = [];
+      const maxPoints = 120;
+
+      function initChart() {
+        const rect = chartCanvas.parentElement.getBoundingClientRect();
+        cW = chartCanvas.width = rect.width;
+        cH = chartCanvas.height = rect.height;
+
+        // Generate initial data
+        dataPoints = [];
+        let price = 104000 + Math.random() * 600;
+        for (let i = 0; i < maxPoints; i++) {
+          price += (Math.random() - 0.48) * 150;
+          price = Math.max(103000, Math.min(106000, price));
+          dataPoints.push(price);
+        }
+      }
+
+      function drawChart() {
+        ctx.clearRect(0, 0, cW, cH);
+
+        // Grid
+        ctx.strokeStyle = 'rgba(30, 58, 63, 0.3)';
+        ctx.lineWidth = 0.5;
+        for (let i = 0; i < 8; i++) {
+          const y = (cH / 8) * i;
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(cW, y);
+          ctx.stroke();
+        }
+        for (let i = 0; i < 12; i++) {
+          const x = (cW / 12) * i;
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, cH);
+          ctx.stroke();
+        }
+
+        // Price line
+        const min = Math.min(...dataPoints) - 200;
+        const max = Math.max(...dataPoints) + 200;
+        const range = max - min;
+
+        // Gradient fill
+        const gradient = ctx.createLinearGradient(0, 0, 0, cH);
+        gradient.addColorStop(0, 'rgba(247, 147, 26, 0.15)');
+        gradient.addColorStop(1, 'rgba(247, 147, 26, 0)');
+
+        ctx.beginPath();
+        ctx.moveTo(0, cH);
+        for (let i = 0; i < dataPoints.length; i++) {
+          const x = (i / (dataPoints.length - 1)) * cW;
+          const y = cH - ((dataPoints[i] - min) / range) * cH;
+          if (i === 0) ctx.lineTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.lineTo(cW, cH);
+        ctx.closePath();
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        // Line
+        ctx.beginPath();
+        for (let i = 0; i < dataPoints.length; i++) {
+          const x = (i / (dataPoints.length - 1)) * cW;
+          const y = cH - ((dataPoints[i] - min) / range) * cH;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = '#F7931A';
+        ctx.lineWidth = 2;
+        ctx.shadowColor = 'rgba(247, 147, 26, 0.5)';
+        ctx.shadowBlur = 8;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Current price dot
+        const lastX = cW;
+        const lastY = cH - ((dataPoints[dataPoints.length - 1] - min) / range) * cH;
+        ctx.beginPath();
+        ctx.arc(lastX - 2, lastY, 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#F7931A';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(lastX - 2, lastY, 8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(247, 147, 26, 0.2)';
+        ctx.fill();
+
+        // Price line
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(0, lastY);
+        ctx.lineTo(cW, lastY);
+        ctx.strokeStyle = 'rgba(247, 147, 26, 0.3)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+
+      function updateChart() {
+        let last = dataPoints[dataPoints.length - 1];
+        last += (Math.random() - 0.48) * 120;
+        last = Math.max(103000, Math.min(106000, last));
+        dataPoints.push(last);
+        if (dataPoints.length > maxPoints) dataPoints.shift();
+
+        // Update price display
+        const priceEl = document.getElementById('livePrice');
+        if (priceEl) priceEl.textContent = '$' + last.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        drawChart();
+        requestAnimationFrame(() => setTimeout(updateChart, 80));
+      }
+
+      window.addEventListener('resize', initChart);
+      // Delay init until element is visible
+      setTimeout(() => {
+        initChart();
+        updateChart();
+      }, 1500);
+    }
+
+    // ── Crypto Hero Particle Canvas ──────────────────────
+    const cCanvas = document.getElementById('cryptoCanvas');
+    if (cCanvas) {
+      const cCtx = cCanvas.getContext('2d');
+      let cW2, cH2, cParticles = [];
+
+      function initCrypto() {
+        cW2 = cCanvas.width = window.innerWidth;
+        cH2 = cCanvas.height = window.innerHeight;
+        cParticles = [];
+        const count = Math.floor((cW2 * cH2) / 15000);
+        for (let i = 0; i < count; i++) {
+          cParticles.push({
+            x: Math.random() * cW2,
+            y: Math.random() * cH2,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: Math.random() * 1.5 + 0.3
+          });
+        }
+      }
+
+      function animateCrypto() {
+        cCtx.clearRect(0, 0, cW2, cH2);
+        for (let i = 0; i < cParticles.length; i++) {
+          const p = cParticles[i];
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > cW2) p.vx = -p.vx;
+          if (p.y < 0 || p.y > cH2) p.vy = -p.vy;
+
+          cCtx.beginPath();
+          cCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          cCtx.fillStyle = 'rgba(247, 147, 26, 0.6)';
+          cCtx.fill();
+
+          for (let j = i + 1; j < cParticles.length; j++) {
+            const dx = p.x - cParticles[j].x;
+            const dy = p.y - cParticles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 90) {
+              cCtx.beginPath();
+              cCtx.strokeStyle = `rgba(243, 186, 47, ${(1 - dist / 90) * 0.4})`;
+              cCtx.lineWidth = 0.4;
+              cCtx.moveTo(p.x, p.y);
+              cCtx.lineTo(cParticles[j].x, cParticles[j].y);
+              cCtx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animateCrypto);
+      }
+
+      window.addEventListener('resize', initCrypto);
+      initCrypto();
+      animateCrypto();
+    }
+  </script>
+</body>
+</html>
